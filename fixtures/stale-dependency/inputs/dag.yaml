@@ -1,0 +1,53 @@
+nodes:
+- id: source-snapshot
+  kind: SOURCE_SNAPSHOT
+  version: '1'
+  path: inputs/snapshot.json
+  validated_against: {}
+- id: design
+  kind: DESIGN
+  version: '3'
+  depends_on:
+  - source-snapshot
+  validated_against:
+    source-snapshot: 1@ca189e5245b7
+- id: admitted-evidence
+  kind: ADMITTED_EVIDENCE
+  version: '1'
+  path: inputs/screening.csv
+  depends_on:
+  - design
+  validated_against:
+    design: '2'
+- id: analysis-run
+  kind: ANALYSIS_RUN
+  version: '1'
+  path: outputs/summary.csv
+  depends_on:
+  - admitted-evidence
+  validated_against:
+    admitted-evidence: 1@dfb50a3b1047
+  output_sha256: 8d240abc5a92656547925d4c5fa4dfdd2917e6d24c4b9b79f310cae091c81b5e
+- id: ranking
+  kind: RANKING
+  version: '1'
+  depends_on:
+  - analysis-run
+  validated_against:
+    analysis-run: 1@8d240abc5a92
+- id: figure
+  kind: FIGURE
+  version: '1'
+  depends_on:
+  - ranking
+  validated_against:
+    ranking: '1'
+- id: conclusion
+  kind: CONCLUSION
+  version: '1'
+  depends_on:
+  - figure
+  - analysis-run
+  validated_against:
+    figure: '1'
+    analysis-run: 1@8d240abc5a92

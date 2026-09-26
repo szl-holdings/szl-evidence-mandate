@@ -1,0 +1,7 @@
+fixture: duplicate-row
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- duplicate_records:records
+claim_not_established: the stated participant total
+explanation: Record R3 appears twice.

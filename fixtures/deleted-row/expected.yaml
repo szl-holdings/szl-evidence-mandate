@@ -1,0 +1,7 @@
+fixture: deleted-row
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- snapshot_rows
+claim_not_established: that the analysed set equals the accepted snapshot
+explanation: R5 was deleted after the snapshot was accepted.

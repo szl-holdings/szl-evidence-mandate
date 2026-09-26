@@ -1,0 +1,7 @@
+fixture: omitted-population
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- OMITTED_POPULATION
+claim_not_established: complete screening
+explanation: Candidate R7 never entered the screened set.

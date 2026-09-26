@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.egg-info/
+.pytest_cache/
+.ruff_cache/
+work/
+# Full reports name private repositories/artifacts and hold raw API responses: keep local.
+reports/*
+!reports/public/
+build/

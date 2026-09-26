@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-09-26T01:55:51Z",
+  "public_only": true,
+  "sha256": {
+    "00-executive-summary.md": "33250ddb867a57c0eb545f99c9b6e616147fb2cbf83cad5ccccd4bf0400cb374",
+    "01-engine-verification.json": "6719b607c748c438e2cc46e9ca6e4eab7e94d3989fbe5ff6325c7b8df7d0f56a",
+    "01-engine-verification.md": "ac38e0489c32f4a7f47d03f2b4c7f07778ffc66e566e0d707ea7058e232bbf05",
+    "02-github-audit.json": "f271c2fb251b1a550d799ddd50f791f3f34f700c4a7864dbd4551b6236ae2b3d",
+    "02-github-audit.md": "39a23bbe2db994f3f0cbb2194577252b0d5d35f43cf6f75647f521587d54343d",
+    "03-huggingface-audit.json": "157344d2d1071ac146b136cc694afcbf295f7671c46586095af10209ac851494",
+    "03-huggingface-audit.md": "e50c512a5df20dd456c6d230cc761d284347ec591ac1c8a54f5334771ae8b089",
+    "04-reconciliation.json": "58ef2985f7f725292affc9cc17c51e1f788d6a5c808defda4b52c34faf885085",
+    "04-reconciliation.md": "2dbfedfb30493f17a62741e52742a0a5185e0cdcaa0d22af3bf2dee49566ded4",
+    "05-claims-verification.md": "beabaab897f2ad696975369ed7a10513321b8eec5c653dc80cc5fa70cdee0126",
+    "06-security-findings.md": "841d5f628cfac864c1e41cf039aade3dad1d285bf8f246694973c3bdfb8ce458",
+    "07-investor-view.md": "a8239564cadcbea9e0c1cd1c669d5724a8d6fe0551ef7ef60eaa3e89632d63bb",
+    "08-developer-view.md": "9a02d75779a6bcf13bcb3a3b97111a63efca814c5e517297f0c672d4639ffcdd",
+    "09-gaps-and-bandaids.md": "bedbfadb1631e374fd4fa15517d2b351761d0e93921774bfc29483a3ec29d758",
+    "10-frontier-plan.md": "b2f5ccd78fd8d1f244a2ccbaa22f26d6cafefdb50b3380db37d3d11f4aeabed6",
+    "11-remediation-table.csv": "512975bba9205b804c8097df770850a815e194c4fa624140f1c69c03e93e17bb",
+    "11-remediation-table.md": "6efa269ace439facd104eda9a1faa879c1848266d8d94252e89b5a0222aec308"
+  }
+}

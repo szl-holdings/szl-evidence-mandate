@@ -1,0 +1,7 @@
+fixture: nonexistent-doi
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- citation_metadata
+claim_not_established: citation K2 exists
+explanation: DOI absent from a closed-world registry snapshot.

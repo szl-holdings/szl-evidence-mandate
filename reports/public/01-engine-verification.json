@@ -1,0 +1,872 @@
+{
+  "completed_at": "2026-09-26T01:55:46Z",
+  "dependencies": {
+    "evaluation_after_change": {
+      "direct_drift": {
+        "admitted-evidence": [
+          {
+            "current": "3",
+            "parent": "design",
+            "recorded": "2"
+          }
+        ]
+      },
+      "note": "Staleness is not falsity: stale nodes are pending revalidation, not declared false.",
+      "publication_blocked": [
+        "admitted-evidence",
+        "analysis-run",
+        "conclusion",
+        "figure",
+        "ranking"
+      ],
+      "stale": [
+        "admitted-evidence",
+        "analysis-run",
+        "conclusion",
+        "figure",
+        "ranking"
+      ],
+      "states": {
+        "admitted-evidence": "STALE_PENDING_REVALIDATION",
+        "analysis-run": "STALE_PENDING_REVALIDATION",
+        "conclusion": "STALE_PENDING_REVALIDATION",
+        "design": "CURRENT",
+        "figure": "STALE_PENDING_REVALIDATION",
+        "ranking": "STALE_PENDING_REVALIDATION",
+        "source-snapshot": "CURRENT"
+      }
+    },
+    "impact_of_design_change": {
+      "changed": "design",
+      "declared_false": [],
+      "descendants_marked_stale": [
+        "admitted-evidence",
+        "analysis-run",
+        "conclusion",
+        "ranking",
+        "figure"
+      ],
+      "note": "No descendant was recomputed or declared false. Revalidate each before publication.",
+      "publication_blocked": [
+        "admitted-evidence",
+        "analysis-run",
+        "conclusion",
+        "ranking",
+        "figure"
+      ],
+      "recomputed": []
+    },
+    "revalidate_changed": {
+      "descendants_still_pending": [
+        "analysis-run",
+        "conclusion",
+        "ranking",
+        "figure"
+      ],
+      "node": "admitted-evidence",
+      "output_changed": true,
+      "result": "REVALIDATED_CHANGED",
+      "states": {
+        "admitted-evidence": "REVALIDATED_CHANGED",
+        "analysis-run": "STALE_PENDING_REVALIDATION",
+        "conclusion": "STALE_PENDING_REVALIDATION",
+        "design": "CURRENT",
+        "figure": "STALE_PENDING_REVALIDATION",
+        "ranking": "STALE_PENDING_REVALIDATION",
+        "source-snapshot": "CURRENT"
+      }
+    },
+    "revalidate_unchanged": {
+      "descendants_still_pending": [],
+      "node": "admitted-evidence",
+      "output_changed": false,
+      "result": "REVALIDATED_UNCHANGED",
+      "states": {
+        "admitted-evidence": "REVALIDATED_UNCHANGED",
+        "analysis-run": "CURRENT",
+        "conclusion": "CURRENT",
+        "design": "CURRENT",
+        "figure": "CURRENT",
+        "ranking": "CURRENT",
+        "source-snapshot": "CURRENT"
+      }
+    }
+  },
+  "determinism": {
+    "byte_identical": true,
+    "runs": [
+      {
+        "exit": 0,
+        "receipt_sha256_of_file": "8ff328e72e13f209dfaea1479012f107d6bb2567de8741a8407f0176792389b6",
+        "seed": "0"
+      },
+      {
+        "exit": 0,
+        "receipt_sha256_of_file": "8ff328e72e13f209dfaea1479012f107d6bb2567de8741a8407f0176792389b6",
+        "seed": "1"
+      },
+      {
+        "exit": 0,
+        "receipt_sha256_of_file": "8ff328e72e13f209dfaea1479012f107d6bb2567de8741a8407f0176792389b6",
+        "seed": "12345"
+      }
+    ]
+  },
+  "fixtures": [
+    {
+      "claim_not_established": "none; all declared claims verified against stored outputs and replayed recipes",
+      "expected_exit": 0,
+      "expected_status": "PASS",
+      "failures": [],
+      "fixture": "valid",
+      "match": true,
+      "non_pass_checks": [],
+      "observed_exit": 0,
+      "observed_status": "PASS",
+      "primary_reason": "VERIFIED",
+      "receipt_sha256": "2b2552a8d39f550f336a9859f299a603bdbbd74405b5dd65ef08f435aa1591d5",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "any claim about the corpus",
+      "expected_exit": 2,
+      "expected_status": "ABSTAIN",
+      "failures": [
+        "VACUOUS_PASS"
+      ],
+      "fixture": "empty-input",
+      "match": true,
+      "non_pass_checks": [
+        "inputs_present",
+        "inputs_nonempty",
+        "discovery_complete",
+        "rows_examined_complete",
+        "duplicate_records"
+      ],
+      "observed_exit": 2,
+      "observed_status": "ABSTAIN",
+      "primary_reason": "INSUFFICIENT_EVIDENCE",
+      "receipt_sha256": "379f46970b4b902bb66fb07d19e91f677a40f28a47bb2c9aff5c8ecd520821c0",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "that every record was reviewed",
+      "expected_exit": 2,
+      "expected_status": "ABSTAIN",
+      "failures": [],
+      "fixture": "missing-table",
+      "match": true,
+      "non_pass_checks": [
+        "inputs_present",
+        "reviewer_protocol"
+      ],
+      "observed_exit": 2,
+      "observed_status": "ABSTAIN",
+      "primary_reason": "INSUFFICIENT_EVIDENCE",
+      "receipt_sha256": "a03a2040a167a3ee1de6f10092e41aabe716a646b9aad22db0b3e4b28bb6a2d4",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "any population-level result",
+      "expected_exit": 2,
+      "expected_status": "ABSTAIN",
+      "failures": [
+        "PARTIAL_EXECUTION"
+      ],
+      "fixture": "partial-execution",
+      "match": true,
+      "non_pass_checks": [
+        "rows_examined_complete",
+        "snapshot_rows",
+        "reviewer_protocol",
+        "source_identity",
+        "timestamp_consistency",
+        "claim_value:C1",
+        "claim_value:C2",
+        "claim_value:C3",
+        "population_closure",
+        "output_determinism"
+      ],
+      "observed_exit": 2,
+      "observed_status": "ABSTAIN",
+      "primary_reason": "INSUFFICIENT_EVIDENCE",
+      "receipt_sha256": "6916fa656fd610d8a6d27997276ed19c7014ccd3efa2b5886a76c81c72eb189d",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "that citation_resolution and human_review ran",
+      "expected_exit": 2,
+      "expected_status": "ABSTAIN",
+      "failures": [
+        "NARRATED_VERIFICATION"
+      ],
+      "fixture": "narrated-verification",
+      "match": true,
+      "non_pass_checks": [
+        "attested_invocations"
+      ],
+      "observed_exit": 2,
+      "observed_status": "ABSTAIN",
+      "primary_reason": "UNVERIFIED",
+      "receipt_sha256": "27d8bba81b2fb7db68d327b7b9bbd0e3b8991297d558a80be2699368ed059b0c",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "the stated participant total",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "SOURCE_MISMATCH"
+      ],
+      "fixture": "duplicate-row",
+      "match": true,
+      "non_pass_checks": [
+        "duplicate_records:records",
+        "claim_value:C1",
+        "claim_value:C2"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "UNVERIFIED",
+      "receipt_sha256": "6b2027331845ff9d9bbf54754e6ee59dce2f7808146334c5f5565fc2fd65c718",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "that the analysed set equals the accepted snapshot",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "SOURCE_MISMATCH"
+      ],
+      "fixture": "deleted-row",
+      "match": true,
+      "non_pass_checks": [
+        "snapshot_rows",
+        "claim_value:C1",
+        "claim_value:C2"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "SOURCE_MISMATCH",
+      "receipt_sha256": "e01cb837f90b8d2c8d4f90ce5d7591f0c7a3a702d25d451fea0083931a7eca4f",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "C4 (median follow-up)",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "EPHEMERAL_CLAIM"
+      ],
+      "fixture": "unregistered-claim",
+      "match": true,
+      "non_pass_checks": [
+        "claim_value:C4"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "UNVERIFIED",
+      "receipt_sha256": "3b6d0baf3a9fcded1f2189ab38761d13a002d95db55fc55e9991c76b2f9bbdbe",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "C3 (arms equal)",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "DEFECTIVE_VERIFICATION"
+      ],
+      "fixture": "numeric-rounding",
+      "match": true,
+      "non_pass_checks": [
+        "claim_value:C3"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "UNVERIFIED",
+      "receipt_sha256": "4049c333b03f37cc21fc739bc2af053a761041413856425fcd1f4ae2b2af1802",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "C1 (participant total)",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [],
+      "fixture": "comma-tokenization",
+      "match": true,
+      "non_pass_checks": [
+        "claim_value:C1"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "UNVERIFIED",
+      "receipt_sha256": "7828050adfd2fcdda54c6ceedf9ea155bf72233f3555c11dcdf35c7d65637392",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "that the output is reproducible byte-for-byte",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [],
+      "fixture": "nondeterministic-order",
+      "match": true,
+      "non_pass_checks": [
+        "output_determinism"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "PROTOCOL_BROKEN",
+      "receipt_sha256": "1140fc0eb01eddcdcc8b6b7406f5a7cc894e04f6f8e44b63c0c707474f0db966",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "that R2 matches its source retrieval",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "SOURCE_MISMATCH"
+      ],
+      "fixture": "timezone-mismatch",
+      "match": true,
+      "non_pass_checks": [
+        "timestamp_consistency"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "SOURCE_MISMATCH",
+      "receipt_sha256": "be8f0d79810b21eaae08c42929e84378e1f6bab060ba49e4156881dc2fcb2441",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "citation K1 attribution",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "SOURCE_MISMATCH"
+      ],
+      "fixture": "wrong-authors",
+      "match": true,
+      "non_pass_checks": [
+        "citation_metadata"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "SOURCE_MISMATCH",
+      "receipt_sha256": "0f3ca09149716bb100ceda5bed57290f7689ecd6aa2249c903f81f18907f6646",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "citation K2 exists",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [],
+      "fixture": "nonexistent-doi",
+      "match": true,
+      "non_pass_checks": [
+        "citation_metadata"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "UNVERIFIED",
+      "receipt_sha256": "30a97328e7e91b823b84f1d41c567e64290c38721d1298829a48997bb8d0fb98",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "dual review of R4",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "PROTOCOL_DRIFT"
+      ],
+      "fixture": "missing-reviewer",
+      "match": true,
+      "non_pass_checks": [
+        "reviewer_protocol"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "PROTOCOL_BROKEN",
+      "receipt_sha256": "469789732844c426e666ab69888363a60216f1d500fe34cc99d999d7fcf2a7e8",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "that the declared protocol was followed",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "PROTOCOL_DRIFT"
+      ],
+      "fixture": "protocol-drift",
+      "match": true,
+      "non_pass_checks": [
+        "protocol_conformance"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "PROTOCOL_BROKEN",
+      "receipt_sha256": "5b587591b1d92ec974941275e3872de26845ef668e30bba2abbcb56e8e695d11",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "complete screening",
+      "expected_exit": 1,
+      "expected_status": "FAIL",
+      "failures": [
+        "OMITTED_POPULATION"
+      ],
+      "fixture": "omitted-population",
+      "match": true,
+      "non_pass_checks": [
+        "population_closure"
+      ],
+      "observed_exit": 1,
+      "observed_status": "FAIL",
+      "primary_reason": "UNVERIFIED",
+      "receipt_sha256": "e8864fa05836140b79eb6a33d7175a9537f8517f09b2014eccf5bf821ce89e2f",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "the current conclusion (pending revalidation, not false)",
+      "expected_exit": 2,
+      "expected_status": "ABSTAIN",
+      "failures": [],
+      "fixture": "stale-dependency",
+      "match": true,
+      "non_pass_checks": [
+        "dependency_validity"
+      ],
+      "observed_exit": 2,
+      "observed_status": "ABSTAIN",
+      "primary_reason": "INSUFFICIENT_EVIDENCE",
+      "receipt_sha256": "41c17bff674cdc636b93fdefeb4f33de3985c8d6a84173d883b6f8f15a242269",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    },
+    {
+      "claim_not_established": "final screening counts",
+      "expected_exit": 2,
+      "expected_status": "ABSTAIN",
+      "failures": [],
+      "fixture": "unresolved",
+      "match": true,
+      "non_pass_checks": [
+        "population_closure"
+      ],
+      "observed_exit": 2,
+      "observed_status": "ABSTAIN",
+      "primary_reason": "REQUIRES_HUMAN_REVIEW",
+      "receipt_sha256": "1074e1906fdcbd08d773e333df92305c95c1546e3819ee659e34fc9e9cfe0ddf",
+      "required_evidence_present": true,
+      "signature_state": "UNSIGNED"
+    }
+  ],
+  "mutations": {
+    "baseline_status": "PASS",
+    "results": [
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "attested_invocations",
+          "child_exit_integrity",
+          "citation_metadata",
+          "claim_value",
+          "dependency_validity",
+          "discovery_complete",
+          "duplicate_records",
+          "inputs_nonempty",
+          "inputs_present",
+          "output_determinism",
+          "population_closure",
+          "protocol_conformance",
+          "reviewer_protocol",
+          "rows_examined_complete",
+          "snapshot_rows",
+          "source_identity",
+          "timestamp_consistency"
+        ],
+        "expected_detection": true,
+        "id": "M01",
+        "missed_invariants": [],
+        "mutation": "remove all inputs",
+        "note": "",
+        "observed": "ABSTAIN",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "citation_metadata",
+          "inputs_present"
+        ],
+        "expected_detection": true,
+        "id": "M02",
+        "missed_invariants": [],
+        "mutation": "delete a table",
+        "note": "",
+        "observed": "ABSTAIN",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "claim_value:C1",
+          "claim_value:C2",
+          "snapshot_rows"
+        ],
+        "expected_detection": true,
+        "id": "M03",
+        "missed_invariants": [],
+        "mutation": "delete a row",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "claim_value:C1",
+          "claim_value:C2",
+          "duplicate_records:records"
+        ],
+        "expected_detection": true,
+        "id": "M04",
+        "missed_invariants": [],
+        "mutation": "duplicate a row",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "verdicts_unique_per_invocation"
+        ],
+        "expected_detection": true,
+        "id": "M05",
+        "missed_invariants": [],
+        "mutation": "duplicate a verdict",
+        "note": "",
+        "observed": "REJECTED",
+        "status": "DETECTED",
+        "target": "receipt"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "reviewer_protocol"
+        ],
+        "expected_detection": true,
+        "id": "M06",
+        "missed_invariants": [],
+        "mutation": "remove a reviewer",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "invocation_input_hashes_match_observed"
+        ],
+        "expected_detection": true,
+        "id": "M07",
+        "missed_invariants": [],
+        "mutation": "change a hash (resealed)",
+        "note": "",
+        "observed": "REJECTED",
+        "status": "DETECTED",
+        "target": "receipt"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "citation_metadata"
+        ],
+        "expected_detection": true,
+        "id": "M08",
+        "missed_invariants": [],
+        "mutation": "change an author",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "citation_metadata"
+        ],
+        "expected_detection": true,
+        "id": "M09",
+        "missed_invariants": [],
+        "mutation": "replace a DOI",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "claim_value:C1",
+          "claim_value:C2",
+          "snapshot_rows"
+        ],
+        "expected_detection": true,
+        "id": "M10",
+        "missed_invariants": [],
+        "mutation": "change a number",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": false,
+        "detecting_invariants": [],
+        "expected_detection": false,
+        "id": "M11",
+        "missed_invariants": [],
+        "mutation": "add a thousands separator (semantically neutral)",
+        "note": "12480 -> 12,480 is the same number; detection would be a false positive",
+        "observed": "PASS",
+        "status": "CORRECTLY_IGNORED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "claim_value:C1"
+        ],
+        "expected_detection": true,
+        "id": "M11b",
+        "missed_invariants": [],
+        "mutation": "add a thousands separator and change the number",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "timestamp_consistency"
+        ],
+        "expected_detection": true,
+        "id": "M12",
+        "missed_invariants": [],
+        "mutation": "shift a timestamp by an offset",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "every_required_check_has_terminal_state",
+          "every_verdict_has_invocation",
+          "ledger_chain_intact",
+          "ledger_head_and_count_bound",
+          "pass_block_derived_from_ledger",
+          "pass_requires_complete_required_checks"
+        ],
+        "expected_detection": true,
+        "id": "M13",
+        "missed_invariants": [],
+        "mutation": "remove an invocation record",
+        "note": "",
+        "observed": "REJECTED",
+        "status": "DETECTED",
+        "target": "receipt"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "attested_invocations"
+        ],
+        "expected_detection": true,
+        "id": "M14",
+        "missed_invariants": [],
+        "mutation": "inject a PASS summary with no evidence",
+        "note": "",
+        "observed": "ABSTAIN",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "every_required_check_has_terminal_state",
+          "pass_requires_complete_required_checks"
+        ],
+        "expected_detection": true,
+        "id": "M15",
+        "missed_invariants": [],
+        "mutation": "skip a required checker",
+        "note": "",
+        "observed": "ERROR",
+        "status": "DETECTED",
+        "target": "engine"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "every_required_check_has_terminal_state",
+          "pass_block_derived_from_ledger",
+          "pass_requires_complete_required_checks"
+        ],
+        "expected_detection": true,
+        "id": "M16",
+        "missed_invariants": [],
+        "mutation": "truncate the ledger (re-chained)",
+        "note": "",
+        "observed": "REJECTED",
+        "status": "DETECTED",
+        "target": "receipt"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "ledger_chain_intact"
+        ],
+        "expected_detection": true,
+        "id": "M17",
+        "missed_invariants": [],
+        "mutation": "reorder chained records",
+        "note": "",
+        "observed": "REJECTED",
+        "status": "DETECTED",
+        "target": "receipt"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "dependency_validity"
+        ],
+        "expected_detection": true,
+        "id": "M18",
+        "missed_invariants": [],
+        "mutation": "bump an upstream design version",
+        "note": "",
+        "observed": "ABSTAIN",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "claim_value:C1",
+          "claim_value:C2",
+          "claim_value:C3",
+          "dependency_validity"
+        ],
+        "expected_detection": true,
+        "id": "M19",
+        "missed_invariants": [],
+        "mutation": "replace a stored output",
+        "note": "",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "reviewer_protocol"
+        ],
+        "expected_detection": true,
+        "id": "P01",
+        "missed_invariants": [],
+        "mutation": "substitute an unauthorised reviewer identity",
+        "note": "protocol does not declare an authorised reviewer roster",
+        "observed": "FAIL",
+        "status": "DETECTED",
+        "target": "input"
+      },
+      {
+        "actual_detection": false,
+        "detecting_invariants": [],
+        "expected_detection": true,
+        "id": "P02",
+        "missed_invariants": [
+          "attested_invocations"
+        ],
+        "mutation": "forge a producer invocation record",
+        "note": "producer invocation records are unauthenticated",
+        "observed": "PASS",
+        "status": "BLIND_SPOT",
+        "target": "input"
+      },
+      {
+        "actual_detection": false,
+        "detecting_invariants": [],
+        "expected_detection": true,
+        "id": "P03",
+        "missed_invariants": [
+          "receipt_hash_binds_content"
+        ],
+        "mutation": "edit evidence and fully reseal an UNSIGNED receipt",
+        "note": "hash binding without a signature cannot authenticate the sealer",
+        "observed": "ACCEPTED",
+        "status": "BLIND_SPOT",
+        "target": "receipt"
+      },
+      {
+        "actual_detection": true,
+        "detecting_invariants": [
+          "claim_value:C1",
+          "claim_value:C2",
+          "reviewer_protocol",
+          "snapshot_rows"
+        ],
+        "expected_detection": true,
+        "id": "P04",
+        "missed_invariants": [
+          "duplicate_records:records"
+        ],
+        "mutation": "near-duplicate record under a new key",
+        "note": "duplicate detection is exact-match on key/row",
+        "observed": "FAIL",
+        "status": "DETECTED_INCIDENTALLY",
+        "target": "input"
+      }
+    ],
+    "summary": {
+      "blind_spots": [
+        "P02",
+        "P03"
+      ],
+      "correctly_ignored": 1,
+      "detected": 20,
+      "detected_incidentally": [
+        "P04"
+      ],
+      "false_positives": [],
+      "mutations": 24
+    }
+  },
+  "started_at": "2026-09-26T01:55:41Z"
+}

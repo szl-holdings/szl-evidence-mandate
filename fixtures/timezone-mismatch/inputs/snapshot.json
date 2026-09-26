@@ -1,0 +1,12 @@
+{
+  "accepted_at": "2026-01-20T00:00:00Z",
+  "key": "record_id",
+  "row_sha256": {
+    "R1": "4633fca2dc7fc44f9ca4b914d42e70b36709e3af53405ccf6ce751bb5caa569e",
+    "R2": "f442b6864fa204a11737e154461aadd79e7fa1d579a72af35ab717d835e4f1c3",
+    "R3": "7835d4a804734158c6764ec80ca349f3d917244a99b68ac36f521bd57f96c2c9",
+    "R4": "135c20701bafb285aeff4f4d25443af42d08ee65e0083baf756b0e352d91f065",
+    "R5": "f5abdc0218611c2058f844aeeb9f7eafab77df56f5dc3490ad435a4d88f52255"
+  },
+  "table": "records"
+}

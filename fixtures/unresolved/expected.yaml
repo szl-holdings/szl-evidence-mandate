@@ -1,0 +1,7 @@
+fixture: unresolved
+expected_status: ABSTAIN
+expected_exit_code: 2
+required_evidence:
+- REQUIRES_HUMAN_REVIEW
+claim_not_established: final screening counts
+explanation: R6 is unresolved.

@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "szl.evidence.manifest/v1.0",
+  "title": "SZL Evidence Gate manifest",
+  "type": "object",
+  "required": ["manifest_version", "inputs"],
+  "properties": {
+    "manifest_version": {"const": "1.0"},
+    "name": {"type": "string"},
+    "access": {"enum": ["open", "controlled-local"]},
+    "inputs_dir": {"type": "string"},
+    "ignore": {"type": "array", "items": {"type": "string"}},
+    "inputs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "path"],
+        "properties": {
+          "id": {"type": "string"},
+          "path": {"type": "string", "not": {"pattern": "(^/|\\.\\.)"}},
+          "kind": {"enum": ["table", "json", "yaml", "jsonl", "blob"]},
+          "required": {"type": "boolean"},
+          "key": {"type": "string"}
+        }
+      }
+    },
+    "required_checks": {"type": "array", "items": {"type": "string"}},
+    "limits": {"type": "object", "properties": {"max_rows": {"type": "integer", "minimum": 0}}},
+    "snapshot": {"type": "object", "required": ["input", "table"]},
+    "reviews": {"type": "object", "required": ["table", "target_table", "record_field", "reviewer_field", "required_per_record"]},
+    "sources": {"type": "object", "required": ["table", "key", "records_table", "records_field"]},
+    "timestamps": {"type": "object", "required": ["table", "field", "join"]},
+    "protocol": {"type": "object", "required": ["version", "steps", "execution_log"]},
+    "claims": {"type": "object", "required": ["input", "registry"]},
+    "dependencies": {"type": "object", "required": ["input"]},
+    "citations": {"type": "object", "required": ["table", "registry"]},
+    "screening": {"type": "object", "required": ["candidates", "decisions", "key"]},
+    "attestations": {"type": "object", "required": ["input"]},
+    "determinism": {"type": "object", "required": ["replicates"]}
+  }
+}

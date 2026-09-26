@@ -1,0 +1,8 @@
+fixture: wrong-authors
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- SOURCE_MISMATCH
+- citation_metadata
+claim_not_established: citation K1 attribution
+explanation: Authors disagree with registry.

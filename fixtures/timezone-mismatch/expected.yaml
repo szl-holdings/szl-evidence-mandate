@@ -1,0 +1,8 @@
+fixture: timezone-mismatch
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- SOURCE_MISMATCH
+- timestamp_consistency
+claim_not_established: that R2 matches its source retrieval
+explanation: 'Same wall-clock, different offset: instants differ by 2h.'

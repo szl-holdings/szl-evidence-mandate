@@ -1,0 +1,9 @@
+fixture: unregistered-claim
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- EPHEMERAL_CLAIM
+- claim_value:C4
+claim_not_established: C4 (median follow-up)
+explanation: A published number has no registry entry; other claims being registered
+  does not excuse it.

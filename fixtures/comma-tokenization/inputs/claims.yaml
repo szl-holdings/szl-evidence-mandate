@@ -1,0 +1,17 @@
+claims:
+- id: C1
+  text: 'Total participants across admitted studies: 12,408'
+  value: 12,408
+  metric: total_n
+- id: C2
+  text: 'Mean effect size: 0.42'
+  value: '0.42'
+  metric: mean_effect
+- id: C3
+  text: Arm A and arm B accuracy are equal (0.85)
+  relation: equal
+  metrics:
+  - acc_a
+  - acc_b
+  value: '0.85'
+  tolerance: '0.001'

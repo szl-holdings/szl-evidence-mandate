@@ -1,0 +1,5875 @@
+{
+  "estate_schema_ids": {
+    "DecisionReceipt.v2": [
+      "a11oy"
+    ],
+    "DecisionReceipt.v3": [
+      "a11oy"
+    ],
+    "SZL.Energy.Receipt.v1": [
+      "a11oy"
+    ],
+    "a11oy.holographic.brain-evidence.v1": [
+      "a11oy"
+    ],
+    "application/vnd.szl.a11oy-receipt+json": [
+      "a11oy"
+    ],
+    "application/vnd.szl.agent.receipt+json;v=2": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "application/vnd.szl.amaru.receipt+json": [
+      "a11oy"
+    ],
+    "application/vnd.szl.brain_jack.receipt+json": [
+      "a11oy"
+    ],
+    "application/vnd.szl.frontier-operation-evidence.v1+json": [
+      "a11oy"
+    ],
+    "application/vnd.szl.guardrail-receipt+json": [
+      "szl-guardrail-receipt"
+    ],
+    "application/vnd.szl.khipu+json": [
+      ".github",
+      "a11oy",
+      "governed-receipt-spec",
+      "killinchu"
+    ],
+    "application/vnd.szl.khipu-receipt+json;v=1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "application/vnd.szl.khipu.organ-verdict+json": [
+      "khipu-consensus",
+      "szl-mesh"
+    ],
+    "application/vnd.szl.ops.receipt+json": [
+      "killinchu"
+    ],
+    "application/vnd.szl.organism.receipt+json": [
+      "killinchu"
+    ],
+    "application/vnd.szl.receipt+json": [
+      ".github",
+      "a11oy",
+      "anatomy",
+      "ayllu",
+      "hatun-mcp",
+      "killinchu",
+      "szl-lake",
+      "szl-substrate"
+    ],
+    "application/vnd.szl.rosie_companion.receipt+json": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "david.evidence-constellation.v1": [
+      "david-leads"
+    ],
+    "github-actions-evidence-verification.v1": [
+      "a11oy"
+    ],
+    "governed-agent-receipt/0.1": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/authorization-receipt.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/brain-row-provenance-license-crosswalk-receipt.v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/compute-pool-inference-receipt.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/evidenceos/claim-atomize-request.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/evidenceos/claim-evaluate-request.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/evidenceos/public-claim-manifest.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/evidenceos/public-claim-report.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/oro/v1/barrier-receipt.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/puriq-receipt-v1.json": [
+      "a11oy",
+      "david-leads"
+    ],
+    "https://a-11-oy.com/schemas/receipt-agent-artifact-reconciliation.v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/receipt-agent-public-candidate-qualification-receipt.v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-forge-receipt-agent-draft-v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-khipu-second-brain.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-receipt-agent-admission-manifest-v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-receipt-agent-evaluation-manifest-v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-receipt-agent-output-v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-receipt-agent-release-manifest-v1.json": [
+      "a11oy"
+    ],
+    "https://github.com/szl-holdings/governed-receipt-spec/schema/governed-receipt.schema.json": [
+      "a11oy-net",
+      "governed-receipt-spec"
+    ],
+    "https://huggingface.co/datasets/szl-holdings/uds-observability/schemas/receipt_schema.json": [
+      "a11oy"
+    ],
+    "https://schemas.szlholdings.com/khipu-package/v0.1": [
+      "szl-platform"
+    ],
+    "https://szl.ai/schemas/receiptagent-v3-release-manifest-v1.json": [
+      "szl-forge"
+    ],
+    "https://szl.ai/schemas/receiptagent-v3/authenticated-receipt.schema.json": [
+      "szl-forge"
+    ],
+    "https://szl.holdings/khipu-governed-inference/v1": [
+      "a11oy"
+    ],
+    "https://szl.holdings/schemas/receipt-agent-qwen35-v3-output.json": [
+      "szl-forge"
+    ],
+    "https://szl.holdings/schemas/receipt-agent-qwen35-v3-request.json": [
+      "szl-forge"
+    ],
+    "khipu-causal-lm-kv-state/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-checkpoint/v1": [
+      "a11oy"
+    ],
+    "khipu-int8-quant/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-inventory-spec-comparison/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-model-weight-inventory-digest/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-model-weight-inventory/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-safetensors-causal-lm-mapping/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-safetensors-decoder-mapping/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-safetensors-file-inventory/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-target-budget/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-tokenizer-artifact-binding/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-transformer-readiness/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-x1-source-lock/v0.1": [
+      "szl-khipu"
+    ],
+    "szl-bench-receipt/v3": [
+      "frontier-bench"
+    ],
+    "szl-khipu-x1-upstream-map-v1": [
+      "khipu-x1"
+    ],
+    "szl-oac/transport-health-artifact-receipt/v1": [
+      "szl-forge"
+    ],
+    "szl-oac/transport-health-dataset-receipt/v1": [
+      "szl-forge"
+    ],
+    "szl.a11oy.assurance.evidence-pack.envelope.v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.assurance.evidence-pack.v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.brain.energy.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.code_receipt/v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.owned-khipu-cortex-error/v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.owned-khipu-live-proof/v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.specdec.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.agent.master_receipt/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.agent.receipt/v2": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.anatomy-evidence/v1": [
+      "a11oy",
+      "anatomy",
+      "killinchu"
+    ],
+    "szl.anatomy-integrity-receipt/v1": [
+      "anatomy"
+    ],
+    "szl.anatomy.covenant-cockpit/receipts/v1": [
+      "a11oy",
+      "anatomy"
+    ],
+    "szl.ayllu.ask-receipt/v1": [
+      "ayllu"
+    ],
+    "szl.ayllu.council-receipt/v2": [
+      "a11oy"
+    ],
+    "szl.ayllu.counsel-receipt/v1": [
+      "ayllu"
+    ],
+    "szl.ayllu.evidence-bound-council/v2": [
+      "a11oy",
+      "ayllu"
+    ],
+    "szl.ayllu.psyche-receipt/v1": [
+      "ayllu"
+    ],
+    "szl.body_of_evidence/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.bounded-lora-training-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.brain-quantum-evidence-info.v1": [
+      "a11oy"
+    ],
+    "szl.brain-row-evidence-gap.v1": [
+      "a11oy"
+    ],
+    "szl.brain-row-provenance-license-crosswalk-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.artifact-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.corpus-bridge-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.corpus-evidence.v1": [
+      "a11oy"
+    ],
+    "szl.brain.evidence-evaluation-preregistration.v1": [
+      "a11oy"
+    ],
+    "szl.brain.evidence-evaluation-results.v1": [
+      "a11oy"
+    ],
+    "szl.brain.evidence-manifest.v1": [
+      "a11oy"
+    ],
+    "szl.brain.evidence-qrels.v1": [
+      "a11oy"
+    ],
+    "szl.brain.reranker.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.semantic-index.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.signed-inference-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.brain.verifiable-answer-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.brain_jack.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.budget_action.receipt/v1": [
+      ".github"
+    ],
+    "szl.chaos.receipt/v1": [
+      ".github"
+    ],
+    "szl.claim-integrity-receipt/v1": [
+      "vertical-services"
+    ],
+    "szl.connector-evidence-resolution/v1": [
+      "vertical-services"
+    ],
+    "szl.connector-evidence-snapshot/v1": [
+      "vertical-services"
+    ],
+    "szl.degradation.receipt/v1": [
+      ".github",
+      "a11oy"
+    ],
+    "szl.deployment-review-receipt/v1": [
+      ".github"
+    ],
+    "szl.deployment-source-evidence/v1": [
+      "sda"
+    ],
+    "szl.estate-alignment-receipt/v1": [
+      ".github"
+    ],
+    "szl.estate-deadman-receipt/v1": [
+      ".github"
+    ],
+    "szl.estate-release-train.receipt/v1": [
+      "szl-forge"
+    ],
+    "szl.evidence-bearing-ui/v8": [
+      "a11oy"
+    ],
+    "szl.evidence-file-manifest/v1": [
+      "szl-forge"
+    ],
+    "szl.evidence-index/v1": [
+      "lyte-services"
+    ],
+    "szl.finance-receipts/v1": [
+      "vertical-services"
+    ],
+    "szl.finance-receipts/verify/v1": [
+      "vertical-services"
+    ],
+    "szl.finance.computation-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.forge-capacity-probe-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-final-input-integrity-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-gpu-load-admission-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-input-snapshot-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-preflight-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-receipt-draft.v1": [
+      "a11oy"
+    ],
+    "szl.forge-reload-evaluation-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-resume-admission-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-training-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge.hf-frontier-receipt.v2": [
+      "szl-forge"
+    ],
+    "szl.forge.hf-kernels-0.17-evidence.v1": [
+      "szl-forge"
+    ],
+    "szl.forge.inference-receipt/v1": [
+      "szl-forge"
+    ],
+    "szl.forge.lab-receipt-envelope/v1": [
+      "szl-forge"
+    ],
+    "szl.forge.lora-merge-receipt.v1": [
+      "szl-forge"
+    ],
+    "szl.forge.production-inference-receipt/v2": [
+      "szl-forge"
+    ],
+    "szl.forge.receipt/v1": [
+      "szl-forge"
+    ],
+    "szl.forge.receiptagent-merged-candidate.v1": [
+      "szl-forge"
+    ],
+    "szl.forge.trl-activation-offload-evidence.v1": [
+      "szl-forge"
+    ],
+    "szl.formula-training-admission-artifact-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.frontier-operation-evidence.v1": [
+      "a11oy"
+    ],
+    "szl.frontier-receipt-validation/v1": [
+      ".github"
+    ],
+    "szl.frontier.evaluation-evidence-projection.v1": [
+      "szl-frontier"
+    ],
+    "szl.frontier.evidence/v1": [
+      "szl-frontier"
+    ],
+    "szl.frontier.nemo-model-wave-witness-envelope.v1": [
+      "szl-nemo"
+    ],
+    "szl.frontier.terminal-evidence-verification.v1": [
+      "szl-forge"
+    ],
+    "szl.frontier.wave4-receipt/v1": [
+      "szl-frontier"
+    ],
+    "szl.gate_decision.receipt/v1": [
+      ".github",
+      "a11oy"
+    ],
+    "szl.gdw.delta-update-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.gdw.kernel-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.gdw.transaction-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.gdw.transient-effect-recovery-receipt/v2": [
+      "a11oy"
+    ],
+    "szl.governed-receipt/v8": [
+      "a11oy"
+    ],
+    "szl.harness_apply.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.hatun-puriq-review-receipt/v1": [
+      "puriq-live"
+    ],
+    "szl.hatun-review-receipt/v2": [
+      "vertical-services"
+    ],
+    "szl.hatun.evidence.v1": [
+      "a11oy",
+      "killinchu"
+    ],
+    "szl.hf-deployment-receipt/v3": [
+      "szl-khipu"
+    ],
+    "szl.hf-gdw-transient-recovery-evidence/v1": [
+      "a11oy"
+    ],
+    "szl.immune-nexus-receipt-read/v1": [
+      "immune"
+    ],
+    "szl.immune-nexus-receipt/v1": [
+      "immune"
+    ],
+    "szl.incident.receipt/v1": [
+      ".github"
+    ],
+    "szl.invariants-release-evidence-inspection/v1": [
+      "szl-forge"
+    ],
+    "szl.khipu-abstention-bench/v1": [
+      "szl-khipu"
+    ],
+    "szl.khipu.compound-second-brain.v1": [
+      "a11oy"
+    ],
+    "szl.khipu.cosign-keys/v1": [
+      ".github",
+      "szl-lake"
+    ],
+    "szl.khipu.demo/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.khipu.distinct-candidate-witness/v1": [
+      "szl-forge"
+    ],
+    "szl.khipu.distinct-candidate/v1": [
+      "szl-forge"
+    ],
+    "szl.khipu.empty-chain-manifest/v1": [
+      "szl-lake"
+    ],
+    "szl.khipu.multi-witness-receipt/v1": [
+      "khipu-consensus"
+    ],
+    "szl.khipu.organ_verdict/v1": [
+      "a11oy",
+      "david-leads",
+      "khipu-consensus",
+      "killinchu",
+      "szl-mesh",
+      "szl-substrate"
+    ],
+    "szl.khipu.receipt/v1": [
+      "lutar-lean",
+      "szl-lake"
+    ],
+    "szl.khipu.second-brain-live-verification.v1": [
+      "a11oy"
+    ],
+    "szl.khipu.verify_op/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.khipu.witness-registry/v1": [
+      "khipu-consensus"
+    ],
+    "szl.killinchu-dsse-verify/v1": [
+      "killinchu"
+    ],
+    "szl.killinchu.defend-receipt/v1": [
+      "killinchu"
+    ],
+    "szl.killinchu.receipt/v1": [
+      "killinchu"
+    ],
+    "szl.llm_route.lambda_receipt/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.lyte-observation-receipt/v3": [
+      "lyte-services"
+    ],
+    "szl.lyte-ui-browser-evidence/v1": [
+      "lyte-services"
+    ],
+    "szl.lyte.forecast-inspection-envelope/v1": [
+      "a11oy"
+    ],
+    "szl.lyte.hf-evidence/v1": [
+      "lyte-services"
+    ],
+    "szl.lyte.receipt-page/v1": [
+      "lyte-services"
+    ],
+    "szl.lyte.receipt-view/v1": [
+      "lyte-services"
+    ],
+    "szl.mosaic.receipt/v1": [
+      "a11oy",
+      "killinchu"
+    ],
+    "szl.nemo.activation-offload-calibration-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.base-fetch-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.capacity-probe-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.execution-lane-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.frontier-qualification-receipt.v1": [
+      "szl-forge",
+      "szl-nemo"
+    ],
+    "szl.nemo.inference-envelope.v1": [
+      "a11oy",
+      "szl-forge",
+      "szl-nemo"
+    ],
+    "szl.nemo.low-vram-calibration-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.preflight-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.reload-evaluation-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.training-evidence.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.training-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.numerics.network-namespace-evidence/v1": [
+      "a11oy"
+    ],
+    "szl.offline-retrieval-training-receipt/v1": [
+      "szl-kernels"
+    ],
+    "szl.ouroboros-governance-ablation-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.pcai.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.production-audit-receipt/v5": [
+      ".github"
+    ],
+    "szl.public-receipt-verifier/manifest/v1": [
+      "a11oy",
+      "killinchu"
+    ],
+    "szl.quant-live-benchmark-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.rag.lambda_receipt/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.rag_query.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-admission-manifest.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-binding.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-evaluation-manifest.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-output.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-public-candidate-heldout-contract.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-public-candidate-qualification-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-public-candidate-qualification-refusal.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-release-manifest.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-verifier-result.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-checkpoint/v1": [
+      "szl-kernels"
+    ],
+    "szl.receipt-verification.v1": [
+      "vertical-services"
+    ],
+    "szl.receipt-verification/v1": [
+      "anatomy"
+    ],
+    "szl.receipt.replay.v1": [
+      "a11oy"
+    ],
+    "szl.receipt_shape/v1": [
+      ".github"
+    ],
+    "szl.receiptagent-artifact-reconciliation.v1": [
+      "a11oy"
+    ],
+    "szl.receiptagent-tournament/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-containment-probe/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-curriculum-manifest/v2": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-curriculum-spec/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-receipt-signing-trust-policy/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-release-manifest/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-supervision-policy/v2": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-training-bundle/v1": [
+      "szl-forge"
+    ],
+    "szl.research-evidence-contract.v1": [
+      "a11oy"
+    ],
+    "szl.resilience.ship.receipt/v1": [
+      ".github"
+    ],
+    "szl.resilience.skip.receipt/v1": [
+      ".github"
+    ],
+    "szl.restore_drill.receipt/v1": [
+      ".github"
+    ],
+    "szl.rosie_companion.receipt/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.router-receipt/v1": [
+      "a11oy",
+      "szl-build-env"
+    ],
+    "szl.run-receipt/v1": [
+      "szl-command-lab"
+    ],
+    "szl.sentra.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.series-a-receipt-recovery-miss/v1": [
+      "a11oy"
+    ],
+    "szl.series-a-receipt-recovery/v1": [
+      "a11oy"
+    ],
+    "szl.series-a-receipts/v1": [
+      "a11oy"
+    ],
+    "szl.sorry-closer-receipt/v1": [
+      "lutar-lean"
+    ],
+    "szl.static-deployment-source-evidence/v1": [
+      "killinchu"
+    ],
+    "szl.training.receipt.v1": [
+      "killinchu"
+    ],
+    "szl.training.runtime.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.training_receipt.v1": [
+      "szl-forge",
+      "szl-khipu"
+    ],
+    "szl.training_receipt.v2": [
+      "a11oy",
+      "a11oy-net",
+      "szl-atelier"
+    ],
+    "szl.vertical-decision-receipt.v1": [
+      "vertical-services"
+    ],
+    "szl.vertical-decision-receipt.v2": [
+      "vertical-services"
+    ],
+    "szl.vertical-forge.receipt/v3": [
+      "a11oy",
+      "szl-vertical-forge"
+    ],
+    "szl.vertical-intelligence-invocation-receipt/v1": [
+      "vertical-services"
+    ],
+    "szl.vertical-intelligence-live-evidence/v1": [
+      "vertical-services"
+    ],
+    "szl.vertical-intelligence-plan-receipt/v1": [
+      "vertical-services"
+    ],
+    "szl.vertical-receipt/v1": [
+      "vertical-services"
+    ],
+    "szl.vessels-proof-receipt/v8": [
+      "a11oy-net"
+    ],
+    "szl.wave26.lambda-attnres-evidence/v1": [
+      "a11oy"
+    ],
+    "szl.wire_d.hop_receipt/v1": [
+      "a11oy",
+      "killinchu"
+    ],
+    "urn:szl:governance:evidence:v1": [
+      "a11oy"
+    ],
+    "urn:szl:governance:receipt:v1": [
+      "a11oy"
+    ],
+    "urn:szl:khipu-command-system:v1": [
+      "szl-brand"
+    ]
+  },
+  "hf_to_source": [
+    {
+      "artifact": "SZLHOLDINGS/a11oy-v19-substrate",
+      "canonical_source": "a11oy",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy"
+      ],
+      "source_newer_by_days": 23,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-governed-norm",
+      "canonical_source": "szl-governed-norm",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "szl-governed-norm",
+        "szl-khipu",
+        "szl-lambda-gate",
+        "szl-papers"
+      ],
+      "source_newer_by_days": -47,
+      "state": "SOURCE_ARCHIVED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-lambda-gate",
+      "canonical_source": "szl-lambda-gate",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "lutar-lean",
+        "szl-khipu",
+        "szl-lambda-gate",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/governed-inference-meter",
+      "canonical_source": "governed-inference-meter",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-inference-meter",
+        "szl-energy-attest"
+      ],
+      "source_newer_by_days": -25,
+      "state": "SOURCE_ARCHIVED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-kernels",
+      "canonical_source": "szl-kernels",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "lutar-lean",
+        "szl-forge",
+        "szl-kernels",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 23,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-blocked",
+      "canonical_source": "szl-blocked",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-blocked"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-govsign",
+      "canonical_source": "szl-govsign",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-govsign"
+      ],
+      "source_newer_by_days": 15,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-provctl",
+      "canonical_source": "szl-provctl",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-provctl"
+      ],
+      "source_newer_by_days": -3,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-nemo",
+      "canonical_source": "szl-nemo",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-nemo"
+      ],
+      "source_newer_by_days": 13,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-invariants",
+      "canonical_source": "szl-invariants",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-invariants"
+      ],
+      "source_newer_by_days": 4,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-ouroboros",
+      "canonical_source": "szl-ouroboros",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "ouroboros",
+        "szl-khipu",
+        "szl-ouroboros"
+      ],
+      "source_newer_by_days": 17,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-formulas",
+      "canonical_source": "szl-formulas",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-formulas"
+      ],
+      "source_newer_by_days": 16,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/SZL-Forge-1.5B-ReceiptAgent",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 20,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/SZL-Khipu-1.5B",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/SZL-Khipu-1.5B-GGUF",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge",
+        "szl-serve"
+      ],
+      "source_newer_by_days": 14,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-receiptagent-qwen35-0.8b-v2",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 9,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/SZLHOLDINGS",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/KHIPU-R2",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/WILLAY",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/KILLINCHU-EYE",
+      "canonical_source": "killinchu",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "killinchu"
+      ],
+      "source_newer_by_days": 23,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/YARQA-ATTN",
+      "canonical_source": "yarqa-attn",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-khipu",
+        "szl-receipt-attn",
+        "yarqa",
+        "yarqa-attn"
+      ],
+      "source_newer_by_days": -19,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/A11OY-MINI",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/chaski",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 13,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/qantu",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/waman",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/chakana",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/tinku",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-receipt-attn",
+      "canonical_source": "szl-receipt-attn",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-khipu",
+        "szl-receipt-attn"
+      ],
+      "source_newer_by_days": -19,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-maskmod",
+      "canonical_source": "szl-maskmod",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-khipu",
+        "szl-maskmod"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-block-kv",
+      "canonical_source": "szl-block-kv",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-block-kv",
+        "szl-khipu"
+      ],
+      "source_newer_by_days": -2,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/SZL-Khipu-1.5B-abstain",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 16,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/chaski-5050",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 11,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/chaski-r2",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-training-scripts",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-khipu",
+      "canonical_source": "szl-khipu",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "anatomy",
+        "khipu-pages",
+        "szl-gov",
+        "szl-khipu"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/TinyKhipu-Nano",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/ReceiptAgent-Nano",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-khipu-kernels",
+      "canonical_source": "szl-khipu",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-khipu"
+      ],
+      "source_newer_by_days": 23,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/Moons-Nano",
+      "canonical_source": "szl-khipu",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-khipu"
+      ],
+      "source_newer_by_days": 13,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/MiniEmbed-Nano",
+      "canonical_source": "szl-khipu",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-khipu"
+      ],
+      "source_newer_by_days": 13,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/brain-navigator-r2",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-receiptagent-qwen35-0.8b-v3",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/khipu-r3",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-energy-attest",
+      "canonical_source": "szl-energy-attest",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-energy-attest"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/oac-clinical-transport-health-v1",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/oac-system-health-v1",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-receiptagent-qwen35-0.8b-v2-merged",
+      "canonical_source": "szl-forge",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-triage-qwen3.5-0.8b-lora",
+      "canonical_source": "szl-typesafe-triage",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-typesafe-triage"
+      ],
+      "source_newer_by_days": 2,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-triage-qwen3.5-0.8b-lora-study5",
+      "canonical_source": "szl-typesafe-triage",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-typesafe-triage"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/thesis-v18-formal-verification",
+      "canonical_source": "a11oy",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "lutar-lean",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 65,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/uds-spans-receipts",
+      "canonical_source": "a11oy",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "governed-receipt-spec",
+        "hatun-mcp",
+        "lutar-lean",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 25,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/uds-governance-receipts",
+      "canonical_source": "a11oy",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "lutar-lean",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 25,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/SZLHOLDINGS",
+      "canonical_source": "szl-papers",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-papers"
+      ],
+      "source_newer_by_days": 25,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/why-we-lead",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/ouroboros-arxiv-preprint",
+      "canonical_source": "a11oy",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "lutar-lean",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 65,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-artifacts",
+      "canonical_source": "a11oy",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "lutar-lean",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 65,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/lean-theorem-tree",
+      "canonical_source": "a11oy",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "lutar-lean",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 65,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/rag-corpus-v1",
+      "canonical_source": "szl-papers",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-papers"
+      ],
+      "source_newer_by_days": 65,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/lean-proofs-v1",
+      "canonical_source": "governed-receipt-spec",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 24,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/canonical-formulas-v1",
+      "canonical_source": "szl-papers",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-papers"
+      ],
+      "source_newer_by_days": 25,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/thesis-corpus-v18",
+      "canonical_source": "szl-papers",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-papers"
+      ],
+      "source_newer_by_days": 25,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/doctrine-v10-v11",
+      "canonical_source": "szl-papers",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-papers"
+      ],
+      "source_newer_by_days": 25,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/k-verify-benchmark-v1",
+      "canonical_source": "szl-papers",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-papers"
+      ],
+      "source_newer_by_days": 25,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/uds-bundles-v1",
+      "canonical_source": "szl-papers",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-papers"
+      ],
+      "source_newer_by_days": 65,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/readiness-runs",
+      "canonical_source": "governed-receipt-spec",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 64,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-lake",
+      "canonical_source": "lutar-lean",
+      "kind": "dataset",
+      "pinned_source_refs": [
+        {
+          "drifted": true,
+          "pinned": "3f3ad80d",
+          "repo": "lutar-lean",
+          "source_head": "75a4a3112287"
+        }
+      ],
+      "private": false,
+      "source_links": [
+        "lutar-lean",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/a11oy-verifiable-corpus",
+      "canonical_source": "a11oy",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "governed-receipt-spec",
+        "lutar-lean",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 4,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/killinchu-osint-corpus",
+      "canonical_source": "killinchu",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "killinchu"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/governed-receipts-bench",
+      "canonical_source": "governed-receipt-spec",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 64,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/energy-attested-runs",
+      "canonical_source": "governed-receipt-spec",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 64,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/alloy-sovereign-eval-runs",
+      "canonical_source": "governed-receipt-spec",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "szl-papers"
+      ],
+      "source_newer_by_days": 64,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-1-doctrine-sft",
+      "canonical_source": "szl-forge",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 65,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-second-brain-inrepo",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-quant-sft-v1",
+      "canonical_source": "szl-quant",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-quant"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/test-results",
+      "canonical_source": "hatun-mcp",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "hatun-mcp"
+      ],
+      "source_newer_by_days": 24,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/governed-agent-bench",
+      "canonical_source": "a11oy",
+      "kind": "dataset",
+      "pinned_source_refs": [
+        {
+          "drifted": true,
+          "pinned": "1b40fcbe0f65c1ad1e07776f83aa01abb067e864",
+          "repo": "a11oy",
+          "source_head": "53366a17087c"
+        }
+      ],
+      "private": false,
+      "source_links": [
+        "a11oy"
+      ],
+      "source_newer_by_days": 25,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/receipted-unsloth",
+      "canonical_source": "szl-forge",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 27,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/model-bom",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-frontier-covenant",
+      "canonical_source": "szl-frontier",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-frontier"
+      ],
+      "source_newer_by_days": 17,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/release-assets",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-estate-graph",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/david-leads-data",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/oac-clinical-transport-observability-synthetic",
+      "canonical_source": "szl-forge",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-frontier-evaluation-receipts",
+      "canonical_source": "governed-receipt-spec",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "szl-forge"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/a11oy",
+      "canonical_source": "a11oy",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "<private>",
+        "developers",
+        "killinchu",
+        "lutar-lean",
+        "szl-cookbook"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/README",
+      "canonical_source": "a11oy",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "killinchu",
+        "szl-router"
+      ],
+      "source_newer_by_days": 3,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/killinchu",
+      "canonical_source": "killinchu",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "developers",
+        "governed-receipt-spec",
+        "khipu-consensus",
+        "killinchu",
+        "lutar-lean",
+        "ouroboros",
+        "platform",
+        "szl-cookbook"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/counsel",
+      "canonical_source": "a11oy",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy"
+      ],
+      "source_newer_by_days": 5,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/terra",
+      "canonical_source": "a11oy",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "szl-real-estate",
+        "szl-vertical-forge"
+      ],
+      "source_newer_by_days": 5,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/sentra",
+      "canonical_source": "a11oy",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy"
+      ],
+      "source_newer_by_days": 5,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/finance",
+      "canonical_source": "a11oy",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "puriq-live"
+      ],
+      "source_newer_by_days": 5,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/lyte",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/vertical-services",
+      "canonical_source": "vertical-services",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "vertical-services"
+      ],
+      "source_newer_by_days": 17,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-command-lab",
+      "canonical_source": "szl-command-lab",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-command-lab"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/david-leads",
+      "canonical_source": "david-leads",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "david-leads"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-constellation",
+      "canonical_source": "szl-constellation",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "lutar-lean",
+        "szl-constellation"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-frontier",
+      "canonical_source": "a11oy",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "a11oy",
+        "immune",
+        "lutar-lean",
+        "szl-second-brain"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-model-inference-lab",
+      "canonical_source": "szl-forge",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-forge"
+      ],
+      "source_newer_by_days": 20,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/immune-lattice",
+      "canonical_source": "immune",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "immune"
+      ],
+      "source_newer_by_days": 20,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/immune",
+      "canonical_source": "immune",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "immune"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/ayllu",
+      "canonical_source": "ayllu",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "ayllu"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/yarqa",
+      "canonical_source": "yarqa",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "yarqa"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-atelier",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/holographic-unify",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-khipu",
+      "canonical_source": "szl-khipu",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-khipu"
+      ],
+      "source_newer_by_days": -1,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/llm-router-live",
+      "canonical_source": "szl-router",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "szl-router"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-constellation-staging",
+      "canonical_source": "szl-constellation",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "lutar-lean",
+        "szl-constellation"
+      ],
+      "source_newer_by_days": 0,
+      "state": "LINKED"
+    }
+  ],
+  "inventory_drift": [
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 45 != live public 22 (authenticated total 28)",
+      "location": "github:szl-holdings/governance-as-code/README.md:18",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://github.com/szl-holdings/governance-as-code",
+      "text": "| Estate | `tools/spaces_audit.py` | READ_ONLY audit of all 45 Spaces; signs a receipt for its own run |",
+      "unit": "spaces",
+      "value": "45",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-09-23",
+      "evidence": "claimed 41 observed 2026-09-23; live 35 observed 2026-09-25T16:34:27Z; drift -6",
+      "location": "github:szl-holdings/szl-constellation/README.md:61",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://github.com/szl-holdings/szl-constellation",
+      "text": "…ale check: [SZLHOLDINGS on Hugging Face](https://huggingface.co/SZLHOLDINGS) — 49 models, 41 datasets, and 27 Spaces (public inventory snapshot observed 2026-09-23) — including a [61K-download OSINT c…",
+      "unit": "datasets",
+      "value": "41",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-09-23",
+      "evidence": "claimed 27 observed 2026-09-23; live 22 observed 2026-09-25T16:34:27Z; drift -5",
+      "location": "github:szl-holdings/szl-constellation/README.md:61",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://github.com/szl-holdings/szl-constellation",
+      "text": "…LDINGS on Hugging Face](https://huggingface.co/SZLHOLDINGS) — 49 models, 41 datasets, and 27 Spaces (public inventory snapshot observed 2026-09-23) — including a [61K-download OSINT corpus](https://hu…",
+      "unit": "spaces",
+      "value": "27",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-08-30",
+      "evidence": "claimed 43 observed 2026-08-30; live 49 observed 2026-09-25T16:34:27Z; drift +6",
+      "location": "github:szl-holdings/szl-gov/README.md:44",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://github.com/szl-holdings/szl-gov",
+      "text": "100 GitHub repos (59 active public · 36 archived public · 5 private — GitHub API census 2026-08-30) · 45 HF Spaces (28 Docker, 7 public) · 43 models · 36 datasets.",
+      "unit": "models",
+      "value": "43",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-08-30",
+      "evidence": "claimed 36 observed 2026-08-30; live 35 observed 2026-09-25T16:34:27Z; drift -1",
+      "location": "github:szl-holdings/szl-gov/README.md:44",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://github.com/szl-holdings/szl-gov",
+      "text": "100 GitHub repos (59 active public · 36 archived public · 5 private — GitHub API census 2026-08-30) · 45 HF Spaces (28 Docker, 7 public) · 43 models · 36 datasets.",
+      "unit": "datasets",
+      "value": "36",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-08-30",
+      "evidence": "claimed 7 observed 2026-08-30; live 22 observed 2026-09-25T16:34:27Z; drift +15",
+      "location": "github:szl-holdings/szl-gov/README.md:51",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://github.com/szl-holdings/szl-gov",
+      "text": "- All 7 public Spaces probed RUNNING with HEAD SHA (`audit_data/probes/`)",
+      "unit": "spaces",
+      "value": "7",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": "2026-08-30",
+      "evidence": "claimed 45 observed 2026-08-30; live 22 observed 2026-09-25T16:34:27Z; drift -23",
+      "location": "github:szl-holdings/szl-gov/README.md:52",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://github.com/szl-holdings/szl-gov",
+      "text": "- 45 Spaces tiered: 5 FLAGSHIP (recommended), 38 LAB, 1 SUPPORTING, 1 ORG_CARD",
+      "unit": "spaces",
+      "value": "45",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": "2026-08-30",
+      "evidence": "claimed 43 observed 2026-08-30; live 49 observed 2026-09-25T16:34:27Z; drift +6",
+      "location": "github:szl-holdings/szl-gov/README.md:55",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://github.com/szl-holdings/szl-gov",
+      "text": "- Backlink coverage measured at 10/43 models; 3 patches staged, 30 Spaces still need `models:` lines",
+      "unit": "models",
+      "value": "43",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": null,
+      "evidence": "undated claim 17 != live public 22 (authenticated total 28)",
+      "location": "hf:dataset:SZLHOLDINGS/thesis-v18-formal-verification/README.md:109",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/thesis-v18-formal-verification",
+      "text": "*SZL Holdings · 17 Spaces / 29 datasets / 8 models · Lean 749/14/163 @ c7c0ba17 · Doctrine v11 LOCKED*",
+      "unit": "spaces",
+      "value": "17",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": null,
+      "evidence": "undated claim 29 != live public 35 (authenticated total 43)",
+      "location": "hf:dataset:SZLHOLDINGS/thesis-v18-formal-verification/README.md:109",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/thesis-v18-formal-verification",
+      "text": "*SZL Holdings · 17 Spaces / 29 datasets / 8 models · Lean 749/14/163 @ c7c0ba17 · Doctrine v11 LOCKED*",
+      "unit": "datasets",
+      "value": "29",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 13 != live public 22 (authenticated total 28)",
+      "location": "hf:dataset:SZLHOLDINGS/uds-spans-receipts/README.md:133",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/uds-spans-receipts",
+      "text": "…*SZLHOLDINGS · 13 Spaces / 28 datasets / 3 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "spaces",
+      "value": "13",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 28 != live public 35 (authenticated total 43)",
+      "location": "hf:dataset:SZLHOLDINGS/uds-spans-receipts/README.md:133",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/uds-spans-receipts",
+      "text": "…*SZLHOLDINGS · 13 Spaces / 28 datasets / 3 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "datasets",
+      "value": "28",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 3 != live public 49 (authenticated total 49)",
+      "location": "hf:dataset:SZLHOLDINGS/uds-spans-receipts/README.md:133",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/uds-spans-receipts",
+      "text": "…*SZLHOLDINGS · 13 Spaces / 28 datasets / 3 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "models",
+      "value": "3",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 25 != live public 22 (authenticated total 28)",
+      "location": "hf:dataset:SZLHOLDINGS/uds-governance-receipts/README.md:115",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/uds-governance-receipts",
+      "text": "…*SZLHOLDINGS · 25 Spaces / 27 datasets / 9 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "spaces",
+      "value": "25",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 27 != live public 35 (authenticated total 43)",
+      "location": "hf:dataset:SZLHOLDINGS/uds-governance-receipts/README.md:115",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/uds-governance-receipts",
+      "text": "…*SZLHOLDINGS · 25 Spaces / 27 datasets / 9 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "datasets",
+      "value": "27",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 9 != live public 49 (authenticated total 49)",
+      "location": "hf:dataset:SZLHOLDINGS/uds-governance-receipts/README.md:115",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/uds-governance-receipts",
+      "text": "…*SZLHOLDINGS · 25 Spaces / 27 datasets / 9 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "models",
+      "value": "9",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 17 != live public 22 (authenticated total 28)",
+      "location": "hf:dataset:SZLHOLDINGS/ouroboros-arxiv-preprint/README.md:106",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/ouroboros-arxiv-preprint",
+      "text": "*SZL Holdings · 17 Spaces / 29 datasets / 8 models · Lean 749/14/163 @ c7c0ba17 · [HF org](https://huggingface.co/SZLHOLDINGS) · Doctrine v11 LOCKED*",
+      "unit": "spaces",
+      "value": "17",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 29 != live public 35 (authenticated total 43)",
+      "location": "hf:dataset:SZLHOLDINGS/ouroboros-arxiv-preprint/README.md:106",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/ouroboros-arxiv-preprint",
+      "text": "*SZL Holdings · 17 Spaces / 29 datasets / 8 models · Lean 749/14/163 @ c7c0ba17 · [HF org](https://huggingface.co/SZLHOLDINGS) · Doctrine v11 LOCKED*",
+      "unit": "datasets",
+      "value": "29",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 8 != live public 49 (authenticated total 49)",
+      "location": "hf:dataset:SZLHOLDINGS/ouroboros-arxiv-preprint/README.md:106",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/ouroboros-arxiv-preprint",
+      "text": "*SZL Holdings · 17 Spaces / 29 datasets / 8 models · Lean 749/14/163 @ c7c0ba17 · [HF org](https://huggingface.co/SZLHOLDINGS) · Doctrine v11 LOCKED*",
+      "unit": "models",
+      "value": "8",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 25 != live public 22 (authenticated total 28)",
+      "location": "hf:dataset:SZLHOLDINGS/szl-artifacts/README.md:144",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/szl-artifacts",
+      "text": "…*SZLHOLDINGS · 25 Spaces / 27 datasets / 9 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "spaces",
+      "value": "25",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 27 != live public 35 (authenticated total 43)",
+      "location": "hf:dataset:SZLHOLDINGS/szl-artifacts/README.md:144",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/szl-artifacts",
+      "text": "…*SZLHOLDINGS · 25 Spaces / 27 datasets / 9 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "datasets",
+      "value": "27",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 9 != live public 49 (authenticated total 49)",
+      "location": "hf:dataset:SZLHOLDINGS/szl-artifacts/README.md:144",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/szl-artifacts",
+      "text": "…*SZLHOLDINGS · 25 Spaces / 27 datasets / 9 models · Lean 749 declarations · 163 sorries (112 baseline + 51 Putnam) · 12 MCP tools · 6 release DOIs + 1 concept alias · [HF org](https://huggingface.co/S…",
+      "unit": "models",
+      "value": "9",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": null,
+      "evidence": "undated claim 17 != live public 22 (authenticated total 28)",
+      "location": "hf:dataset:SZLHOLDINGS/lean-theorem-tree/README.md:111",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/lean-theorem-tree",
+      "text": "*SZL Holdings · 17 Spaces / 29 datasets / 8 models · Lean 749/14/163 @ c7c0ba17 · Doctrine v11 LOCKED*",
+      "unit": "spaces",
+      "value": "17",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": null,
+      "evidence": "undated claim 29 != live public 35 (authenticated total 43)",
+      "location": "hf:dataset:SZLHOLDINGS/lean-theorem-tree/README.md:111",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/lean-theorem-tree",
+      "text": "*SZL Holdings · 17 Spaces / 29 datasets / 8 models · Lean 749/14/163 @ c7c0ba17 · Doctrine v11 LOCKED*",
+      "unit": "datasets",
+      "value": "29",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": null,
+      "evidence": "undated claim 44 != live public 49 (authenticated total 49)",
+      "location": "hf:dataset:SZLHOLDINGS/model-bom/README.md:12",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/model-bom",
+      "text": "Canonical CycloneDX 1.5 Model BOM registry for all 44 public models under the",
+      "unit": "models",
+      "value": "44",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-08-31",
+      "evidence": "claimed 44 observed 2026-08-31; live 49 observed 2026-09-25T16:34:27Z; drift +5",
+      "location": "hf:dataset:SZLHOLDINGS/model-bom/README.md:60",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/model-bom",
+      "text": "44/44 public models. The new BOM follows the same CycloneDX 1.5 schema",
+      "unit": "models",
+      "value": "44",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-08-31",
+      "evidence": "claimed 30 observed 2026-08-31; live 35 observed 2026-09-25T16:34:27Z; drift +5",
+      "location": "hf:dataset:SZLHOLDINGS/model-bom/README.md:66",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/model-bom",
+      "text": "extended 28 → 30 rows so the register covers **all 30 public datasets**.",
+      "unit": "datasets",
+      "value": "30",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": null,
+      "evidence": "undated claim 44 != live public 49 (authenticated total 49)",
+      "location": "hf:dataset:SZLHOLDINGS/model-bom/README.md:70",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/model-bom",
+      "text": "time, read via the HF API and connector listing: **44 models / 30 datasets /",
+      "unit": "models",
+      "value": "44",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": null,
+      "evidence": "undated claim 30 != live public 35 (authenticated total 43)",
+      "location": "hf:dataset:SZLHOLDINGS/model-bom/README.md:70",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "35",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/model-bom",
+      "text": "time, read via the HF API and connector listing: **44 models / 30 datasets /",
+      "unit": "datasets",
+      "value": "30",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 43"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "MEDIUM",
+      "dated": null,
+      "evidence": "undated claim 47 != live public 22 (authenticated total 28)",
+      "location": "hf:dataset:SZLHOLDINGS/model-bom/README.md:71",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/datasets/SZLHOLDINGS/model-bom",
+      "text": "47 Spaces**. Register sha256 at this refresh:",
+      "unit": "spaces",
+      "value": "47",
+      "verdict": "CONTRADICTED",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-09-10T03:20:41Z",
+      "evidence": "claimed 21 observed 2026-09-10T03:20:41Z; live 22 observed 2026-09-25T16:34:27Z; drift +1",
+      "location": "hf:space:SZLHOLDINGS/README/README.md:83",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "22",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/spaces/SZLHOLDINGS/README",
+      "text": "…**21 public Spaces, 46 models, 35 datasets**, observed **2026-09-10T03:20:41Z** under anonymous public-only `hf-public-author-membership/v1`. Kernels count once as model repositories. Private assets,…",
+      "unit": "spaces",
+      "value": "21",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 28"
+    },
+    {
+      "claim_type": "inventory_count",
+      "confidence": "HIGH",
+      "dated": "2026-09-10T03:20:41Z",
+      "evidence": "claimed 46 observed 2026-09-10T03:20:41Z; live 49 observed 2026-09-25T16:34:27Z; drift +3",
+      "location": "hf:space:SZLHOLDINGS/README/README.md:83",
+      "observed_at": "2026-09-26T01:41:43Z",
+      "observed_value": "49",
+      "scope_note": "",
+      "source_private": false,
+      "source_url": "https://huggingface.co/spaces/SZLHOLDINGS/README",
+      "text": "…**21 public Spaces, 46 models, 35 datasets**, observed **2026-09-10T03:20:41Z** under anonymous public-only `hf-public-author-membership/v1`. Kernels count once as model repositories. Private assets,…",
+      "unit": "models",
+      "value": "46",
+      "verdict": "STALE",
+      "verification_method": "anonymous HF listing at 2026-09-25T16:34:27Z; authenticated total 49"
+    }
+  ],
+  "naming_inconsistencies": [],
+  "orphaned_hf": [
+    {
+      "artifact": "SZLHOLDINGS/szl-governed-norm",
+      "canonical_source": "szl-governed-norm",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-receipt-spec",
+        "szl-governed-norm",
+        "szl-khipu",
+        "szl-lambda-gate",
+        "szl-papers"
+      ],
+      "source_newer_by_days": -47,
+      "state": "SOURCE_ARCHIVED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/governed-inference-meter",
+      "canonical_source": "governed-inference-meter",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [
+        "governed-inference-meter",
+        "szl-energy-attest"
+      ],
+      "source_newer_by_days": -25,
+      "state": "SOURCE_ARCHIVED"
+    },
+    {
+      "artifact": "SZLHOLDINGS/SZLHOLDINGS",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/KHIPU-R2",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/WILLAY",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/qantu",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/waman",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/chakana",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/tinku",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-training-scripts",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/TinyKhipu-Nano",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/ReceiptAgent-Nano",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "model",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/why-we-lead",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-second-brain-inrepo",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/model-bom",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/release-assets",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-estate-graph",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/david-leads-data",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "dataset",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/lyte",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/szl-atelier",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    },
+    {
+      "artifact": "SZLHOLDINGS/holographic-unify",
+      "canonical_source": "NO_SOURCE_LINK",
+      "kind": "space",
+      "pinned_source_refs": [],
+      "private": false,
+      "source_links": [],
+      "source_newer_by_days": "UNKNOWN",
+      "state": "NO_SOURCE_LINK"
+    }
+  ],
+  "orphaned_repo_claims": [
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "datasets/szlholdings/doctrine-v11"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/doctrine-v11"
+      ],
+      "repo": ".github",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/a11oy-v19-substrate",
+        "SZLHOLDINGS/thesis-v18-formal-verification",
+        "SZLHOLDINGS/uds-spans-receipts",
+        "SZLHOLDINGS/uds-governance-receipts",
+        "<private>",
+        "SZLHOLDINGS/ouroboros-arxiv-preprint",
+        "SZLHOLDINGS/szl-artifacts",
+        "<private>",
+        "<private>",
+        "SZLHOLDINGS/lean-theorem-tree",
+        "SZLHOLDINGS/a11oy-verifiable-corpus",
+        "SZLHOLDINGS/governed-agent-bench",
+        "SZLHOLDINGS/a11oy",
+        "SZLHOLDINGS/README",
+        "SZLHOLDINGS/counsel",
+        "SZLHOLDINGS/terra",
+        "SZLHOLDINGS/sentra",
+        "SZLHOLDINGS/finance",
+        "<private>",
+        "<private>",
+        "<private>",
+        "SZLHOLDINGS/szl-frontier"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/anatomy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/sda"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/a11oy",
+        "spaces/szlholdings/anatomy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/immune",
+        "spaces/szlholdings/killinchu",
+        "spaces/szlholdings/sda",
+        "spaces/szlholdings/yarqa"
+      ],
+      "repo": "a11oy",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/governed-receipt-verifier",
+        "spaces/szlholdings/holographic",
+        "spaces/szlholdings/sda"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/governed-receipts-bench",
+        "datasets/szlholdings/szl-lake",
+        "datasets/szlholdings/test-results",
+        "spaces/szlholdings/a11oy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/governed-receipt-verifier",
+        "spaces/szlholdings/holographic",
+        "spaces/szlholdings/immune",
+        "spaces/szlholdings/killinchu",
+        "spaces/szlholdings/readme"
+      ],
+      "repo": "anatomy",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/lean-proofs-v1",
+        "SZLHOLDINGS/readiness-runs",
+        "SZLHOLDINGS/governed-receipts-bench",
+        "SZLHOLDINGS/energy-attested-runs",
+        "SZLHOLDINGS/alloy-sovereign-eval-runs",
+        "SZLHOLDINGS/szl-frontier-evaluation-receipts"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/governed-receipt-verifier"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/governed-receipts-bench",
+        "spaces/szlholdings/governed-receipt-verifier"
+      ],
+      "repo": "governed-receipt-spec",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "spaces/szlholdings/khipu-constellation"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/khipu-constellation"
+      ],
+      "repo": "khipu-consensus",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/KILLINCHU-EYE",
+        "SZLHOLDINGS/killinchu-osint-corpus",
+        "SZLHOLDINGS/killinchu"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/anatomy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/governed-receipt-verifier",
+        "spaces/szlholdings/holographic",
+        "spaces/szlholdings/sda"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/governed-receipts-bench",
+        "datasets/szlholdings/szl-lake",
+        "spaces/szlholdings/a11oy",
+        "spaces/szlholdings/anatomy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/governed-receipt-verifier",
+        "spaces/szlholdings/holographic",
+        "spaces/szlholdings/immune",
+        "spaces/szlholdings/killinchu",
+        "spaces/szlholdings/readme"
+      ],
+      "repo": "killinchu",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-lake"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/lambda-aggregator-live"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/lambda-aggregator-live"
+      ],
+      "repo": "lutar-lean",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-govsign"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/govsign-live"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-govsign",
+        "spaces/szlholdings/govsign-live"
+      ],
+      "repo": "szl-govsign",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "spaces/szlholdings/guardrail-receipt"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/guardrail-receipt"
+      ],
+      "repo": "szl-guardrail-receipt",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-kernels"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/holographic"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/szl-lake",
+        "models/szlholdings/a11oy-v19-substrate",
+        "models/szlholdings/governed-inference-meter",
+        "models/szlholdings/szl-blocked",
+        "models/szlholdings/szl-formulas",
+        "models/szlholdings/szl-governed-norm",
+        "models/szlholdings/szl-govsign",
+        "models/szlholdings/szl-invariants",
+        "models/szlholdings/szl-kernels",
+        "models/szlholdings/szl-lambda-gate"
+      ],
+      "repo": "szl-kernels",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-khipu",
+        "SZLHOLDINGS/szl-khipu-kernels",
+        "SZLHOLDINGS/Moons-Nano",
+        "SZLHOLDINGS/MiniEmbed-Nano",
+        "SZLHOLDINGS/szl-khipu"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/anatomy"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-khipu",
+        "spaces/szlholdings/anatomy"
+      ],
+      "repo": "szl-khipu",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-provctl"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/szl-provctl-live"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-provctl",
+        "spaces/szlholdings/szl-provctl-live"
+      ],
+      "repo": "szl-provctl",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "spaces/szlholdings/szl-forge-lab"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-khipu-1.5b-gguf",
+        "spaces/szlholdings/szl-forge-lab",
+        "spaces/szlholdings/szl-model-inference-lab"
+      ],
+      "repo": "szl-serve",
+      "state": "CLAIMED_TARGET_MISSING"
+    }
+  ],
+  "receipt_schema_distinct": 305,
+  "receipt_schema_ids": {
+    "DecisionReceipt.v2": [
+      "a11oy"
+    ],
+    "DecisionReceipt.v3": [
+      "a11oy"
+    ],
+    "SZL.Energy.Receipt.v1": [
+      "a11oy"
+    ],
+    "a11oy.holographic.brain-evidence.v1": [
+      "a11oy"
+    ],
+    "app/vnd.dsse+json": [
+      ".github"
+    ],
+    "application/vnd.dsse+json": [
+      ".github"
+    ],
+    "application/vnd.in-toto+json": [
+      ".github",
+      "a11oy",
+      "governed-receipt-spec",
+      "killinchu",
+      "szl-gov",
+      "szl-lake",
+      "szl-quant",
+      "yarqa"
+    ],
+    "application/vnd.szl.a11oy-receipt+json": [
+      "a11oy"
+    ],
+    "application/vnd.szl.agent.receipt+json;v=2": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "application/vnd.szl.amaru.receipt+json": [
+      "a11oy"
+    ],
+    "application/vnd.szl.brain_jack.receipt+json": [
+      "a11oy"
+    ],
+    "application/vnd.szl.frontier-operation-evidence.v1+json": [
+      "a11oy"
+    ],
+    "application/vnd.szl.guardrail-receipt+json": [
+      "szl-guardrail-receipt"
+    ],
+    "application/vnd.szl.khipu+json": [
+      ".github",
+      "a11oy",
+      "governed-receipt-spec",
+      "killinchu"
+    ],
+    "application/vnd.szl.khipu-receipt+json;v=1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "application/vnd.szl.khipu.organ-verdict+json": [
+      "khipu-consensus",
+      "szl-mesh"
+    ],
+    "application/vnd.szl.ops.receipt+json": [
+      "killinchu"
+    ],
+    "application/vnd.szl.organism.receipt+json": [
+      "killinchu"
+    ],
+    "application/vnd.szl.receipt+json": [
+      ".github",
+      "a11oy",
+      "anatomy",
+      "ayllu",
+      "hatun-mcp",
+      "killinchu",
+      "szl-lake",
+      "szl-substrate"
+    ],
+    "application/vnd.szl.rosie_companion.receipt+json": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "david.evidence-constellation.v1": [
+      "david-leads"
+    ],
+    "github-actions-evidence-verification.v1": [
+      "a11oy"
+    ],
+    "governed-agent-receipt/0.1": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/attest/szl-receipt/v0.1": [
+      "a11oy",
+      "anatomy"
+    ],
+    "https://a-11-oy.com/schemas/authorization-receipt.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/brain-row-provenance-license-crosswalk-receipt.v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/compute-pool-inference-receipt.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/evidenceos/claim-atomize-request.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/evidenceos/claim-evaluate-request.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/evidenceos/public-claim-manifest.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/evidenceos/public-claim-report.v1.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/oro/v1/barrier-receipt.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/puriq-receipt-v1.json": [
+      "a11oy",
+      "david-leads"
+    ],
+    "https://a-11-oy.com/schemas/receipt-agent-artifact-reconciliation.v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/receipt-agent-public-candidate-qualification-receipt.v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/source-deploy-attestation.v2.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-forge-receipt-agent-draft-v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-khipu-second-brain.schema.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-receipt-agent-admission-manifest-v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-receipt-agent-evaluation-manifest-v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-receipt-agent-output-v1.json": [
+      "a11oy"
+    ],
+    "https://a-11-oy.com/schemas/szl-receipt-agent-release-manifest-v1.json": [
+      "a11oy"
+    ],
+    "https://example.test/attestations/mcp-manifest/v1": [
+      "hatun-mcp"
+    ],
+    "https://github.com/szl-holdings/governed-receipt-spec/schema/governed-receipt.schema.json": [
+      "a11oy-net",
+      "governed-receipt-spec"
+    ],
+    "https://huggingface.co/datasets/szl-holdings/uds-observability/schemas/receipt_schema.json": [
+      "a11oy"
+    ],
+    "https://schemas.szlholdings.com/khipu-package/v0.1": [
+      "szl-platform"
+    ],
+    "https://szl-holdings.dev/attestations/governance-receipt/v1": [
+      "a11oy"
+    ],
+    "https://szl.ai/schemas/receiptagent-v3-release-manifest-v1.json": [
+      "szl-forge"
+    ],
+    "https://szl.ai/schemas/receiptagent-v3/authenticated-receipt.schema.json": [
+      "szl-forge"
+    ],
+    "https://szl.holdings/khipu-governed-inference/v1": [
+      "a11oy"
+    ],
+    "https://szl.holdings/schemas/receipt-agent-qwen35-v3-output.json": [
+      "szl-forge"
+    ],
+    "https://szl.holdings/schemas/receipt-agent-qwen35-v3-request.json": [
+      "szl-forge"
+    ],
+    "https://szlholdings.ai/attestations/lambda-gate/v1": [
+      "vsp-otel"
+    ],
+    "https://szlholdings.com/attestations/sda-anomaly/v1": [
+      "khipu-sda-core"
+    ],
+    "khipu-causal-lm-kv-state/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-checkpoint/v1": [
+      "a11oy"
+    ],
+    "khipu-int8-quant/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-inventory-spec-comparison/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-model-weight-inventory-digest/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-model-weight-inventory/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-safetensors-causal-lm-mapping/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-safetensors-decoder-mapping/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-safetensors-file-inventory/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-target-budget/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-tokenizer-artifact-binding/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-transformer-readiness/v0.1": [
+      "szl-khipu"
+    ],
+    "khipu-x1-source-lock/v0.1": [
+      "szl-khipu"
+    ],
+    "szl-bench-receipt/v3": [
+      "frontier-bench"
+    ],
+    "szl-khipu-x1-upstream-map-v1": [
+      "khipu-x1"
+    ],
+    "szl-oac/transport-health-artifact-receipt/v1": [
+      "szl-forge"
+    ],
+    "szl-oac/transport-health-dataset-receipt/v1": [
+      "szl-forge"
+    ],
+    "szl.a11oy.assurance.evidence-pack.envelope.v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.assurance.evidence-pack.v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.brain.energy.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.code_receipt/v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.owned-khipu-cortex-error/v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.owned-khipu-live-proof/v1": [
+      "a11oy"
+    ],
+    "szl.a11oy.specdec.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.agent.master_receipt/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.agent.receipt/v2": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.anatomy-evidence/v1": [
+      "a11oy",
+      "anatomy",
+      "killinchu"
+    ],
+    "szl.anatomy-integrity-receipt/v1": [
+      "anatomy"
+    ],
+    "szl.anatomy.covenant-cockpit/receipts/v1": [
+      "a11oy",
+      "anatomy"
+    ],
+    "szl.attest.cmmc/v1": [
+      "szl-lake"
+    ],
+    "szl.attest.section889/v1": [
+      "szl-lake"
+    ],
+    "szl.attest.slsa/v1": [
+      "szl-lake"
+    ],
+    "szl.attestation-policy/v1": [
+      "a11oy"
+    ],
+    "szl.attested-inference/v2": [
+      "a11oy"
+    ],
+    "szl.ayllu.ask-receipt/v1": [
+      "ayllu"
+    ],
+    "szl.ayllu.council-receipt/v2": [
+      "a11oy"
+    ],
+    "szl.ayllu.counsel-receipt/v1": [
+      "ayllu"
+    ],
+    "szl.ayllu.evidence-bound-council/v2": [
+      "a11oy",
+      "ayllu"
+    ],
+    "szl.ayllu.psyche-receipt/v1": [
+      "ayllu"
+    ],
+    "szl.body_of_evidence/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.bounded-lora-training-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.brain-quantum-evidence-info.v1": [
+      "a11oy"
+    ],
+    "szl.brain-row-evidence-gap.v1": [
+      "a11oy"
+    ],
+    "szl.brain-row-provenance-license-crosswalk-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.artifact-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.corpus-bridge-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.corpus-evidence.v1": [
+      "a11oy"
+    ],
+    "szl.brain.evidence-evaluation-preregistration.v1": [
+      "a11oy"
+    ],
+    "szl.brain.evidence-evaluation-results.v1": [
+      "a11oy"
+    ],
+    "szl.brain.evidence-manifest.v1": [
+      "a11oy"
+    ],
+    "szl.brain.evidence-qrels.v1": [
+      "a11oy"
+    ],
+    "szl.brain.reranker.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.semantic-index.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.brain.signed-inference-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.brain.verifiable-answer-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.brain_jack.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.budget_action.receipt/v1": [
+      ".github"
+    ],
+    "szl.chaos.receipt/v1": [
+      ".github"
+    ],
+    "szl.claim-integrity-receipt/v1": [
+      "vertical-services"
+    ],
+    "szl.confattest.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.connector-evidence-resolution/v1": [
+      "vertical-services"
+    ],
+    "szl.connector-evidence-snapshot/v1": [
+      "vertical-services"
+    ],
+    "szl.dataset-source-attestation/v2": [
+      "killinchu",
+      "szl-lake"
+    ],
+    "szl.degradation.receipt/v1": [
+      ".github",
+      "a11oy"
+    ],
+    "szl.deployment-review-receipt/v1": [
+      ".github"
+    ],
+    "szl.deployment-source-evidence/v1": [
+      "sda"
+    ],
+    "szl.estate-alignment-receipt/v1": [
+      ".github"
+    ],
+    "szl.estate-deadman-receipt/v1": [
+      ".github"
+    ],
+    "szl.estate-release-train.receipt/v1": [
+      "szl-forge"
+    ],
+    "szl.evidence-bearing-ui/v8": [
+      "a11oy"
+    ],
+    "szl.evidence-file-manifest/v1": [
+      "szl-forge"
+    ],
+    "szl.evidence-index/v1": [
+      "lyte-services"
+    ],
+    "szl.finance-receipts/v1": [
+      "vertical-services"
+    ],
+    "szl.finance-receipts/verify/v1": [
+      "vertical-services"
+    ],
+    "szl.finance.computation-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.forge-capacity-probe-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-final-input-integrity-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-gpu-load-admission-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-input-snapshot-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-preflight-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-receipt-draft.v1": [
+      "a11oy"
+    ],
+    "szl.forge-reload-evaluation-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-resume-admission-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge-run-attestation.v1": [
+      "a11oy"
+    ],
+    "szl.forge-training-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.forge.hf-frontier-receipt.v2": [
+      "szl-forge"
+    ],
+    "szl.forge.hf-kernels-0.17-evidence.v1": [
+      "szl-forge"
+    ],
+    "szl.forge.inference-receipt/v1": [
+      "szl-forge"
+    ],
+    "szl.forge.lab-receipt-envelope/v1": [
+      "szl-forge"
+    ],
+    "szl.forge.local-model-attestation/v1": [
+      "a11oy"
+    ],
+    "szl.forge.lora-merge-receipt.v1": [
+      "szl-forge"
+    ],
+    "szl.forge.production-inference-receipt/v2": [
+      "szl-forge"
+    ],
+    "szl.forge.receipt/v1": [
+      "szl-forge"
+    ],
+    "szl.forge.receiptagent-merged-candidate.v1": [
+      "szl-forge"
+    ],
+    "szl.forge.trl-activation-offload-evidence.v1": [
+      "szl-forge"
+    ],
+    "szl.formula-training-admission-artifact-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.frontier-operation-evidence.v1": [
+      "a11oy"
+    ],
+    "szl.frontier-receipt-validation/v1": [
+      ".github"
+    ],
+    "szl.frontier.evaluation-evidence-projection.v1": [
+      "szl-frontier"
+    ],
+    "szl.frontier.evidence/v1": [
+      "szl-frontier"
+    ],
+    "szl.frontier.nemo-model-wave-witness-envelope.v1": [
+      "szl-nemo"
+    ],
+    "szl.frontier.source-attestation.v1": [
+      "szl-forge"
+    ],
+    "szl.frontier.terminal-evidence-verification.v1": [
+      "szl-forge"
+    ],
+    "szl.frontier.wave4-receipt/v1": [
+      "szl-frontier"
+    ],
+    "szl.gate_decision.receipt/v1": [
+      ".github",
+      "a11oy"
+    ],
+    "szl.gdw.delta-update-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.gdw.kernel-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.gdw.transaction-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.gdw.transient-effect-recovery-receipt/v2": [
+      "a11oy"
+    ],
+    "szl.github-oidc-release-attestation/v1": [
+      "david-leads",
+      "killinchu"
+    ],
+    "szl.github-oidc-release-attestation/v2": [
+      "killinchu"
+    ],
+    "szl.governed-receipt/v8": [
+      "a11oy"
+    ],
+    "szl.harness_apply.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.hatun-puriq-review-receipt/v1": [
+      "puriq-live"
+    ],
+    "szl.hatun-review-receipt/v2": [
+      "vertical-services"
+    ],
+    "szl.hatun.evidence.v1": [
+      "a11oy",
+      "killinchu"
+    ],
+    "szl.hf-deployment-receipt/v3": [
+      "szl-khipu"
+    ],
+    "szl.hf-gdw-transient-recovery-evidence/v1": [
+      "a11oy"
+    ],
+    "szl.immune-nexus-receipt-read/v1": [
+      "immune"
+    ],
+    "szl.immune-nexus-receipt/v1": [
+      "immune"
+    ],
+    "szl.incident.receipt/v1": [
+      ".github"
+    ],
+    "szl.invariants-release-evidence-inspection/v1": [
+      "szl-forge"
+    ],
+    "szl.khipu-abstention-bench/v1": [
+      "szl-khipu"
+    ],
+    "szl.khipu.compound-second-brain.v1": [
+      "a11oy"
+    ],
+    "szl.khipu.consensus.test-vectors/v1": [
+      "khipu-consensus",
+      "szl-mesh"
+    ],
+    "szl.khipu.cosign-keys/v1": [
+      ".github",
+      "szl-lake"
+    ],
+    "szl.khipu.demo/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.khipu.distinct-candidate-witness/v1": [
+      "szl-forge"
+    ],
+    "szl.khipu.distinct-candidate/v1": [
+      "szl-forge"
+    ],
+    "szl.khipu.empty-chain-manifest/v1": [
+      "szl-lake"
+    ],
+    "szl.khipu.multi-witness-receipt/v1": [
+      "khipu-consensus"
+    ],
+    "szl.khipu.organ_verdict/v1": [
+      "a11oy",
+      "david-leads",
+      "khipu-consensus",
+      "killinchu",
+      "szl-mesh",
+      "szl-substrate"
+    ],
+    "szl.khipu.receipt/v1": [
+      "lutar-lean",
+      "szl-lake"
+    ],
+    "szl.khipu.second-brain-live-verification.v1": [
+      "a11oy"
+    ],
+    "szl.khipu.verify_op/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.khipu.witness-registry/v1": [
+      "khipu-consensus"
+    ],
+    "szl.killinchu-dsse-verify/v1": [
+      "killinchu"
+    ],
+    "szl.killinchu.defend-receipt/v1": [
+      "killinchu"
+    ],
+    "szl.killinchu.receipt/v1": [
+      "killinchu"
+    ],
+    "szl.llm_route.lambda_receipt/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.lyte-observation-receipt/v3": [
+      "lyte-services"
+    ],
+    "szl.lyte-ui-browser-evidence/v1": [
+      "lyte-services"
+    ],
+    "szl.lyte.forecast-inspection-envelope/v1": [
+      "a11oy"
+    ],
+    "szl.lyte.hf-evidence/v1": [
+      "lyte-services"
+    ],
+    "szl.lyte.receipt-page/v1": [
+      "lyte-services"
+    ],
+    "szl.lyte.receipt-view/v1": [
+      "lyte-services"
+    ],
+    "szl.model-source-attestation/reconciliation-v2": [
+      "szl-forge"
+    ],
+    "szl.model-source-attestation/v1": [
+      "szl-forge"
+    ],
+    "szl.model-source-attestation/v2": [
+      "szl-kernels"
+    ],
+    "szl.mosaic.receipt/v1": [
+      "a11oy",
+      "killinchu"
+    ],
+    "szl.nemo.activation-offload-calibration-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.base-fetch-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.capacity-probe-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.execution-lane-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.frontier-qualification-receipt.v1": [
+      "szl-forge",
+      "szl-nemo"
+    ],
+    "szl.nemo.inference-envelope.v1": [
+      "a11oy",
+      "szl-forge",
+      "szl-nemo"
+    ],
+    "szl.nemo.live-attestation/v1": [
+      "a11oy"
+    ],
+    "szl.nemo.low-vram-calibration-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.preflight-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.reload-evaluation-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.training-evidence.v1": [
+      "a11oy"
+    ],
+    "szl.nemo.training-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.numerics.network-namespace-evidence/v1": [
+      "a11oy"
+    ],
+    "szl.offline-retrieval-training-receipt/v1": [
+      "szl-kernels"
+    ],
+    "szl.ouroboros-governance-ablation-receipt/v1": [
+      "a11oy"
+    ],
+    "szl.pcai.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.production-audit-receipt/v5": [
+      ".github"
+    ],
+    "szl.public-receipt-verifier/manifest/v1": [
+      "a11oy",
+      "killinchu"
+    ],
+    "szl.quant-live-benchmark-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.rag.lambda_receipt/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.rag_query.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-admission-manifest.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-binding.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-evaluation-manifest.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-output.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-public-candidate-heldout-contract.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-public-candidate-qualification-receipt.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-public-candidate-qualification-refusal.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-release-manifest.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-agent-verifier-result.v1": [
+      "a11oy"
+    ],
+    "szl.receipt-checkpoint/v1": [
+      "szl-kernels"
+    ],
+    "szl.receipt-verification.v1": [
+      "vertical-services"
+    ],
+    "szl.receipt-verification/v1": [
+      "anatomy"
+    ],
+    "szl.receipt.replay.v1": [
+      "a11oy"
+    ],
+    "szl.receipt_shape/v1": [
+      ".github"
+    ],
+    "szl.receiptagent-artifact-reconciliation-fixture.v1": [
+      "a11oy"
+    ],
+    "szl.receiptagent-artifact-reconciliation.v1": [
+      "a11oy"
+    ],
+    "szl.receiptagent-tournament/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-containment-probe/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-curriculum-manifest/v2": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-curriculum-spec/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-receipt-signing-trust-policy/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-release-manifest/v1": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-supervision-policy/v2": [
+      "szl-forge"
+    ],
+    "szl.receiptagent-v3-training-bundle/v1": [
+      "szl-forge"
+    ],
+    "szl.research-evidence-contract.v1": [
+      "a11oy"
+    ],
+    "szl.resilience.ship.receipt/v1": [
+      ".github"
+    ],
+    "szl.resilience.skip.receipt/v1": [
+      ".github"
+    ],
+    "szl.restore_drill.receipt/v1": [
+      ".github"
+    ],
+    "szl.rosie_companion.receipt/v1": [
+      "a11oy",
+      "killinchu",
+      "szl-substrate"
+    ],
+    "szl.router-receipt/v1": [
+      "a11oy",
+      "szl-build-env"
+    ],
+    "szl.run-receipt/v1": [
+      "szl-command-lab"
+    ],
+    "szl.sentra.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.series-a-receipt-recovery-miss/v1": [
+      "a11oy"
+    ],
+    "szl.series-a-receipt-recovery/v1": [
+      "a11oy"
+    ],
+    "szl.series-a-receipts/v1": [
+      "a11oy"
+    ],
+    "szl.sorry-closer-receipt/v1": [
+      "lutar-lean"
+    ],
+    "szl.source-attestation/v1": [
+      "killinchu"
+    ],
+    "szl.space-source-attestation/v1": [
+      "sda"
+    ],
+    "szl.static-deployment-source-evidence/v1": [
+      "killinchu"
+    ],
+    "szl.tee-attestation/v2": [
+      "a11oy"
+    ],
+    "szl.training.receipt.v1": [
+      "killinchu"
+    ],
+    "szl.training.runtime.receipt.v1": [
+      "a11oy"
+    ],
+    "szl.training_receipt.v1": [
+      "szl-forge",
+      "szl-khipu"
+    ],
+    "szl.training_receipt.v2": [
+      "a11oy",
+      "a11oy-net",
+      "szl-atelier"
+    ],
+    "szl.vertical-decision-receipt.v1": [
+      "vertical-services"
+    ],
+    "szl.vertical-decision-receipt.v2": [
+      "vertical-services"
+    ],
+    "szl.vertical-forge.receipt/v3": [
+      "a11oy",
+      "szl-vertical-forge"
+    ],
+    "szl.vertical-intelligence-invocation-receipt/v1": [
+      "vertical-services"
+    ],
+    "szl.vertical-intelligence-live-evidence/v1": [
+      "vertical-services"
+    ],
+    "szl.vertical-intelligence-plan-receipt/v1": [
+      "vertical-services"
+    ],
+    "szl.vertical-receipt/v1": [
+      "vertical-services"
+    ],
+    "szl.vessels-proof-receipt/v8": [
+      "a11oy-net"
+    ],
+    "szl.wave26.lambda-attnres-evidence/v1": [
+      "a11oy"
+    ],
+    "szl.wire_d.hop_receipt/v1": [
+      "a11oy",
+      "killinchu"
+    ],
+    "szl_energy_attest/receipt@1": [
+      "immune",
+      "szl-energy-attest"
+    ],
+    "test-receipt.v1": [
+      "a11oy"
+    ],
+    "urn:szl:governance:evidence:v1": [
+      "a11oy"
+    ],
+    "urn:szl:governance:receipt:v1": [
+      "a11oy"
+    ],
+    "urn:szl:khipu-command-system:v1": [
+      "szl-brand"
+    ]
+  },
+  "receipt_schema_scan_not_tested": [],
+  "schema_spelling_variants": [
+    {
+      "family": "szl.receipt-verification",
+      "repos": [
+        "anatomy",
+        "vertical-services"
+      ],
+      "spellings": [
+        "szl.receipt-verification.v1",
+        "szl.receipt-verification/v1"
+      ],
+      "version": "1"
+    }
+  ],
+  "schema_version_skew": [
+    {
+      "family": "DecisionReceipt",
+      "repos": [
+        "a11oy"
+      ],
+      "versions": [
+        "DecisionReceipt.v2",
+        "DecisionReceipt.v3"
+      ]
+    },
+    {
+      "family": "szl.github-oidc-release-attestation",
+      "repos": [
+        "david-leads",
+        "killinchu"
+      ],
+      "versions": [
+        "szl.github-oidc-release-attestation/v1",
+        "szl.github-oidc-release-attestation/v2"
+      ]
+    },
+    {
+      "family": "szl.model-source-attestation",
+      "repos": [
+        "szl-forge",
+        "szl-kernels"
+      ],
+      "versions": [
+        "szl.model-source-attestation/v1",
+        "szl.model-source-attestation/v2"
+      ]
+    },
+    {
+      "family": "szl.receipt-verification",
+      "repos": [
+        "anatomy",
+        "vertical-services"
+      ],
+      "versions": [
+        "szl.receipt-verification.v1",
+        "szl.receipt-verification/v1"
+      ]
+    },
+    {
+      "family": "szl.source-attestation",
+      "repos": [
+        "killinchu",
+        "<private>"
+      ],
+      "versions": [
+        "szl.source-attestation/v1",
+        "szl.source-attestation/v2"
+      ]
+    },
+    {
+      "family": "szl.training_receipt",
+      "repos": [
+        "a11oy",
+        "a11oy-net",
+        "szl-atelier",
+        "szl-forge",
+        "szl-khipu"
+      ],
+      "versions": [
+        "szl.training_receipt.v1",
+        "szl.training_receipt.v2"
+      ]
+    },
+    {
+      "family": "szl.vertical-decision-receipt",
+      "repos": [
+        "vertical-services"
+      ],
+      "versions": [
+        "szl.vertical-decision-receipt.v1",
+        "szl.vertical-decision-receipt.v2"
+      ]
+    }
+  ],
+  "source_to_hf": [
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "datasets/szlholdings/doctrine-v11"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/doctrine-v11"
+      ],
+      "repo": ".github",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/a11oy-v19-substrate",
+        "SZLHOLDINGS/thesis-v18-formal-verification",
+        "SZLHOLDINGS/uds-spans-receipts",
+        "SZLHOLDINGS/uds-governance-receipts",
+        "<private>",
+        "SZLHOLDINGS/ouroboros-arxiv-preprint",
+        "SZLHOLDINGS/szl-artifacts",
+        "<private>",
+        "<private>",
+        "SZLHOLDINGS/lean-theorem-tree",
+        "SZLHOLDINGS/a11oy-verifiable-corpus",
+        "SZLHOLDINGS/governed-agent-bench",
+        "SZLHOLDINGS/a11oy",
+        "SZLHOLDINGS/README",
+        "SZLHOLDINGS/counsel",
+        "SZLHOLDINGS/terra",
+        "SZLHOLDINGS/sentra",
+        "SZLHOLDINGS/finance",
+        "<private>",
+        "<private>",
+        "<private>",
+        "SZLHOLDINGS/szl-frontier"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/anatomy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/sda"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/a11oy",
+        "spaces/szlholdings/anatomy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/immune",
+        "spaces/szlholdings/killinchu",
+        "spaces/szlholdings/sda",
+        "spaces/szlholdings/yarqa"
+      ],
+      "repo": "a11oy",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "<private>",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/killinchu"
+      ],
+      "repo": "a11oy-net",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/governed-receipt-verifier",
+        "spaces/szlholdings/holographic",
+        "spaces/szlholdings/sda"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/governed-receipts-bench",
+        "datasets/szlholdings/szl-lake",
+        "datasets/szlholdings/test-results",
+        "spaces/szlholdings/a11oy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/governed-receipt-verifier",
+        "spaces/szlholdings/holographic",
+        "spaces/szlholdings/immune",
+        "spaces/szlholdings/killinchu",
+        "spaces/szlholdings/readme"
+      ],
+      "repo": "anatomy",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/ayllu"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/ayllu"
+      ],
+      "repo": "ayllu",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/ayllu"
+      ],
+      "repo": "ayllu-hf-space",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "cosmos",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "counsel",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/david-leads"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/david-leads-data",
+        "spaces/szlholdings/david-leads"
+      ],
+      "repo": "david-leads",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "developers",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "docs-site",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "energy-attest-holo",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "evidence-doctrine",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "evidence-studio",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "evidence-typed-formula-governance",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "fail-closed-governed-ai-services",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "frontier-bench",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "governance-as-code",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/governed-inference-meter"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "governed-inference-meter",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "governed-norm-holo",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/lean-proofs-v1",
+        "SZLHOLDINGS/readiness-runs",
+        "SZLHOLDINGS/governed-receipts-bench",
+        "SZLHOLDINGS/energy-attested-runs",
+        "SZLHOLDINGS/alloy-sovereign-eval-runs",
+        "SZLHOLDINGS/szl-frontier-evaluation-receipts"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/governed-receipt-verifier"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/governed-receipts-bench",
+        "spaces/szlholdings/governed-receipt-verifier"
+      ],
+      "repo": "governed-receipt-spec",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/test-results"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "hatun-mcp",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/readme"
+      ],
+      "repo": "holographic-unify",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/immune-lattice",
+        "SZLHOLDINGS/immune"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "immune",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "immune-lattice",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "spaces/szlholdings/khipu-constellation"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/khipu-constellation"
+      ],
+      "repo": "khipu-consensus",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "khipu-lab",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "khipu-pages",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "khipu-sda-core",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "khipu-x1",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/KILLINCHU-EYE",
+        "SZLHOLDINGS/killinchu-osint-corpus",
+        "SZLHOLDINGS/killinchu"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/anatomy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/governed-receipt-verifier",
+        "spaces/szlholdings/holographic",
+        "spaces/szlholdings/sda"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/governed-receipts-bench",
+        "datasets/szlholdings/szl-lake",
+        "spaces/szlholdings/a11oy",
+        "spaces/szlholdings/anatomy",
+        "spaces/szlholdings/cosmos",
+        "spaces/szlholdings/governed-receipt-verifier",
+        "spaces/szlholdings/holographic",
+        "spaces/szlholdings/immune",
+        "spaces/szlholdings/killinchu",
+        "spaces/szlholdings/readme"
+      ],
+      "repo": "killinchu",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "lambda-gate-holo",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "lean-kernel",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-lake"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/lambda-aggregator-live"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/lambda-aggregator-live"
+      ],
+      "repo": "lutar-lean",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/lyte",
+        "spaces/szlholdings/readme"
+      ],
+      "repo": "lyte-lattice",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/lyte"
+      ],
+      "repo": "lyte-services",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/readme"
+      ],
+      "repo": "nexus",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "ouroboros",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "<private>",
+        "<private>"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "platform",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "puriq-live",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "quant-curve",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "receipt-chain-live",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "retrieval-bench",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/readme"
+      ],
+      "repo": "sda",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/szl-atelier",
+        "spaces/szlholdings/szl-khipu"
+      ],
+      "repo": "szl-atelier",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-block-kv"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-block-kv",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-blocked"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-blocked"
+      ],
+      "repo": "szl-blocked",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-brand",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-build-env",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-calibration",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-ci-witness",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-command-lab"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/readme",
+        "spaces/szlholdings/szl-command-lab"
+      ],
+      "repo": "szl-command-lab",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-constellation",
+        "SZLHOLDINGS/szl-constellation-staging"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/killinchu-osint-corpus",
+        "datasets/szlholdings/szl-lake",
+        "models/szlholdings/szl-khipu-1.5b",
+        "spaces/szlholdings/szl-constellation"
+      ],
+      "repo": "szl-constellation",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-cookbook",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-crosscheck",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-doctrine",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-drift",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-eclipse",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-energy-attest"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-energy-attest",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-engine-bench",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-evidence-litellm",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-experiments",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-fleet-overlay",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/SZL-Forge-1.5B-ReceiptAgent",
+        "SZLHOLDINGS/SZL-Khipu-1.5B",
+        "SZLHOLDINGS/SZL-Khipu-1.5B-GGUF",
+        "SZLHOLDINGS/szl-receiptagent-qwen35-0.8b-v2",
+        "SZLHOLDINGS/A11OY-MINI",
+        "SZLHOLDINGS/chaski",
+        "SZLHOLDINGS/SZL-Khipu-1.5B-abstain",
+        "SZLHOLDINGS/chaski-5050",
+        "SZLHOLDINGS/chaski-r2",
+        "SZLHOLDINGS/brain-navigator-r2",
+        "SZLHOLDINGS/szl-receiptagent-qwen35-0.8b-v3",
+        "SZLHOLDINGS/khipu-r3",
+        "SZLHOLDINGS/oac-clinical-transport-health-v1",
+        "SZLHOLDINGS/oac-system-health-v1",
+        "SZLHOLDINGS/szl-receiptagent-qwen35-0.8b-v2-merged",
+        "SZLHOLDINGS/szl-1-doctrine-sft",
+        "SZLHOLDINGS/receipted-unsloth",
+        "SZLHOLDINGS/oac-clinical-transport-observability-synthetic",
+        "SZLHOLDINGS/szl-model-inference-lab"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/oac-clinical-transport-observability-synthetic",
+        "models/szlholdings/oac-system-health-v1",
+        "models/szlholdings/szl-forge-1.5b-receiptagent",
+        "models/szlholdings/szl-khipu-1.5b",
+        "models/szlholdings/szl-khipu-1.5b-gguf",
+        "models/szlholdings/szl-receiptagent-qwen35-0.8b-v2"
+      ],
+      "repo": "szl-forge",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-formula-ledger",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-formulas"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-formulas"
+      ],
+      "repo": "szl-formulas",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-frontier-covenant"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/szl-frontier"
+      ],
+      "repo": "szl-frontier",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-gov",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-governed-norm"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-governed-norm",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-govsign"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/govsign-live"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-govsign",
+        "spaces/szlholdings/govsign-live"
+      ],
+      "repo": "szl-govsign",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "<private>"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-gpu-bridge",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "spaces/szlholdings/guardrail-receipt"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/guardrail-receipt"
+      ],
+      "repo": "szl-guardrail-receipt",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-holdings.github.io",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-invariants"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-invariants"
+      ],
+      "repo": "szl-invariants",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-kernels"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/holographic"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/szl-lake",
+        "models/szlholdings/a11oy-v19-substrate",
+        "models/szlholdings/governed-inference-meter",
+        "models/szlholdings/szl-blocked",
+        "models/szlholdings/szl-formulas",
+        "models/szlholdings/szl-governed-norm",
+        "models/szlholdings/szl-govsign",
+        "models/szlholdings/szl-invariants",
+        "models/szlholdings/szl-kernels",
+        "models/szlholdings/szl-lambda-gate"
+      ],
+      "repo": "szl-kernels",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-kernels-live",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-khipu",
+        "SZLHOLDINGS/szl-khipu-kernels",
+        "SZLHOLDINGS/Moons-Nano",
+        "SZLHOLDINGS/MiniEmbed-Nano",
+        "SZLHOLDINGS/szl-khipu"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/anatomy"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-khipu",
+        "spaces/szlholdings/anatomy"
+      ],
+      "repo": "szl-khipu",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/szl-lake"
+      ],
+      "repo": "szl-lake",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-lambda-gate"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-lambda-gate"
+      ],
+      "repo": "szl-lambda-gate",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-maskmod"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-maskmod",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-mesh",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-nemo"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-nemo",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-organ-integrity",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-otel-mesh",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-ouroboros"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-ouroboros"
+      ],
+      "repo": "szl-ouroboros",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/SZLHOLDINGS",
+        "SZLHOLDINGS/rag-corpus-v1",
+        "SZLHOLDINGS/canonical-formulas-v1",
+        "SZLHOLDINGS/thesis-corpus-v18",
+        "SZLHOLDINGS/doctrine-v10-v11",
+        "SZLHOLDINGS/k-verify-benchmark-v1",
+        "SZLHOLDINGS/uds-bundles-v1"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-papers",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-pin",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-platform",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-provctl"
+      ],
+      "missing_targets": [
+        "spaces/szlholdings/szl-provctl-live"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-provctl",
+        "spaces/szlholdings/szl-provctl-live"
+      ],
+      "repo": "szl-provctl",
+      "state": "HAS_TARGET_WITH_MISSING"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-provctl-live",
+      "state": "NO_PUBLISHED_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-quant-sft-v1"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/szl-quant-sft-v1"
+      ],
+      "repo": "szl-quant",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-quant-bench",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-quant-witness",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/terra"
+      ],
+      "repo": "szl-real-estate",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-receipt",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-receipt-attn"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-receipt-attn",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-retrieval-bench",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/llm-router-live"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "spaces/szlholdings/llm-router-live"
+      ],
+      "repo": "szl-router",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-runbook-catalog",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-second-brain",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-seismic-review",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [
+        "spaces/szlholdings/szl-forge-lab"
+      ],
+      "private": false,
+      "readme_hf_targets": [
+        "models/szlholdings/szl-khipu-1.5b-gguf",
+        "spaces/szlholdings/szl-forge-lab",
+        "spaces/szlholdings/szl-model-inference-lab"
+      ],
+      "repo": "szl-serve",
+      "state": "CLAIMED_TARGET_MISSING"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-sovereign-os",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-substrate",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-telemetry",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [
+        "datasets/szlholdings/szl-lake",
+        "models/szlholdings/szl-kernels"
+      ],
+      "repo": "szl-trust",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/szl-triage-qwen3.5-0.8b-lora",
+        "SZLHOLDINGS/szl-triage-qwen3.5-0.8b-lora-study5"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-typesafe-triage",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-uds-deployment",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-vertical-forge",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "szl-wave1-report",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "the-grid",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "uds-bundles",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/vertical-services"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "vertical-services",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "vsp-otel",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": true,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "warhacker-demo",
+      "state": "NOT_A_PUBLISHER"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": true,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/yarqa"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "yarqa",
+      "state": "HAS_TARGET"
+    },
+    {
+      "archived": false,
+      "has_publish_workflow": false,
+      "hf_artifacts_linking_back": [
+        "SZLHOLDINGS/YARQA-ATTN"
+      ],
+      "missing_targets": [],
+      "private": false,
+      "readme_hf_targets": [],
+      "repo": "YARQA-ATTN",
+      "state": "HAS_TARGET"
+    }
+  ],
+  "standard_media_types": {
+    "app/vnd.dsse+json": [
+      ".github"
+    ],
+    "application/vnd.dsse+json": [
+      ".github"
+    ],
+    "application/vnd.in-toto+json": [
+      ".github",
+      "a11oy",
+      "governed-receipt-spec",
+      "killinchu",
+      "szl-gov",
+      "szl-lake",
+      "szl-quant",
+      "yarqa"
+    ]
+  },
+  "test_ids": {
+    "https://a-11-oy.com/attest/szl-receipt/v0.1": [
+      "a11oy",
+      "anatomy"
+    ],
+    "https://a-11-oy.com/schemas/source-deploy-attestation.v2.schema.json": [
+      "a11oy"
+    ],
+    "https://example.test/attestations/mcp-manifest/v1": [
+      "hatun-mcp"
+    ],
+    "https://szl-holdings.dev/attestations/governance-receipt/v1": [
+      "a11oy"
+    ],
+    "https://szlholdings.ai/attestations/lambda-gate/v1": [
+      "vsp-otel"
+    ],
+    "https://szlholdings.com/attestations/sda-anomaly/v1": [
+      "khipu-sda-core"
+    ],
+    "szl.attest.cmmc/v1": [
+      "szl-lake"
+    ],
+    "szl.attest.section889/v1": [
+      "szl-lake"
+    ],
+    "szl.attest.slsa/v1": [
+      "szl-lake"
+    ],
+    "szl.attestation-policy/v1": [
+      "a11oy"
+    ],
+    "szl.attested-inference/v2": [
+      "a11oy"
+    ],
+    "szl.confattest.receipt/v1": [
+      "a11oy"
+    ],
+    "szl.dataset-source-attestation/v2": [
+      "killinchu",
+      "szl-lake"
+    ],
+    "szl.forge-run-attestation.v1": [
+      "a11oy"
+    ],
+    "szl.forge.local-model-attestation/v1": [
+      "a11oy"
+    ],
+    "szl.frontier.source-attestation.v1": [
+      "szl-forge"
+    ],
+    "szl.github-oidc-release-attestation/v1": [
+      "david-leads",
+      "killinchu"
+    ],
+    "szl.github-oidc-release-attestation/v2": [
+      "killinchu"
+    ],
+    "szl.khipu.consensus.test-vectors/v1": [
+      "khipu-consensus",
+      "szl-mesh"
+    ],
+    "szl.model-source-attestation/reconciliation-v2": [
+      "szl-forge"
+    ],
+    "szl.model-source-attestation/v1": [
+      "szl-forge"
+    ],
+    "szl.model-source-attestation/v2": [
+      "szl-kernels"
+    ],
+    "szl.nemo.live-attestation/v1": [
+      "a11oy"
+    ],
+    "szl.receiptagent-artifact-reconciliation-fixture.v1": [
+      "a11oy"
+    ],
+    "szl.source-attestation/v1": [
+      "killinchu"
+    ],
+    "szl.space-source-attestation/v1": [
+      "sda"
+    ],
+    "szl.tee-attestation/v2": [
+      "a11oy"
+    ],
+    "szl_energy_attest/receipt@1": [
+      "immune",
+      "szl-energy-attest"
+    ],
+    "test-receipt.v1": [
+      "a11oy"
+    ]
+  },
+  "version_drift": [
+    {
+      "artifact": "SZLHOLDINGS/szl-lake",
+      "drifted": true,
+      "pinned": "3f3ad80d",
+      "repo": "lutar-lean",
+      "source_head": "75a4a3112287"
+    },
+    {
+      "artifact": "SZLHOLDINGS/governed-agent-bench",
+      "drifted": true,
+      "pinned": "1b40fcbe0f65c1ad1e07776f83aa01abb067e864",
+      "repo": "a11oy",
+      "source_head": "53366a17087c"
+    }
+  ],
+  "version_skew_normalised": [
+    {
+      "family": "DecisionReceipt",
+      "ids": [
+        "DecisionReceipt.v2",
+        "DecisionReceipt.v3"
+      ],
+      "repos": [
+        "a11oy"
+      ],
+      "versions": [
+        "2",
+        "3"
+      ]
+    },
+    {
+      "family": "szl.training_receipt",
+      "ids": [
+        "szl.training_receipt.v1",
+        "szl.training_receipt.v2"
+      ],
+      "repos": [
+        "a11oy",
+        "a11oy-net",
+        "szl-atelier",
+        "szl-forge",
+        "szl-khipu"
+      ],
+      "versions": [
+        "1",
+        "2"
+      ]
+    },
+    {
+      "family": "szl.vertical-decision-receipt",
+      "ids": [
+        "szl.vertical-decision-receipt.v1",
+        "szl.vertical-decision-receipt.v2"
+      ],
+      "repos": [
+        "vertical-services"
+      ],
+      "versions": [
+        "1",
+        "2"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+record_id,source_id,title,source_retrieved_at,n,effect
+R1,S1,"Trial one, arm comparison",2026-01-10T09:00:00Z,2400,0.41
+R2,S2,Trial two,2026-01-11T10:30:00Z,3100,0.38
+R3,S3,"Cohort three, ""extended""",2026-01-12T08:15:00Z,1980,0.47
+R4,S1,Trial four,2026-01-10T09:00:00Z,2800,0.44
+R5,S2,Trial five,2026-01-11T10:30:00Z,2200,0.40

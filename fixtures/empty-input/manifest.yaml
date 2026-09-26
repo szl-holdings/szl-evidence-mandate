@@ -1,0 +1,12 @@
+manifest_version: '1.0'
+name: empty-input
+inputs_dir: inputs
+ignore:
+- '**/.gitkeep'
+- .gitkeep
+- inputs/.gitkeep
+inputs:
+- id: records
+  path: inputs/records.csv
+  kind: table
+  key: record_id

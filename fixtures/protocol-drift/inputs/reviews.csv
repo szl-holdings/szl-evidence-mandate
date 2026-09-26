@@ -1,0 +1,11 @@
+record_id,reviewer,decision
+R1,rev-alpha,include
+R1,rev-beta,include
+R2,rev-alpha,include
+R2,rev-beta,include
+R3,rev-alpha,include
+R3,rev-beta,include
+R4,rev-alpha,include
+R4,rev-beta,include
+R5,rev-alpha,include
+R5,rev-beta,include

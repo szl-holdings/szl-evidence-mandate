@@ -1,0 +1,14 @@
+producer: fixture-pipeline
+claimed_status: PASS
+checks_claimed:
+- schema
+- duplicates
+- citation_resolution
+- human_review
+children:
+- name: schema
+  exit_code: 0
+  result: PASS
+- name: duplicates
+  exit_code: 0
+  result: PASS

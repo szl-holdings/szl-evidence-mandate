@@ -1,0 +1,9 @@
+fixture: numeric-rounding
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- claim_value:C3
+- DEFECTIVE_VERIFICATION
+claim_not_established: C3 (arms equal)
+explanation: 0.8549 and 0.8451 both round to 0.85 but differ by 0.0098 > tolerance
+  0.001.

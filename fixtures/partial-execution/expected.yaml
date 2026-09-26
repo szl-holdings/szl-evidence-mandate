@@ -1,0 +1,7 @@
+fixture: partial-execution
+expected_status: ABSTAIN
+expected_exit_code: 2
+required_evidence:
+- PARTIAL_EXECUTION
+claim_not_established: any population-level result
+explanation: Only 3 of N rows examined; cannot be presented as complete.

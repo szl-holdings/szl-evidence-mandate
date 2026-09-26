@@ -1,0 +1,8 @@
+fixture: stale-dependency
+expected_status: ABSTAIN
+expected_exit_code: 2
+required_evidence:
+- dependency_validity
+- STALE_PENDING_REVALIDATION
+claim_not_established: the current conclusion (pending revalidation, not false)
+explanation: Design bumped to v3; descendants stale; publication blocked.

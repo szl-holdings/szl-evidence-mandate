@@ -1,0 +1,4 @@
+source_id,url,retrieved_at
+S1,https://example.org/source/1,2026-01-10T09:00:00Z
+S2,https://example.org/source/2,2026-01-11T10:30:00Z
+S3,https://example.org/source/3,2026-01-12T08:15:00Z

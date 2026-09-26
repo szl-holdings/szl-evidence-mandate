@@ -1,0 +1,48 @@
+claims:
+  C1:
+    recipe:
+    - metric: total_n
+      op: sum
+      table: records
+      field: n
+    code_version: szl_evidence.claims.run_recipe/1
+    environment: szl-evidence recipe interpreter (whitelisted aggregates)
+    input_manifest_sha256: 42fed524f66f01731b0dbbd3d21d47cd92e567927b1c81882ae1904532de26f0
+    stored_output: outputs/summary.csv
+    output_sha256: b0a97f05957508ad5e717eb0cb8a94f3fc3944f221ab584142e45a5b92ca7d9c
+    review_state: reviewed
+    publication: fixture://valid/report#C1
+  C2:
+    recipe:
+    - metric: mean_effect
+      op: mean
+      table: records
+      field: effect
+    code_version: szl_evidence.claims.run_recipe/1
+    environment: szl-evidence recipe interpreter (whitelisted aggregates)
+    input_manifest_sha256: 42fed524f66f01731b0dbbd3d21d47cd92e567927b1c81882ae1904532de26f0
+    stored_output: outputs/summary.csv
+    output_sha256: b0a97f05957508ad5e717eb0cb8a94f3fc3944f221ab584142e45a5b92ca7d9c
+    review_state: reviewed
+    publication: fixture://valid/report#C2
+  C3:
+    recipe:
+    - metric: acc_a
+      op: mean
+      table: arm_results
+      field: score
+      where:
+        arm: A
+    - metric: acc_b
+      op: mean
+      table: arm_results
+      field: score
+      where:
+        arm: B
+    code_version: szl_evidence.claims.run_recipe/1
+    environment: szl-evidence recipe interpreter (whitelisted aggregates)
+    input_manifest_sha256: c0c2b4f9cf526014564341d3405be3e20510e7b56e9b483f7d90c79f173b2979
+    stored_output: outputs/summary.csv
+    output_sha256: b0a97f05957508ad5e717eb0cb8a94f3fc3944f221ab584142e45a5b92ca7d9c
+    review_state: reviewed
+    publication: fixture://valid/report#C3

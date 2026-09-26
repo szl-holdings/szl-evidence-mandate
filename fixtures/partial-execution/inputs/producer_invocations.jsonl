@@ -1,0 +1,2 @@
+{"check": "schema", "evidence": {"rows": 5}, "invocation_id": "p-0", "result": "PASS"}
+{"check": "duplicates", "evidence": {"rows": 5}, "invocation_id": "p-1", "result": "PASS"}

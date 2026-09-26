@@ -1,0 +1,3 @@
+* text=auto eol=lf
+# Fixture bytes are hash-bound (registry output_sha256, DAG fingerprints): never normalise.
+fixtures/** -text

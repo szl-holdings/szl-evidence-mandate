@@ -1,0 +1,8 @@
+fixture: narrated-verification
+expected_status: ABSTAIN
+expected_exit_code: 2
+required_evidence:
+- NARRATED_VERIFICATION
+- UNVERIFIED
+claim_not_established: that citation_resolution and human_review ran
+explanation: Producer claims checks with no invocation records.

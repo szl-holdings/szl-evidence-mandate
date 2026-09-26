@@ -1,0 +1,116 @@
+manifest_version: '1.0'
+name: stale-dependency
+access: open
+inputs_dir: inputs
+inputs:
+- id: records
+  path: inputs/records.csv
+  kind: table
+  key: record_id
+- id: sources
+  path: inputs/sources.csv
+  kind: table
+  key: source_id
+- id: arm_results
+  path: inputs/arm_results.csv
+  kind: table
+- id: reviews
+  path: inputs/reviews.csv
+  kind: table
+- id: candidates
+  path: inputs/candidates.csv
+  kind: table
+  key: record_id
+- id: screening
+  path: inputs/screening.csv
+  kind: table
+  key: record_id
+- id: citations
+  path: inputs/citations.csv
+  kind: table
+  key: citation_id
+- id: doi_registry
+  path: inputs/doi_registry.json
+  kind: json
+- id: snapshot
+  path: inputs/snapshot.json
+  kind: json
+- id: claims
+  path: inputs/claims.yaml
+  kind: yaml
+- id: registry
+  path: inputs/registry.yaml
+  kind: yaml
+- id: protocol_log
+  path: inputs/protocol_log.yaml
+  kind: yaml
+- id: dag
+  path: inputs/dag.yaml
+  kind: yaml
+- id: attestation
+  path: inputs/attestation.yaml
+  kind: yaml
+- id: producer_invocations
+  path: inputs/producer_invocations.jsonl
+  kind: jsonl
+- id: replicate_a
+  path: inputs/replicate_a.csv
+  kind: table
+- id: replicate_b
+  path: inputs/replicate_b.csv
+  kind: table
+snapshot:
+  input: snapshot
+  table: records
+reviews:
+  table: reviews
+  target_table: records
+  record_field: record_id
+  reviewer_field: reviewer
+  required_per_record: 2
+  authorized_reviewers:
+  - rev-alpha
+  - rev-beta
+sources:
+  table: sources
+  key: source_id
+  records_table: records
+  records_field: source_id
+timestamps:
+  table: records
+  field: source_retrieved_at
+  join:
+    table: sources
+    key: source_id
+    field: retrieved_at
+protocol:
+  version: '1.0'
+  steps:
+  - search
+  - screen
+  - extract
+  - review
+  - analyze
+  execution_log: protocol_log
+claims:
+  input: claims
+  registry: registry
+dependencies:
+  input: dag
+citations:
+  table: citations
+  registry: doi_registry
+  resolver: offline
+screening:
+  candidates: candidates
+  decisions: screening
+  key: record_id
+attestations:
+  input: attestation
+  invocations: producer_invocations
+determinism:
+  replicates:
+  - input: replicate_a
+    hash_seed: 0
+  - input: replicate_b
+    hash_seed: 12345

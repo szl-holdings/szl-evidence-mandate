@@ -1,0 +1,8 @@
+fixture: comma-tokenization
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- claim_value:C1
+claim_not_established: C1 (participant total)
+explanation: Published '12,408' parses to 12408, not the stored 12480; separators
+  neither evade nor fake comparison.

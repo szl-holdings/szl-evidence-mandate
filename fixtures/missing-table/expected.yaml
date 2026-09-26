@@ -1,0 +1,8 @@
+fixture: missing-table
+expected_status: ABSTAIN
+expected_exit_code: 2
+required_evidence:
+- INSUFFICIENT_EVIDENCE
+- REQUIRES_HUMAN_REVIEW
+claim_not_established: that every record was reviewed
+explanation: reviews.csv is declared but absent; the gap is visible, not zero.

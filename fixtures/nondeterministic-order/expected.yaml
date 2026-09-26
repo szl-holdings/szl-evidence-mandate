@@ -1,0 +1,7 @@
+fixture: nondeterministic-order
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- output_determinism
+claim_not_established: that the output is reproducible byte-for-byte
+explanation: Replicates differ only in row order.

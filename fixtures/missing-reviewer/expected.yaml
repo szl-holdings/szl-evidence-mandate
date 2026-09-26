@@ -1,0 +1,8 @@
+fixture: missing-reviewer
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- PROTOCOL_BROKEN
+- reviewer_protocol
+claim_not_established: dual review of R4
+explanation: R4 has 1 of 2 required reviewers.

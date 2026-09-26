@@ -1,0 +1,7 @@
+fixture: empty-input
+expected_status: ABSTAIN
+expected_exit_code: 2
+required_evidence:
+- VACUOUS_PASS
+claim_not_established: any claim about the corpus
+explanation: 'Nothing was examined, so nothing could fail: a vacuous pass is refused.'

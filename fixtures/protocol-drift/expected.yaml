@@ -1,0 +1,7 @@
+fixture: protocol-drift
+expected_status: FAIL
+expected_exit_code: 1
+required_evidence:
+- PROTOCOL_DRIFT
+claim_not_established: that the declared protocol was followed
+explanation: Version 1.1 executed, 'review' step skipped.
