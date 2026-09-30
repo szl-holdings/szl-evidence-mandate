@@ -7,8 +7,7 @@ A Scientific Evidence Gate engine plus evidence-backed, read-only audits of the
 > The system producing an answer must not be the sole authority certifying that its own
 > verification occurred.
 
-**Maturity:** research prototype (v0.1.0). **Licence:** not yet chosen by the owner
-(`NOASSERTION`); no licence is granted until one is added.
+**Maturity:** research prototype (v0.1.0). **Licence:** Apache-2.0 (org standard; see `LICENSE`).
 
 ## What it does
 
