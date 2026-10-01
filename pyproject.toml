@@ -21,6 +21,12 @@ dev = ["pytest>=8", "ruff>=0.5"]
 [project.scripts]
 szl-audit = "szl_evidence.cli:main"
 
+[project.urls]
+Homepage = "https://github.com/szl-holdings/szl-evidence-mandate"
+Source = "https://github.com/szl-holdings/szl-evidence-mandate"
+Issues = "https://github.com/szl-holdings/szl-evidence-mandate/issues"
+Changelog = "https://github.com/szl-holdings/szl-evidence-mandate/releases"
+
 [tool.setuptools.packages.find]
 where = ["src"]
 
@@ -35,3 +41,6 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "W", "B", "S602", "S604", "S605", "S301", "S506"]
 ignore = ["E501"]
+
+[tool.szl.release]
+import_names = ["szl_evidence"] # wheel top-level import names; the release gate fails if the built wheel differs
