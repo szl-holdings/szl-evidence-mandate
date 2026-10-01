@@ -1,5 +1,7 @@
 # szl-evidence-mandate
 
+[![PyPI](https://img.shields.io/pypi/v/szl-evidence-mandate)](https://pypi.org/project/szl-evidence-mandate/) [![Python](https://img.shields.io/pypi/pyversions/szl-evidence-mandate)](https://pypi.org/project/szl-evidence-mandate/)
+
 A Scientific Evidence Gate engine plus evidence-backed, read-only audits of the
 `szl-holdings` GitHub organisation and the `SZLHOLDINGS` Hugging Face estate.
 
