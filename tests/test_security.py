@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import csv
 import io
+import json
 import os
 import zipfile
 from pathlib import Path
@@ -11,6 +13,8 @@ import pytest
 import yaml
 
 from szl_evidence.manifest import ManifestError, load_manifest
+from szl_evidence.cli import _print
+from szl_evidence.models import sha256_bytes
 from szl_evidence.reports import ReportWriter
 from szl_evidence.safety import UnsafeInput, check_archive, check_size, contained, isolated_env, redact, run_argv, safe_walk
 from szl_evidence.verifier import verify
@@ -136,3 +140,111 @@ def test_public_writer_scrubs_private_names_and_host_paths(tmp_path):
     text = p.read_text(encoding="utf-8")
     assert "secret-repo " not in text and "private-ds" not in text and "alice" not in text
     assert "secret-repository" in text and text.count("<private>") == 3 and "<tmp>" in text
+
+
+# Synthetic markers only: these tests never read credentials or provider data.
+OUTPUT_MARKERS = [
+    "ghp_" + "A" * 36,
+    "github_pat_" + "B" * 30,
+    "hf_" + "C" * 34,
+    "sk-" + "D" * 30,
+    "AKIA" + "E" * 16,
+    "xoxb-" + "F" * 20,
+    "Authorization: Bearer synthetic-test-value",
+]
+
+
+@pytest.mark.parametrize("marker", OUTPUT_MARKERS)
+@pytest.mark.parametrize("kind", ["text", "json", "csv"])
+def test_report_output_redacts_credentials_without_corrupting_format(tmp_path, marker, kind):
+    writer = ReportWriter(tmp_path)
+    if kind == "text":
+        path = writer.text("report.txt", f"finding: {marker}\nstatus: HOLD\n")
+    elif kind == "json":
+        path = writer.json("report.json", {"nested": [marker], "status": "HOLD"})
+    else:
+        path = writer.csv("report.csv", ["finding", "status"], [[marker, "HOLD"]])
+    data = path.read_bytes()
+    text = data.decode("utf-8")
+    assert marker not in text and "[REDACTED]" in text
+    assert writer.hashes[path.name] == sha256_bytes(data)
+    if kind == "json":
+        assert json.loads(text) == {"nested": [redact(marker)], "status": "HOLD"}
+    elif kind == "csv":
+        assert list(csv.reader(io.StringIO(text))) == [["finding", "status"], [redact(marker), "HOLD"]]
+
+
+@pytest.mark.parametrize("marker", OUTPUT_MARKERS)
+def test_cli_output_redacts_credentials_and_preserves_json(marker, capsys):
+    payload = {"nested": [marker], "status": "HOLD", "receipt_sha256": "a" * 64}
+    original = json.dumps(payload, sort_keys=True)
+    _print(payload)
+    output = capsys.readouterr().out
+    assert marker not in output
+    assert json.loads(output) == {"nested": [redact(marker)], "status": "HOLD", "receipt_sha256": "a" * 64}
+    assert json.dumps(payload, sort_keys=True) == original
+
+
+def test_cli_quiet_output_stays_empty(capsys):
+    _print({"finding": OUTPUT_MARKERS[0]}, quiet=True)
+    assert capsys.readouterr().out == ""
+
+
+def test_structured_reports_scrub_keys_and_values_without_mutating_receipt(tmp_path):
+    marker = OUTPUT_MARKERS[0]
+    payload = {marker: {"finding": marker, "receipt_sha256": "f" * 64}, "status": "FAIL", "count": 2}
+    original = json.dumps(payload, sort_keys=True)
+    writer = ReportWriter(tmp_path)
+    result = json.loads(writer.json("report.json", payload).read_text(encoding="utf-8"))
+    assert result == {"[REDACTED]": {"finding": "[REDACTED]", "receipt_sha256": "f" * 64}, "status": "FAIL", "count": 2}
+    assert json.dumps(payload, sort_keys=True) == original
+
+
+@pytest.mark.parametrize("sink", ["report", "cli"])
+def test_redacted_json_key_collision_fails_closed(tmp_path, sink):
+    payload = {OUTPUT_MARKERS[0]: "first", OUTPUT_MARKERS[1]: "second"}
+    with pytest.raises(ValueError, match="output key collision"):
+        if sink == "report":
+            ReportWriter(tmp_path).json("report.json", payload)
+        else:
+            _print(payload)
+    assert not (tmp_path / "report.json").exists()
+
+
+def test_csv_scrubs_cells_before_escaping_and_preserves_none(tmp_path):
+    writer = ReportWriter(tmp_path)
+    marker = "Authorization: Bearer synthetic-test-value"
+    path = writer.csv("report.csv", ["finding", "detail", "empty"], [[marker, 'comma, quote " and\nnewline', None]])
+    rows = list(csv.reader(io.StringIO(path.read_text(encoding="utf-8"))))
+    assert rows == [["finding", "detail", "empty"], [redact(marker), 'comma, quote " and\nnewline', ""]]
+
+
+def test_json_report_preserves_unicode_private_and_host_scrubbing(tmp_path):
+    writer = ReportWriter(tmp_path, redact_names=["secret-repo"])
+    path = writer.json("report.json", {"note": "café secret-repo", "host": r"C:\Users\alice\file", "count": 3})
+    text = path.read_text(encoding="utf-8")
+    assert "café" in text and "alice" not in text and "secret-repo" not in text
+    assert json.loads(text) == {"note": "café <private>", "host": r"<home>\file", "count": 3}
+
+
+def test_duplicate_normalized_json_names_fail_without_overwriting_report(tmp_path):
+    writer = ReportWriter(tmp_path)
+    path = writer.text("report.json", "prior report\n")
+    original_hash = writer.hashes["report.json"]
+    with pytest.raises(ValueError, match="^output key collision$"):
+        writer.json("report.json", {"nested": {"1": "first", 1: "second"}})
+    assert path.read_bytes() == b"prior report\n"
+    assert writer.hashes["report.json"] == original_hash
+
+
+def test_private_json_key_collision_is_not_silently_lost(tmp_path):
+    writer = ReportWriter(tmp_path, redact_names=["private-one", "private-two"])
+    with pytest.raises(ValueError, match="^output key collision$"):
+        writer.json("report.json", {"private-one": 1, "private-two": 2})
+    assert not (tmp_path / "report.json").exists()
+
+
+def test_cli_formatting_and_default_string_compatibility(capsys):
+    payload = {"path": Path("ordinary/file"), "unicode": "café", "nested": (None, True, 1.25)}
+    _print(payload)
+    assert capsys.readouterr().out == json.dumps(payload, indent=2, sort_keys=True, default=str) + "\n"

@@ -8,10 +8,10 @@ import io
 import json
 import re
 from pathlib import Path
-from typing import Any, Iterable
+from typing import Any, Callable, Iterable
 
 from .models import canonical_json, sha256_bytes
-from .safety import ensure_within
+from .safety import ensure_within, redact
 
 HEADER_FIELDS = [
     "STATUS",
@@ -91,6 +91,41 @@ def redact_host_paths(text: str) -> str:
     return text
 
 
+def scrub_json_output(obj: Any, scrub: Callable[[str], str] = redact) -> Any:
+    """Sanitize a JSON-compatible copy, never a receipt or encoded JSON syntax.
+
+    Normalize using the existing default=str policy, then scrub keys and values.
+    Reject colliding names rather than silently dropping evidence. Error messages
+    must not include the unsanitized keys or values.
+    """
+    def unique_object(pairs: list[tuple[str, Any]]) -> dict[str, Any]:
+        result: dict[str, Any] = {}
+        for key, value in pairs:
+            if key in result:
+                raise ValueError("output key collision")
+            result[key] = value
+        return result
+
+    normalized = json.loads(json.dumps(obj, default=str, ensure_ascii=False), object_pairs_hook=unique_object)
+
+    def visit(value: Any) -> Any:
+        if isinstance(value, str):
+            return scrub(value)
+        if isinstance(value, list):
+            return [visit(item) for item in value]
+        if isinstance(value, dict):
+            result: dict[str, Any] = {}
+            for key, item in value.items():
+                name = scrub(key)
+                if name in result:
+                    raise ValueError("output key collision")
+                result[name] = visit(item)
+            return result
+        return value
+
+    return visit(normalized)
+
+
 class ReportWriter:
     """Writes reports only inside the configured output directory and records their hashes."""
 
@@ -103,7 +138,7 @@ class ReportWriter:
         self._names = re.compile(r"(?<![\w.-])(" + "|".join(re.escape(n) for n in names) + r")(?![\w-])", re.I) if names else None
 
     def _scrub(self, text: str) -> str:
-        text = redact_host_paths(text)
+        text = redact_host_paths(redact(text))
         return self._names.sub("<private>", text) if self._names else text
 
     def _path(self, name: str) -> Path:
@@ -112,26 +147,30 @@ class ReportWriter:
         p.parent.mkdir(parents=True, exist_ok=True)
         return p
 
-    def text(self, name: str, content: str) -> Path:
+    def _write(self, name: str, data: bytes) -> Path:
+        """Write already sanitized bytes and bind the hash to exactly those bytes."""
         p = self._path(name)
-        data = self._scrub(content).encode("utf-8")
         p.write_bytes(data)
         self.hashes[name] = sha256_bytes(data)
         return p
+
+    def text(self, name: str, content: str) -> Path:
+        return self._write(name, self._scrub(content).encode("utf-8"))
 
     def json(self, name: str, obj: Any) -> Path:
-        p = self._path(name)
-        data = self._scrub(json.dumps(obj, indent=2, sort_keys=True, ensure_ascii=False, default=str)).encode("utf-8") + b"\n"
-        p.write_bytes(data)
-        self.hashes[name] = sha256_bytes(data)
-        return p
+        clean = scrub_json_output(obj, self._scrub)
+        data = json.dumps(clean, indent=2, sort_keys=True, ensure_ascii=False).encode("utf-8") + b"\n"
+        return self._write(name, data)
 
     def csv(self, name: str, headers: list[str], rows: list[list[Any]]) -> Path:
+        def cell(value: Any) -> str:
+            return self._scrub("" if value is None else str(value))
+
         buf = io.StringIO()
         w = csv.writer(buf, lineterminator="\n")
-        w.writerow(headers)
-        w.writerows(rows)
-        return self.text(name, buf.getvalue())
+        w.writerow([cell(value) for value in headers])
+        w.writerows([cell(value) for value in row] for row in rows)
+        return self._write(name, buf.getvalue().encode("utf-8"))
 
 
 def report(title: str, header: dict[str, Any], body: str, coverage: dict[str, Any] | None = None) -> str:
