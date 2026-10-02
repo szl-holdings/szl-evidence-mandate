@@ -11,6 +11,7 @@ from typing import Any
 from . import __version__
 from .models import canonical_json, sha256_json, utcnow
 from .receipts import write_receipt
+from .reports import scrub_json_output
 
 DEFAULT_OUT = Path("reports")
 
@@ -25,7 +26,7 @@ def _emit_receipt(out: Path, kind: str, payload: dict[str, Any], started: str, s
 
 def _print(obj: Any, quiet: bool = False) -> None:
     if not quiet:
-        print(json.dumps(obj, indent=2, sort_keys=True, default=str))
+        print(json.dumps(scrub_json_output(obj), indent=2, sort_keys=True))
 
 
 # ------------------------------------------------------------------ engine
