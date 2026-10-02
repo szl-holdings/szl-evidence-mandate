@@ -59,8 +59,9 @@ def seal(receipt: dict[str, Any]) -> dict[str, Any]:
     key_path = os.environ.get("SZL_RECEIPT_ED25519_KEY")
     receipt["signature_state"] = "UNSIGNED"
     receipt.pop("signature", None)
+    receipt.pop("signature_note", None)
     if key_path:
-        receipt["signature_state"] = "SIGNING_PENDING"
+        receipt["signature_state"] = "SIGNED"
     receipt["receipt_sha256"] = receipt_hash(receipt)
     if key_path:
         sig = _try_sign(Path(key_path), receipt["receipt_sha256"])
@@ -76,12 +77,17 @@ def seal(receipt: dict[str, Any]) -> dict[str, Any]:
 
 def _try_sign(key_path: Path, digest_hex: str) -> dict[str, str] | None:
     try:
+        from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey  # type: ignore
         from cryptography.hazmat.primitives.serialization import load_pem_private_key  # type: ignore
     except ImportError:
         return None
     try:
         key = load_pem_private_key(key_path.read_bytes(), password=None)
-        sig = key.sign(bytes.fromhex(digest_hex))  # type: ignore[call-arg]
+        if not isinstance(key, Ed25519PrivateKey):
+            return None
+        digest = bytes.fromhex(digest_hex)
+        sig = key.sign(digest)
+        key.public_key().verify(sig, digest)
     except Exception:  # noqa: BLE001 - any key failure means UNSIGNED, never a fake signature
         return None
     return {"alg": "ed25519", "over": "receipt_sha256", "value": base64.b64encode(sig).decode()}

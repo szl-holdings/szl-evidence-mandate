@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.1.2 — source candidate
+
+- Add the optional `sign` dependency extra and test it in CI.
+- Emit schema-conformant `SIGNED` Ed25519 receipts when a usable key is configured;
+  self-check the signature before writing and retain `UNSIGNED` on failure.
+- Add `engine verify --require-signed` so an unsigned result exits 3 while keeping
+  the engine receipt and its scientific result for audit. This is a local signing
+  requirement; independent signer trust still requires a trusted public key.
+- Align the receipt tool version with package metadata.
+
 ## 0.1.0 — 2026-09-25
 
 - Evidence Gate engine: manifest, discovery with accounting closure, 18 versioned checks,

@@ -41,7 +41,8 @@ def cmd_verify(a: argparse.Namespace) -> int:
         except (ManifestError, KeyError) as e:
             _print({"dry_run": True, "status": "ERROR", "error": str(e)})
             return 3
-        _print({"dry_run": True, "manifest": str(m.path.name), "inputs": [i.id for i in m.inputs], "checks_planned": plan})
+        _print({"dry_run": True, "manifest": str(m.path.name), "inputs": [i.id for i in m.inputs],
+                "checks_planned": plan, "require_signed": a.require_signed})
         return 0
     resolver = None
     if a.crossref:
@@ -58,6 +59,15 @@ def cmd_verify(a: argparse.Namespace) -> int:
     summary["non_pass"] = [{"check": i["check"], "status": i["result"]["status"], "reason": i["result"]["reason"], "detail": i["result"]["detail"]} for i in r.get("invocations", []) if i["result"]["status"] != "PASS"]
     if r.get("invariant_violations"):
         summary["invariant_violations"] = r["invariant_violations"]
+    if a.require_signed and (r.get("signature_state") != "SIGNED" or not r.get("signature")):
+        summary["engine_status"] = summary["status"]
+        summary["status"] = "ERROR"
+        summary["exit_code"] = 3
+        summary["signature_requirement"] = "BLOCKED_UNSIGNED"
+        summary.pop("pass_evidence", None)
+        _print(summary, a.quiet)
+        return 3
+    summary["signature_requirement"] = "SATISFIED" if a.require_signed else "NOT_REQUESTED"
     _print(summary, a.quiet)
     return int(r["exit_code"])
 
@@ -284,6 +294,7 @@ def build_parser() -> argparse.ArgumentParser:
     v.add_argument("--receipt")
     v.add_argument("--quiet", action="store_true")
     v.add_argument("--crossref", action="store_true", help="resolve DOIs against live Crossref (network)")
+    v.add_argument("--require-signed", action="store_true", help="exit 3 if the emitted receipt lacks a locally self-verified Ed25519 signature")
     v.set_defaults(fn=cmd_verify)
     vr = es.add_parser("verify-receipt", parents=[common])
     vr.add_argument("receipt")
