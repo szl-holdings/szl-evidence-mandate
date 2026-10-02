@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "szl-evidence-mandate"
-version = "0.1.1"
+version = "0.1.2"
 description = "Scientific Evidence Gate engine plus evidence-backed estate audits (GitHub + Hugging Face)."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -23,6 +23,7 @@ dependencies = [
 
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
+sign = ["cryptography>=42"]
 
 [project.scripts]
 szl-audit = "szl_evidence.cli:main"

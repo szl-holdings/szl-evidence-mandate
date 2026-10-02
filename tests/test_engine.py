@@ -2,7 +2,9 @@
 
 from __future__ import annotations
 
+import base64
 import copy
+import json
 import os
 import subprocess
 import sys
@@ -259,6 +261,59 @@ def test_24_no_key_means_unsigned(valid, monkeypatch):
     monkeypatch.setenv("SZL_RECEIPT_ED25519_KEY", str(valid / "no-such-key.pem"))
     r2 = verify(valid)
     assert r2["signature_state"] == "UNSIGNED" and "signature" not in r2  # unusable key: still honest
+
+
+def test_24a_signed_receipt_state_and_public_key_verification(valid, tmp_path, monkeypatch):
+    from cryptography.hazmat.primitives import serialization
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+
+    key = Ed25519PrivateKey.generate()
+    key_path = tmp_path / "ephemeral-test-key.pem"
+    key_path.write_bytes(key.private_bytes(serialization.Encoding.PEM, serialization.PrivateFormat.PKCS8,
+                                            serialization.NoEncryption()))
+    monkeypatch.setenv("SZL_RECEIPT_ED25519_KEY", str(key_path))
+    r = verify(valid)
+    assert r["status"] == "PASS" and r["signature_state"] == "SIGNED"
+    assert r["receipt_sha256"] == receipt_hash(r)
+    key.public_key().verify(base64.b64decode(r["signature"]["value"]), bytes.fromhex(r["receipt_sha256"]))
+
+
+def test_24b_require_signed_blocks_unsigned_delivery_but_keeps_receipt(valid, tmp_path, monkeypatch, capsys):
+    from szl_evidence.cli import build_parser
+
+    monkeypatch.delenv("SZL_RECEIPT_ED25519_KEY", raising=False)
+    destination = tmp_path / "unsigned.json"
+    args = build_parser().parse_args(["engine", "verify", str(valid), "--receipt", str(destination),
+                                      "--require-signed"])
+    assert args.fn(args) == 3
+    summary = json.loads(capsys.readouterr().out)
+    retained = json.loads(destination.read_text(encoding="utf-8"))
+    assert summary["status"] == "ERROR" and summary["signature_requirement"] == "BLOCKED_UNSIGNED"
+    assert "pass_evidence" not in summary
+    assert retained["status"] == "PASS" and retained["signature_state"] == "UNSIGNED"
+    assert verify_receipt(retained)["valid"]  # integrity, not authenticity
+
+
+def test_24c_require_signed_accepts_locally_verified_signature(valid, tmp_path, monkeypatch, capsys):
+    from cryptography.hazmat.primitives import serialization
+    from cryptography.hazmat.primitives.asymmetric.ed25519 import Ed25519PrivateKey
+    from szl_evidence.cli import build_parser
+
+    key = Ed25519PrivateKey.generate()
+    key_path = tmp_path / "ephemeral-test-key.pem"
+    key_path.write_bytes(key.private_bytes(serialization.Encoding.PEM, serialization.PrivateFormat.PKCS8,
+                                            serialization.NoEncryption()))
+    monkeypatch.setenv("SZL_RECEIPT_ED25519_KEY", str(key_path))
+    destination = tmp_path / "signed.json"
+    args = build_parser().parse_args(["engine", "verify", str(valid), "--receipt", str(destination),
+                                      "--require-signed"])
+    assert args.fn(args) == 0
+    summary = json.loads(capsys.readouterr().out)
+    retained = json.loads(destination.read_text(encoding="utf-8"))
+    assert summary["status"] == "PASS" and summary["signature_requirement"] == "SATISFIED"
+    assert retained["signature_state"] == "SIGNED"
+    key.public_key().verify(base64.b64decode(retained["signature"]["value"]),
+                            bytes.fromhex(retained["receipt_sha256"]))
 
 
 # 25

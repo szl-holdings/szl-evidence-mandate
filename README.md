@@ -9,7 +9,8 @@ A Scientific Evidence Gate engine plus evidence-backed, read-only audits of the
 > The system producing an answer must not be the sole authority certifying that its own
 > verification occurred.
 
-**Maturity:** research prototype (v0.1.0). **Licence:** Apache-2.0 (org standard; see `LICENSE`).
+**Maturity:** research prototype (0.1.2 source candidate; the last PyPI release may differ).
+**Licence:** Apache-2.0 (org standard; see `LICENSE`).
 
 ## What it does
 
@@ -44,10 +45,25 @@ szl-audit zoomout --output reports      # also renders reports/00..11
 
 Every command writes a receipt under `reports/receipts/` and supports `--dry-run`.
 
+### Optional signed engine receipts
+
+Install the `sign` extra to make Ed25519 signing available, then configure
+`SZL_RECEIPT_ED25519_KEY` with the path to a protected, unencrypted Ed25519 PEM private key.
+Do not put the key or its contents in a repository or receipt. For an engine run that must
+produce a signature, use `szl-audit engine verify fixtures/valid --require-signed`.
+An absent dependency, key, or usable Ed25519 signature retains an `UNSIGNED` receipt and
+returns CLI exit code 3 with `signature_requirement: BLOCKED_UNSIGNED`, even if the engine
+checks themselves passed. The receipt keeps the engine result so the signing failure cannot
+erase a scientific finding. Without the flag, signing remains optional and honest `UNSIGNED`
+receipts keep their existing exit codes. A successful local signature is self-checked before
+the receipt is written, but a recipient must independently verify it against a trusted public
+key; `engine verify-receipt` currently checks content/ledger integrity, **not** signer identity.
+
 ## Evidence boundary
 
 - **Integrity:** receipts bind content by SHA-256 and chain invocations. Receipts are
-  `UNSIGNED` unless a real key is configured; no signature is ever fabricated.
+  `UNSIGNED` unless a usable Ed25519 key and signing dependency are configured; no signature
+  is ever fabricated. `SIGNED` identifies local signing, not independent signer trust.
 - **Performance:** not measured by this tool beyond wall-clock durations of smoke tests.
 - **Validity:** not established. A receipt supports integrity, provenance, and
   replayability. It does not establish scientific truth, accuracy, safety, or fitness for use.
