@@ -146,6 +146,34 @@ def run_argv(
     return {"argv": list(argv), "exit_code": rc, "duration_s": dur, "output": out}
 
 
+# The scanner and every output boundary share these credential formats. Group 1
+# is the sensitive value; surrounding assignment context is not a credential.
+# Keep detection thresholds/confidence unchanged when extending output defense.
+CREDENTIAL_PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
+    ("github_token", re.compile(r"\b(gh[pousr]_[A-Za-z0-9]{36,})\b"), "HIGH"),
+    ("github_fine_grained_pat", re.compile(r"\b(github_pat_[A-Za-z0-9_]{60,})\b"), "HIGH"),
+    ("huggingface_token", re.compile(r"\b(hf_[A-Za-z]{34,})\b"), "HIGH"),
+    ("aws_access_key_id", re.compile(r"\b((?:AKIA|ASIA)[0-9A-Z]{16})\b"), "HIGH"),
+    ("openai_key", re.compile(r"\b(sk-(?:proj-)?[A-Za-z0-9_\-]{32,})\b"), "HIGH"),
+    ("anthropic_key", re.compile(r"\b(sk-ant-[A-Za-z0-9_\-]{32,})\b"), "HIGH"),
+    ("slack_token", re.compile(r"\b(xox[baprs]-[A-Za-z0-9-]{10,})\b"), "HIGH"),
+    ("stripe_live_key", re.compile(r"\b((?:sk|rk)_live_[A-Za-z0-9]{20,})\b"), "HIGH"),
+    ("google_api_key", re.compile(r"\b(AIza[0-9A-Za-z_\-]{35})\b"), "HIGH"),
+    ("cloudflare_api_token", re.compile(r"(?i)cloudflare[^\n]{0,40}?[=:]\s*['\"]?([A-Za-z0-9_\-]{40})\b"), "MEDIUM"),
+    ("private_key_block", re.compile(r"(-----BEGIN (?:RSA |EC |OPENSSH |DSA |PGP |ENCRYPTED )?PRIVATE KEY-----)"), "HIGH"),
+    ("jwt", re.compile(r"\b(eyJ[A-Za-z0-9_\-]{10,}\.eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,})\b"), "MEDIUM"),
+    ("generic_secret_assignment", re.compile(r"(?i)\b(?:api[_-]?key|secret|token|passwd|password|private[_-]?key)\b\s*[=:]\s*['\"]([A-Za-z0-9+/=_\-]{24,})['\"]"), "LOW"),
+]
+
+# A header-only replacement would leave key material behind. Delimiters are
+# scanned once, including nested blocks; malformed/unclosed spans fail closed.
+_PRIVATE_KEY_DELIMITER = re.compile(
+    r"-----(?P<boundary>BEGIN|END) "
+    r"(?P<kind>(?:RSA |EC |OPENSSH |DSA |PGP |ENCRYPTED )?PRIVATE KEY)-----"
+)
+
+# Retain the existing deliberately broader short-prefix and Authorization
+# defenses as well as the canonical scanner's stricter matching thresholds.
 _REDACT_PATTERNS = [
     re.compile(r"gh[pousr]_[A-Za-z0-9]{20,}"),
     re.compile(r"github_pat_[A-Za-z0-9_]{20,}"),
@@ -157,7 +185,42 @@ _REDACT_PATTERNS = [
 ]
 
 
+def _redact_private_keys(text: str) -> str:
+    parts: list[str] = []
+    kinds: list[str] = []
+    cursor = 0
+    span_start = 0
+    for match in _PRIVATE_KEY_DELIMITER.finditer(text):
+        kind = match.group("kind")
+        if match.group("boundary") == "BEGIN":
+            if not kinds:
+                span_start = match.start()
+            kinds.append(kind)
+        elif kinds:
+            if kinds[-1] != kind:
+                # A mismatched footer cannot establish where sensitive bytes end.
+                break
+            kinds.pop()
+            if not kinds:
+                parts.extend((text[cursor:span_start], "[REDACTED]"))
+                cursor = match.end()
+    if kinds:
+        parts.extend((text[cursor:span_start], "[REDACTED]"))
+        cursor = len(text)
+    parts.append(text[cursor:])
+    return "".join(parts)
+
+
 def redact(text: str) -> str:
+    text = _redact_private_keys(text)
+
+    def replace_value(match: re.Match[str]) -> str:
+        start, end = match.span(1)
+        whole = match.group(0)
+        return whole[:start - match.start()] + "[REDACTED]" + whole[end - match.start():]
+
+    for _kind, pattern, _confidence in CREDENTIAL_PATTERNS:
+        text = pattern.sub(replace_value, text)
     for p in _REDACT_PATTERNS:
         text = p.sub(lambda m: (m.group(1) if m.groups() else "") + "[REDACTED]", text)
     return text

@@ -14,23 +14,10 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from ..models import sha256_bytes
-from ..safety import safe_walk
+from ..safety import CREDENTIAL_PATTERNS, safe_walk
 
-PATTERNS: list[tuple[str, re.Pattern[str], str]] = [
-    ("github_token", re.compile(r"\b(gh[pousr]_[A-Za-z0-9]{36,})\b"), "HIGH"),
-    ("github_fine_grained_pat", re.compile(r"\b(github_pat_[A-Za-z0-9_]{60,})\b"), "HIGH"),
-    ("huggingface_token", re.compile(r"\b(hf_[A-Za-z]{34,})\b"), "HIGH"),
-    ("aws_access_key_id", re.compile(r"\b((?:AKIA|ASIA)[0-9A-Z]{16})\b"), "HIGH"),
-    ("openai_key", re.compile(r"\b(sk-(?:proj-)?[A-Za-z0-9_\-]{32,})\b"), "HIGH"),
-    ("anthropic_key", re.compile(r"\b(sk-ant-[A-Za-z0-9_\-]{32,})\b"), "HIGH"),
-    ("slack_token", re.compile(r"\b(xox[baprs]-[A-Za-z0-9-]{10,})\b"), "HIGH"),
-    ("stripe_live_key", re.compile(r"\b((?:sk|rk)_live_[A-Za-z0-9]{20,})\b"), "HIGH"),
-    ("google_api_key", re.compile(r"\b(AIza[0-9A-Za-z_\-]{35})\b"), "HIGH"),
-    ("cloudflare_api_token", re.compile(r"(?i)cloudflare[^\n]{0,40}?[=:]\s*['\"]?([A-Za-z0-9_\-]{40})\b"), "MEDIUM"),
-    ("private_key_block", re.compile(r"(-----BEGIN (?:RSA |EC |OPENSSH |DSA |PGP |ENCRYPTED )?PRIVATE KEY-----)"), "HIGH"),
-    ("jwt", re.compile(r"\b(eyJ[A-Za-z0-9_\-]{10,}\.eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,})\b"), "MEDIUM"),
-    ("generic_secret_assignment", re.compile(r"(?i)\b(?:api[_-]?key|secret|token|passwd|password|private[_-]?key)\b\s*[=:]\s*['\"]([A-Za-z0-9+/=_\-]{24,})['\"]"), "LOW"),
-]
+# Backwards-compatible scanner export; regexes and classification are unchanged.
+PATTERNS = CREDENTIAL_PATTERNS
 
 SKIP_DIRS = {".git", "node_modules", ".venv", "venv", "__pycache__", "dist", "build", ".lake", ".next", "target"}
 SKIP_SUFFIX = {".png", ".jpg", ".jpeg", ".gif", ".ico", ".pdf", ".zip", ".gz", ".tar", ".whl", ".npz", ".npy", ".safetensors", ".bin", ".gguf", ".pt", ".onnx", ".woff", ".woff2", ".ttf", ".mp4", ".webp", ".lock", ".svg", ".parquet", ".arrow"}
