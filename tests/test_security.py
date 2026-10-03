@@ -153,8 +153,23 @@ OUTPUT_MARKERS = [
     "Authorization: Bearer synthetic-test-value",
 ]
 
+# Constructed non-valid synthetic values; no provider/environment lookup.
+# These previously detected formats must not fall through the output redactor.
+CANONICAL_OUTPUT_MARKERS = [
+    "ASIA" + "Q" * 16,
+    "sk_live_" + "R" * 24,
+    "rk_live_" + "S" * 24,
+    "AIza" + "T" * 35,
+    "cloudflare_api_token = '" + "U" * 40 + "'",
+    "eyJ" + "V" * 16 + ".eyJ" + "W" * 16 + "." + "Y" * 16,
+    "password = '" + "Z" * 24 + "'",
+    "-----BEGIN PRIVATE KEY-----",
+    "-----BEGIN RSA PRIVATE KEY-----\n" + "B" * 64 + "\n-----END RSA PRIVATE KEY-----",
+    "-----BEGIN OPENSSH PRIVATE KEY-----\n" + "C" * 64,
+]
 
-@pytest.mark.parametrize("marker", OUTPUT_MARKERS)
+
+@pytest.mark.parametrize("marker", OUTPUT_MARKERS + CANONICAL_OUTPUT_MARKERS)
 @pytest.mark.parametrize("kind", ["text", "json", "csv"])
 def test_report_output_redacts_credentials_without_corrupting_format(tmp_path, marker, kind):
     writer = ReportWriter(tmp_path)
@@ -174,7 +189,7 @@ def test_report_output_redacts_credentials_without_corrupting_format(tmp_path, m
         assert list(csv.reader(io.StringIO(text))) == [["finding", "status"], [redact(marker), "HOLD"]]
 
 
-@pytest.mark.parametrize("marker", OUTPUT_MARKERS)
+@pytest.mark.parametrize("marker", OUTPUT_MARKERS + CANONICAL_OUTPUT_MARKERS)
 def test_cli_output_redacts_credentials_and_preserves_json(marker, capsys):
     payload = {"nested": [marker], "status": "HOLD", "receipt_sha256": "a" * 64}
     original = json.dumps(payload, sort_keys=True)
@@ -248,3 +263,96 @@ def test_cli_formatting_and_default_string_compatibility(capsys):
     payload = {"path": Path("ordinary/file"), "unicode": "café", "nested": (None, True, 1.25)}
     _print(payload)
     assert capsys.readouterr().out == json.dumps(payload, indent=2, sort_keys=True, default=str) + "\n"
+
+
+def test_detector_and_redactor_share_exact_credential_patterns():
+    from szl_evidence.audit.secrets_scan import PATTERNS
+    from szl_evidence.safety import CREDENTIAL_PATTERNS
+
+    assert PATTERNS is CREDENTIAL_PATTERNS
+    assert len(PATTERNS) == 13
+
+
+@pytest.mark.parametrize("prefix", ["", "RSA ", "EC ", "OPENSSH ", "DSA ", "PGP ", "ENCRYPTED "])
+@pytest.mark.parametrize("terminated", [True, False])
+def test_private_key_body_is_redacted_not_only_header(prefix, terminated):
+    body = "D" * 64
+    value = f"-----BEGIN {prefix}PRIVATE KEY-----\n{body}\n"
+    if terminated:
+        value += f"-----END {prefix}PRIVATE KEY-----\nstatus: HOLD"
+    result = redact(value)
+    assert body not in result and "PRIVATE KEY" not in result
+    assert "[REDACTED]" in result
+    if terminated:
+        assert result.endswith("\nstatus: HOLD")
+
+
+def test_assignment_redaction_keeps_nonsecret_context_and_scanner_classification():
+    from szl_evidence.audit.secrets_scan import scan_text
+
+    value = "cloudflare_api_token = '" + "U" * 40 + "'; status=HOLD"
+    assert redact(value) == "cloudflare_api_token = '[REDACTED]'; status=HOLD"
+    hits = scan_text(value, "fixtures/synthetic-config.txt")
+    assert len(hits) == 1
+    assert hits[0].type == "cloudflare_api_token"
+    assert hits[0].confidence == "LOW" and hits[0].likely_live is False
+    assert "U" * 40 not in json.dumps(hits[0].to_dict())
+
+
+def test_private_key_json_scrubbing_preserves_other_fields(tmp_path):
+    body = "E" * 64
+    key = "-----BEGIN EC PRIVATE KEY-----\n" + body + "\n-----END EC PRIVATE KEY-----"
+    payload = {"key": key, "status": "HOLD", "receipt_sha256": "f" * 64}
+    original = json.dumps(payload, sort_keys=True)
+    result = json.loads(ReportWriter(tmp_path).json("report.json", payload).read_text(encoding="utf-8"))
+    assert result == {"key": "[REDACTED]", "status": "HOLD", "receipt_sha256": "f" * 64}
+    assert json.dumps(payload, sort_keys=True) == original
+
+
+@pytest.mark.parametrize("inner_kind", ["RSA", "EC"])
+@pytest.mark.parametrize("terminated", [True, False])
+@pytest.mark.parametrize("sink", ["text", "json", "csv", "cli"])
+def test_nested_private_key_bodies_never_escape_output(tmp_path, capsys, inner_kind, terminated, sink):
+    body = "Qm" * 40
+    value = (
+        "-----BEGIN RSA PRIVATE KEY-----\r\nouter synthetic body\r\n"
+        f"-----BEGIN {inner_kind} PRIVATE KEY-----\r\ninner synthetic body\r\n"
+        f"-----END {inner_kind} PRIVATE KEY-----\r\n{body}\r\n"
+    )
+    if terminated:
+        value += "-----END RSA PRIVATE KEY-----\r\npublic context"
+    expected = "[REDACTED]" + ("\r\npublic context" if terminated else "")
+    assert redact(value) == expected
+    payload = {"finding": value, "status": "HOLD"}
+    original = json.dumps(payload, sort_keys=True)
+    writer = ReportWriter(tmp_path)
+    if sink == "cli":
+        _print(payload)
+        output = capsys.readouterr().out
+        assert json.loads(output) == {"finding": expected, "status": "HOLD"}
+    else:
+        if sink == "text":
+            path = writer.text("nested.txt", value)
+        elif sink == "json":
+            path = writer.json("nested.json", payload)
+        else:
+            path = writer.csv("nested.csv", ["finding", "status"], [[value, "HOLD"]])
+        data = path.read_bytes()
+        output = data.decode("utf-8")
+        assert writer.hashes[path.name] == sha256_bytes(data)
+        if sink == "json":
+            assert json.loads(output) == {"finding": expected, "status": "HOLD"}
+        elif sink == "csv":
+            assert list(csv.reader(io.StringIO(output))) == [["finding", "status"], [expected, "HOLD"]]
+    assert body not in output and "PRIVATE KEY" not in output
+    assert json.dumps(payload, sort_keys=True) == original
+
+
+def test_adjacent_private_keys_preserve_public_context_between_spans():
+    key = "-----BEGIN EC PRIVATE KEY-----\nsynthetic key body\n-----END EC PRIVATE KEY-----"
+    assert redact(f"before {key} between {key} after") == "before [REDACTED] between [REDACTED] after"
+
+
+def test_mismatched_private_key_footer_fails_closed_to_end():
+    value = "before -----BEGIN RSA PRIVATE KEY-----\nsynthetic key body\n-----END EC PRIVATE KEY-----\nouter suffix"
+    assert redact(value) == "before [REDACTED]"
