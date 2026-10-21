@@ -133,7 +133,7 @@ def resolve_links(gh: dict[str, Any], files: dict[str, Any], hf_ids: set[str], c
 
 
 # ------------------------------------------------------------------ stage: github
-def stream_repos(gh: dict[str, Any], root: Path, deep: bool, smoke_cache: dict[str, Any]) -> tuple[dict[str, Any], dict[str, Any]]:
+def stream_repos(gh: dict[str, Any], root: Path, deep: bool, smoke_cache: dict[str, Any], *, allow_effects: bool = False) -> tuple[dict[str, Any], dict[str, Any]]:
     """Clone -> analyse -> smoke -> delete, one repository at a time. Peak disk = one repo.
     `.github` is kept (the org counter script and profile are needed by later stages)."""
     from ..safety import rmtree_force
@@ -153,7 +153,7 @@ def stream_repos(gh: dict[str, Any], root: Path, deep: bool, smoke_cache: dict[s
         if free < need:
             r["clone"] = {"ok": False, "exit_code": "NOT_TESTED", "reason": f"insufficient free disk on audit host to clone ({free // 2**20} MB free < {need // 2**20} MB needed)"}
             continue
-        res = github.clone_repo(r["full_name"], dest)
+        res = github.clone_repo(r["full_name"], dest, allow_effects=allow_effects)
         r["clone"] = {k: v for k, v in res.items() if k != "output"} | {"output": str(res.get("output", ""))[-400:], "mode": "streamed (deleted after analysis)" if r["name"] != ".github" else "streamed (kept)"}
         if not res.get("ok"):
             rmtree_force(dest)
@@ -165,16 +165,16 @@ def stream_repos(gh: dict[str, Any], root: Path, deep: bool, smoke_cache: dict[s
         f = files[r["name"]]
         if "error" not in f and set(f.get("manifests", {})) & {"pyproject.toml", "setup.py", "requirements.txt", "package.json"} and (deep or r["name"] in findings.FLAGSHIPS):
             key = f"{r['name']}@{res.get('head')}"
-            smoke[r["name"]] = dict(smoke_cache[key], reused_from_identical_head=smoke_cache[key].get("completed_at")) if key in smoke_cache else functional.smoke_repo(dest, f.get("readme_text", ""))
+            smoke[r["name"]] = dict(smoke_cache[key], reused_from_identical_head=smoke_cache[key].get("completed_at")) if key in smoke_cache else functional.smoke_repo(dest, f.get("readme_text", ""), allow_effects=allow_effects)
         if r["name"] != ".github":
             rmtree_force(dest)
     return files, smoke
 
 
-def run_github(org: str, out: Path, clone: bool, deep: bool, dry_run: bool, admit_smoke: Path | None = None, stream: bool = False) -> dict[str, Any]:
+def run_github(org: str, out: Path, clone: bool, deep: bool, dry_run: bool, admit_smoke: Path | None = None, stream: bool = False, allow_effects: bool = False) -> dict[str, Any]:
     started = utcnow()
     raw = out / "raw"
-    gh = github.collect(org, raw, clone=clone and not dry_run and not stream, dry_run=dry_run)
+    gh = github.collect(org, raw, clone=clone and not dry_run and not stream, dry_run=dry_run, allow_effects=allow_effects)
     if dry_run:
         return {"dry_run": True, "repos_listed": len(gh["repos"]), "listing": gh["listing"]}
     if gh["listing"]["denominator_state"] != "OBSERVED":
@@ -185,7 +185,7 @@ def run_github(org: str, out: Path, clone: bool, deep: bool, dry_run: bool, admi
     files: dict[str, Any] = {}
     streamed_smoke: dict[str, Any] = {}
     if stream:
-        files, streamed_smoke = stream_repos(gh, root, deep, load(out, "smoke-cache") or {})
+        files, streamed_smoke = stream_repos(gh, root, deep, load(out, "smoke-cache") or {}, allow_effects=allow_effects)
     elif clone:
         names = [r["name"] for r in gh["repos"] if r["clone"].get("ok")]
 
@@ -213,7 +213,7 @@ def run_github(org: str, out: Path, clone: bool, deep: bool, dry_run: bool, admi
             res = dict(smoke_cache[key])
             res["reused_from_identical_head"] = res.get("completed_at")
             return n, res
-        return n, functional.smoke_repo(root / n, files[n].get("readme_text", ""))
+        return n, functional.smoke_repo(root / n, files[n].get("readme_text", ""), allow_effects=allow_effects)
 
     # Sequential: the audit host's free disk is the binding constraint (see functional.MIN_FREE_BYTES).
     with ThreadPoolExecutor(1) as ex:
@@ -362,12 +362,12 @@ def lean_facts(root: Path, gh: dict[str, Any]) -> dict[str, Any]:
 
 
 # ------------------------------------------------------------------ stage: huggingface
-def run_hf(org: str, out: Path, functional_tests: bool, dry_run: bool) -> dict[str, Any]:
+def run_hf(org: str, out: Path, functional_tests: bool, dry_run: bool, allow_effects: bool = False) -> dict[str, Any]:
     started = utcnow()
     hf = huggingface.collect(org, out / "raw", functional=functional_tests, dry_run=dry_run)
     if dry_run:
         return {"dry_run": True, "listing": hf["listing"]}
-    conf = conformance.run_all(hf, hf_token()[0]) if functional_tests else {"corpora": [], "state": NOT_TESTED}
+    conf = conformance.run_all(hf, hf_token()[0], allow_effects=allow_effects) if functional_tests else {"corpora": [], "state": NOT_TESTED}
     anon = anon_public_counts(org, out / "raw")
     state = {"hf": hf, "conformance": conf, "public_counts": anon}
     save(out, "hf", state)

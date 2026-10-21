@@ -11,7 +11,6 @@ from __future__ import annotations
 import json
 import re
 import shutil
-import tempfile
 from pathlib import Path
 from typing import Any
 
@@ -19,6 +18,7 @@ import httpx
 
 from ..models import NOT_TESTED, utcnow
 from ..safety import contained, isolated_env, run_argv
+from .effect_gate import owned_tempdir, register_clone, require_opt_in
 from .functional import _venv, run_paired_verifier
 
 HF = "https://huggingface.co"
@@ -66,11 +66,12 @@ def clone_at(full: str, dest: Path, ref: str | None) -> dict[str, Any]:
     return {"ok": True, "head": head}
 
 
-def replay_fixture_corpus(art: dict[str, Any], token: str | None) -> dict[str, Any]:
+def replay_fixture_corpus(art: dict[str, Any], token: str | None, *, allow_effects: bool = False) -> dict[str, Any]:
+    require_opt_in("replay_fixture_corpus", allow_effects)
     rid = art["id"]
     card = art.get("readme_text", "")
     manifests = [f for f in art["files"] if f["path"].endswith(".jsonl") and "bench" in f["path"]]
-    work = Path(tempfile.mkdtemp(prefix="szl-bench-"))
+    work = owned_tempdir("szl-bench-")
     try:
         ds = work / "ds"
         dl = download_dataset(rid, art["files"], ds, token)
@@ -96,10 +97,11 @@ def replay_fixture_corpus(art: dict[str, Any], token: str | None) -> dict[str, A
             if not cl["ok"]:
                 out["runs"].append({"verifier": f"{verifier_repo}@{label}", "state": "SOURCE_UNAVAILABLE", "detail": cl["detail"]})
                 continue
+            register_clone(vdir)
             if not (vdir / "verify.py").exists():
                 out["runs"].append({"verifier": f"{verifier_repo}@{cl['head'][:12]}", "state": NOT_TESTED, "reason": "verify.py not present at this revision"})
                 continue
-            res = run_paired_verifier(ds, rows, vdir, f"{verifier_repo}@{cl['head'][:12]} ({label})")
+            res = run_paired_verifier(ds, rows, vdir, f"{verifier_repo}@{cl['head'][:12]} ({label})", allow_effects=allow_effects)
             res["revision"] = cl["head"]
             out["runs"].append(res)
         out["state"] = "RAN"
@@ -108,13 +110,14 @@ def replay_fixture_corpus(art: dict[str, Any], token: str | None) -> dict[str, A
         shutil.rmtree(work, ignore_errors=True)
 
 
-def run_card_scorer(art: dict[str, Any], token: str | None) -> dict[str, Any]:
+def run_card_scorer(art: dict[str, Any], token: str | None, *, allow_effects: bool = False) -> dict[str, Any]:
     """Datasets that ship their own scorer: run the exact command the card documents."""
     rid = art["id"]
     cmds = [c.split("#")[0].strip() for c in re.findall(r"(?m)^\s*(python [^\n]*score\.py[^\n]*)", art.get("readme_text", ""))]
     if not cmds:
         return {"dataset": rid, "type": "bundled_scorer", "state": NOT_TESTED, "reason": "card documents no scorer command"}
-    work = Path(tempfile.mkdtemp(prefix="szl-score-"))
+    require_opt_in("run_card_scorer", allow_effects)
+    work = owned_tempdir("szl-score-")
     try:
         ds = work / "ds"
         dl = download_dataset(rid, art["files"], ds, token)
@@ -135,15 +138,19 @@ def run_card_scorer(art: dict[str, Any], token: str | None) -> dict[str, Any]:
         shutil.rmtree(work, ignore_errors=True)
 
 
-def run_all(hf: dict[str, Any], token: str | None) -> dict[str, Any]:
+def run_all(hf: dict[str, Any], token: str | None, *, allow_effects: bool = False) -> dict[str, Any]:
     started = utcnow()
     results = []
     for a in hf.get("artifacts", []):
         if a.get("kind") != "dataset" or "files" not in a:
             continue
         names = [f["path"] for f in a["files"]]
+        effectful = any(n.endswith("bench.jsonl") or n.endswith("score.py") for n in names)
+        if effectful and allow_effects is not True:
+            results.append({"dataset": a.get("id"), "state": NOT_TESTED, "runs": [], "reason": "effectful conformance step (clone, venv, install, run) refused; pass --allow-effects"})
+            continue
         if any(n.endswith("bench.jsonl") for n in names):
-            results.append(replay_fixture_corpus(a, token))
+            results.append(replay_fixture_corpus(a, token, allow_effects=allow_effects))
         elif any(n.endswith("score.py") for n in names):
-            results.append(run_card_scorer(a, token))
+            results.append(run_card_scorer(a, token, allow_effects=allow_effects))
     return {"started_at": started, "completed_at": utcnow(), "corpora": results}

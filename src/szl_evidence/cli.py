@@ -187,7 +187,13 @@ def cmd_engine_report(a: argparse.Namespace) -> int:
 def cmd_github(a: argparse.Namespace) -> int:
     from .audit.pipeline import run_github
 
-    st = run_github(a.org, a.output, clone=a.clone, deep=a.deep, dry_run=a.dry_run, admit_smoke=getattr(a, "admit_smoke", None), stream=getattr(a, "stream", False))
+    from .audit.effect_gate import EffectRefused
+
+    try:
+        st = run_github(a.org, a.output, clone=a.clone, deep=a.deep, dry_run=a.dry_run, admit_smoke=getattr(a, "admit_smoke", None), stream=getattr(a, "stream", False), allow_effects=getattr(a, "allow_effects", False) is True)
+    except EffectRefused as e:
+        print(f"refused: {e}. Cloning and smoke tests install packages and run code; pass --allow-effects to permit them.", file=sys.stderr)
+        return 2
     if a.dry_run:
         _print(st)
         return 0
@@ -198,7 +204,7 @@ def cmd_github(a: argparse.Namespace) -> int:
 def cmd_hf(a: argparse.Namespace) -> int:
     from .audit.pipeline import run_hf
 
-    st = run_hf(a.org, a.output, functional_tests=a.functional, dry_run=a.dry_run)
+    st = run_hf(a.org, a.output, functional_tests=a.functional, dry_run=a.dry_run, allow_effects=getattr(a, "allow_effects", False) is True)
     if a.dry_run:
         _print(st)
         return 0
@@ -329,10 +335,12 @@ def build_parser() -> argparse.ArgumentParser:
     g.add_argument("--deep", action="store_true", help="smoke-test every Python/Node repo, not only the priority tier")
     g.add_argument("--stream", action="store_true", help="with --clone: clone, analyse, smoke-test and delete one repo at a time (bounded disk)")
     g.add_argument("--admit-smoke", type=Path, help="JSON {results, heads, label} of prior smoke evidence, admitted under audit/admission.py rules")
+    g.add_argument("--allow-effects", action="store_true", help="permit effectful steps (clone, pip/npm install, imports, test runs, git clean) inside temp dirs this process creates; refused by default")
     g.set_defaults(fn=cmd_github)
     h = sub.add_parser("hf", parents=[common])
     h.add_argument("--org", default="SZLHOLDINGS")
     h.add_argument("--functional", action="store_true")
+    h.add_argument("--allow-effects", action="store_true", help="permit effectful steps (clone, pip/npm install, imports, test runs, git clean) inside temp dirs this process creates; refused by default")
     h.set_defaults(fn=cmd_hf)
     sub.add_parser("rescore", parents=[common], help="offline: re-attribute recorded smoke outcomes and recompute scorecards").set_defaults(fn=cmd_rescore)
     sub.add_parser("reconcile", parents=[common]).set_defaults(fn=cmd_reconcile)
@@ -345,6 +353,7 @@ def build_parser() -> argparse.ArgumentParser:
     al.add_argument("--hf-org", default="SZLHOLDINGS")
     al.add_argument("--fixtures", default="fixtures")
     al.add_argument("--deep", action="store_true")
+    al.add_argument("--allow-effects", action="store_true", help="permit effectful steps (clone, pip/npm install, imports, test runs, git clean) inside temp dirs this process creates; refused by default")
     al.set_defaults(fn=cmd_all)
     return p
 
