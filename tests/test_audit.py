@@ -130,10 +130,14 @@ def test_34_conformance_mismatch_is_critical(tmp_path):
     fx = tmp_path / "bench"
     (fx / "invalid").mkdir(parents=True)
     (fx / "invalid" / "tampered.json").write_text("{}", encoding="utf-8")
-    ver = tmp_path / "verifier"
+    from szl_evidence.audit.effect_gate import owned_tempdir, register_clone
+
+    ver = owned_tempdir("szl-test-ver-") / "verifier"  # the gate only runs verifiers cloned by this process
     ver.mkdir()
+    (ver / ".git").mkdir()
+    register_clone(ver)
     (ver / "verify.py").write_text("print('OVERALL: PASS')\n", encoding="utf-8")  # a verifier that accepts everything
-    res = run_paired_verifier(fx, [{"file": "invalid/tampered.json", "expected_result": "FAIL"}], ver, "toy@HEAD (HEAD)")
+    res = run_paired_verifier(fx, [{"file": "invalid/tampered.json", "expected_result": "FAIL"}], ver, "toy@HEAD (HEAD)", allow_effects=True)
     assert res["mismatched"] == ["invalid/tampered.json"] and res["results"][0]["observed"] == "PASS"
     s = FindingSink("huggingface")
     findings.hf_findings(s, {"artifacts": [], "completed_at": "t"}, {"corpora": [{"dataset": "ORG/bench", "runs": [res]}]})
@@ -263,7 +267,10 @@ def test_stream_mode_bounds_disk_and_persists_evidence(tmp_path, monkeypatch):
     from szl_evidence.audit import github as gh_mod
     from szl_evidence.audit import pipeline
 
-    def fake_clone(full, dest, timeout=900):
+    seen_allow: list[object] = []
+
+    def fake_clone(full, dest, timeout=900, *, allow_effects=False):
+        seen_allow.append(allow_effects)
         dest.mkdir(parents=True)
         (dest / "README.md").write_text("x")
         return {"ok": True, "head": "a" * 40, "exit_code": 0}
@@ -280,6 +287,7 @@ def test_stream_mode_bounds_disk_and_persists_evidence(tmp_path, monkeypatch):
     assert not (tmp_path / "clones" / "keepme").exists()  # deleted after analysis
     assert (tmp_path / "clones" / ".github").exists()  # org profile kept for later stages
     assert gh["repos"][2]["clone"]["reason"] == "archived"
+    assert seen_allow == [False, False]  # the default is passed through, never silently upgraded
 
 
 def test_stream_mode_skips_clone_when_disk_insufficient(tmp_path, monkeypatch):

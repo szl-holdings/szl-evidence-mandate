@@ -21,6 +21,7 @@ from typing import Any
 
 from ..models import NOT_TESTED, UNKNOWN, sha256_file, utcnow
 from ..safety import contained, isolated_env, rmtree_force, run_argv
+from .effect_gate import EffectRefused, assert_owned_clone, assert_owned_root, guarded_git_clean, owned_tempdir, require_opt_in
 
 PY = shutil.which("py")
 PY_ARGV = [PY, "-3.12"] if PY else [sys.executable]
@@ -90,7 +91,10 @@ def quickstart_commands(readme: str, scripts: list[str], limit: int = 4) -> list
     return cmds
 
 
-def smoke_python(repo: Path, readme: str, workdir: Path, run_tests: bool = True) -> dict[str, Any]:
+def smoke_python(repo: Path, readme: str, workdir: Path, run_tests: bool = True, *, allow_effects: bool = False) -> dict[str, Any]:
+    require_opt_in("smoke_python", allow_effects)
+    assert_owned_clone(repo, "smoke_python")
+    assert_owned_root(workdir, "smoke_python")
     home = workdir / "home"
     home.mkdir(parents=True, exist_ok=True)
     env = isolated_env(home)
@@ -176,7 +180,10 @@ def smoke_python(repo: Path, readme: str, workdir: Path, run_tests: bool = True)
     }
 
 
-def smoke_node(repo: Path, workdir: Path) -> dict[str, Any]:
+def smoke_node(repo: Path, workdir: Path, *, allow_effects: bool = False) -> dict[str, Any]:
+    require_opt_in("smoke_node", allow_effects)
+    assert_owned_clone(repo, "smoke_node")
+    assert_owned_root(workdir, "smoke_node")
     npm = shutil.which("npm")
     if not npm:
         return {"kind": "node", "install_ok": NOT_TESTED, "reason": "npm not available on audit host"}
@@ -248,26 +255,31 @@ def classify_environment(res: dict[str, Any]) -> dict[str, Any]:
     return res
 
 
-def smoke_repo(repo: Path, readme: str) -> dict[str, Any]:
+def smoke_repo(repo: Path, readme: str, *, allow_effects: bool = False) -> dict[str, Any]:
+    try:
+        require_opt_in("smoke_repo", allow_effects)
+        assert_owned_clone(repo, "smoke_repo")
+    except EffectRefused as e:
+        return {"kind": "unknown", "install_ok": NOT_TESTED, "refused": True, "reason": str(e), "tests": {"state": NOT_TESTED, "reason": str(e)}, "started_at": utcnow(), "completed_at": utcnow()}
     free = shutil.disk_usage(tempfile.gettempdir()).free
     if free < MIN_FREE_BYTES:
         return {"kind": "unknown", "install_ok": NOT_TESTED, "reason": f"insufficient free disk on audit host ({free // 2**20} MB < {MIN_FREE_BYTES // 2**20} MB)", "started_at": utcnow(), "completed_at": utcnow()}
     heavy = heavy_dependencies(repo)
     if heavy and free < HEAVY_FREE_BYTES:
         return {"kind": "python", "install_ok": NOT_TESTED, "reason": f"heavy ML dependencies {heavy} exceed the audit-host disk budget ({free // 2**20} MB free < {HEAVY_FREE_BYTES // 2**20} MB)", "heavy_dependencies": heavy, "started_at": utcnow(), "completed_at": utcnow()}
-    work = Path(tempfile.mkdtemp(prefix="szl-smoke-"))
+    work = owned_tempdir("szl-smoke-")
     started = utcnow()
     try:
         if (repo / "pyproject.toml").exists() or (repo / "setup.py").exists() or (repo / "requirements.txt").exists():
-            res = smoke_python(repo, readme, work)
+            res = smoke_python(repo, readme, work, allow_effects=allow_effects)
         elif (repo / "package.json").exists():
-            res = smoke_node(repo, work)
+            res = smoke_node(repo, work, allow_effects=allow_effects)
         else:
             res = {"kind": "none", "install_ok": NOT_TESTED, "reason": "no Python or Node entry point"}
     finally:
         rmtree_force(work)
         # remove build artefacts / node_modules the run created inside the clone
-        run_argv([shutil.which("git") or "git", "-C", str(repo), "clean", "-xdfq"], timeout=300)
+        guarded_git_clean(run_argv, shutil.which("git") or "git", repo, allow_effects, timeout=300)
     res = classify_environment(res)
     res["harness_revision"] = "fix2"  # byte-exact clone (core.autocrlf=false), absolute pip cache
     res["started_at"] = started
@@ -319,9 +331,11 @@ def lean_counts(root: Path) -> dict[str, Any]:
 
 
 # ------------------------------------------------------------------ conformance corpus replay
-def run_paired_verifier(fixtures_dir: Path, bench_rows: list[dict[str, Any]], verifier_repo: Path, label: str) -> dict[str, Any]:
+def run_paired_verifier(fixtures_dir: Path, bench_rows: list[dict[str, Any]], verifier_repo: Path, label: str, *, allow_effects: bool = False) -> dict[str, Any]:
     """Run ``verify.py`` from ``verifier_repo`` against each fixture and compare to the declared outcome."""
-    work = Path(tempfile.mkdtemp(prefix="szl-conf-"))
+    require_opt_in("run_paired_verifier", allow_effects)
+    assert_owned_clone(verifier_repo, "run_paired_verifier")
+    work = owned_tempdir("szl-conf-")
     home = work / "home"
     home.mkdir()
     env = isolated_env(home)
