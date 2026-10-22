@@ -13,6 +13,13 @@
 [Product](https://a-11-oy.com) · [Proof](https://a11oy.net) · [GitHub organization](https://github.com/szl-holdings)
 <!-- /szl:header -->
 
+## Scope and data boundary
+
+This repository is not a clinical tool: its evidence engine and audits must
+never receive patient data, PHI or clinical records. It audits repositories and
+Hugging Face assets of the SZL Holdings estate, and its engine reads the project
+files that a manifest declares.
+
 [![PyPI](https://img.shields.io/pypi/v/szl-evidence-mandate)](https://pypi.org/project/szl-evidence-mandate/) [![Python](https://img.shields.io/pypi/pyversions/szl-evidence-mandate)](https://pypi.org/project/szl-evidence-mandate/)
 
 A Scientific Evidence Gate engine plus evidence-backed, read-only audits of the
