@@ -19,8 +19,11 @@ name: publish to PyPI
 # The CycloneDX SBOM is a separate artifact. It is not in pypi-dists and is
 # not a PyPI upload. Package version and Trusted Publishing stay unchanged.
 #
-# Edit SZL_PACKAGES only, plus the SBOM artifact steps below. The org health
-# audit compares this file and .github/scripts/szl_pypi_release_gate.py by hash.
+# Edit SZL_PACKAGES only. The SBOM steps are the proposed canonical generator
+# output. The org health audit still compares this file with
+# gen_publish_workflow.render() and compares szl_pypi_release_gate.py by hash.
+# This branch drifts until that generator change is approved. The release gate
+# script is unchanged.
 
 on:
   release:
@@ -31,6 +34,7 @@ on:
       - "**/pyproject.toml"
       - ".github/workflows/publish-pypi.yml"
       - ".github/scripts/szl_pypi_release_gate.py"
+      - ".github/scripts/szl_pypi_sbom.py"
       - "src/**"
       - "**/*.py"
   push:
@@ -40,6 +44,7 @@ on:
       - "**/pyproject.toml"
       - ".github/workflows/publish-pypi.yml"
       - ".github/scripts/szl_pypi_release_gate.py"
+      - ".github/scripts/szl_pypi_sbom.py"
 
 env:
   # name=directory[:github-environment]; separate packages with ';'
@@ -103,25 +108,19 @@ jobs:
       - name: Generate CycloneDX SBOM
         run: |
           python -m pip install --disable-pip-version-check "cyclonedx-bom>=6,<8"
-          python -m venv "$RUNNER_TEMP/sbom-venv"
-          wheel="$(python -c 'import glob, pathlib; wheels=sorted(p for p in glob.glob("dist/**/*.whl", recursive=True) if not any(part.startswith("stage-") for part in pathlib.PurePosixPath(p.replace(chr(92), "/")).parts)); assert len(wheels)==1, wheels; print(wheels[0])')"
-          "$RUNNER_TEMP/sbom-venv/bin/python" -m pip install --disable-pip-version-check "$wheel"
-          mkdir -p sbom
-          python -m cyclonedx_py environment "$RUNNER_TEMP/sbom-venv" \
-            --mc-type library \
+          python .github/scripts/szl_pypi_sbom.py generate \
+            --dist dist \
             --pyproject pyproject.toml \
-            --output-reproducible \
-            --of JSON \
-            --output-file sbom/szl-evidence-mandate.cdx.json \
-            --validate
-          python -c 'import json, tomllib; bom=json.load(open("sbom/szl-evidence-mandate.cdx.json", encoding="utf-8")); version=tomllib.load(open("pyproject.toml","rb"))["project"]["version"]; comp=bom["metadata"]["component"]; assert bom["bomFormat"]=="CycloneDX", bom.get("bomFormat"); assert comp["name"]=="szl-evidence-mandate", comp.get("name"); assert comp["version"]==version, (comp.get("version"), version)'
+            --outdir sbom \
+            --venv "$RUNNER_TEMP/sbom-venv"
       # actions/upload-artifact v7.0.2
       - name: Upload CycloneDX SBOM
         uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9
         with:
           name: cyclonedx-sbom
-          path: sbom/szl-evidence-mandate.cdx.json
+          path: sbom/
           if-no-files-found: error
+          retention-days: 90
 
   publish:
     name: Publish szl-evidence-mandate to PyPI (Trusted Publishing)
