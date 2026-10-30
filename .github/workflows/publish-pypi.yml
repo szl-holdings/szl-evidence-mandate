@@ -104,7 +104,7 @@ jobs:
         run: |
           python -m pip install --disable-pip-version-check "cyclonedx-bom>=6,<8"
           python -m venv "$RUNNER_TEMP/sbom-venv"
-          wheel="$(python -c 'import glob,sys; w=sorted(glob.glob("dist/**/*.whl", recursive=True)); assert len(w)==1, w; print(w[0])')"
+          wheel="$(python -c 'import glob, pathlib; wheels=sorted(p for p in glob.glob("dist/**/*.whl", recursive=True) if not any(part.startswith("stage-") for part in pathlib.PurePosixPath(p.replace(chr(92), "/")).parts)); assert len(wheels)==1, wheels; print(wheels[0])')"
           "$RUNNER_TEMP/sbom-venv/bin/python" -m pip install --disable-pip-version-check "$wheel"
           mkdir -p sbom
           python -m cyclonedx_py environment "$RUNNER_TEMP/sbom-venv" \
