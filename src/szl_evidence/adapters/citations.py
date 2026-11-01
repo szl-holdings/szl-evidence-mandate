@@ -58,7 +58,7 @@ class OfflineResolver(CitationResolver):
 
 
 class CrossrefResolver(CitationResolver):
-    """Live Crossref lookup. 404 -> NOT_FOUND; anything else non-200 or a transport error -> UNAVAILABLE."""
+    """Live Crossref lookup. 404 -> NOT_FOUND; HTTP, transport or response errors -> UNAVAILABLE."""
 
     def __init__(self, client: Any = None, base: str = "https://api.crossref.org/works/"):
         self.client = client
@@ -76,10 +76,40 @@ class CrossrefResolver(CitationResolver):
             return Resolution("NOT_FOUND", detail="crossref 404")
         if r.status_code != 200:
             return Resolution("UNAVAILABLE", detail=f"http {r.status_code}")
-        msg = r.json().get("message", {})
-        authors = [a.get("family", "") for a in msg.get("author", [])]
-        parts = (msg.get("issued") or {}).get("date-parts") or [[None]]
-        return Resolution("FOUND", authors, parts[0][0])
+        # Never turn an unusable success body into evidence that the DOI is absent.
+        # Keep the detail bounded and independent of the upstream response body.
+        unavailable = Resolution("UNAVAILABLE", detail="invalid crossref response")
+        try:
+            payload = r.json()
+        except ValueError:
+            return unavailable
+        if not isinstance(payload, dict) or not isinstance(payload.get("message"), dict):
+            return unavailable
+        msg = payload["message"]
+        authors = msg.get("author", [])
+        if not isinstance(authors, list) or any(
+            not isinstance(author, dict) or not isinstance(author.get("family", ""), str)
+            for author in authors
+        ):
+            return unavailable
+        issued = msg.get("issued")
+        if issued is None:
+            issued = {}
+        if not isinstance(issued, dict):
+            return unavailable
+        parts = issued.get("date-parts")
+        if parts is None:
+            parts = []
+        if not isinstance(parts, list):
+            return unavailable
+        year = None
+        if parts:
+            if not isinstance(parts[0], list) or not parts[0]:
+                return unavailable
+            year = parts[0][0]
+            if year is not None and type(year) is not int:
+                return unavailable
+        return Resolution("FOUND", [author.get("family", "") for author in authors], year)
 
     def describe(self) -> dict[str, Any]:
         return {"resolver": "crossref", "base": self.base}
