@@ -81,7 +81,7 @@ class CrossrefResolver(CitationResolver):
         unavailable = Resolution("UNAVAILABLE", detail="invalid crossref response")
         try:
             payload = r.json()
-        except ValueError:
+        except (ValueError, RecursionError):
             return unavailable
         if not isinstance(payload, dict) or not isinstance(payload.get("message"), dict):
             return unavailable

@@ -11,7 +11,11 @@ from szl_evidence.adapters.citations import CrossrefResolver, Resolution
 from szl_evidence.verifier import verify
 
 
+DEEP_JSON = b'{"message":' + b'[' * 10000 + b'0' + b']' * 10000 + b'}'
+
+
 @pytest.mark.parametrize("body", [
+    pytest.param(DEEP_JSON, id="deep-json"),
     b"{not json",
     b"\xff",
     b"null",
@@ -66,7 +70,10 @@ def test_http_status_is_preserved_without_parsing_error_body(status, expected):
         assert CrossrefResolver(client=client).resolve("10.5555/synthetic") == expected
 
 
-@pytest.mark.parametrize("body", [b"{not json", json.dumps({"message": {"author": [None]}}).encode()])
+@pytest.mark.parametrize("body", [
+    b"{not json", json.dumps({"message": {"author": [None]}}).encode(),
+    pytest.param(DEEP_JSON, id="deep-json"),
+])
 def test_malformed_success_response_abstains_in_verifier(valid, body):
     with httpx.Client(transport=httpx.MockTransport(lambda request: httpx.Response(200, content=body))) as client:
         receipt = verify(valid, resolver=CrossrefResolver(client=client))
