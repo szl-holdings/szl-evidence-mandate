@@ -63,6 +63,7 @@ def load_manifest(path: str | Path) -> Manifest:
     inputs: list[InputSpec] = []
     seen_ids: set[str] = set()
     seen_paths: set[str] = set()
+    seen_resolved_paths: set[Path] = set()
     for item in raw.get("inputs") or []:
         spec = InputSpec(
             id=str(item["id"]),
@@ -79,11 +80,14 @@ def load_manifest(path: str | Path) -> Manifest:
         if norm in seen_paths:
             raise ManifestError(f"duplicate manifest path {spec.path!r}")
         try:
-            contained(root, spec.path)
+            resolved = contained(root, spec.path)
         except UnsafeInput as e:
             raise ManifestError(f"input {spec.id}: {e}") from e
+        if resolved in seen_resolved_paths:
+            raise ManifestError(f"duplicate manifest path {spec.path!r}")
         seen_ids.add(spec.id)
         seen_paths.add(norm)
+        seen_resolved_paths.add(resolved)
         inputs.append(spec)
     sections = {k: v for k, v in raw.items() if k not in {"manifest_version", "name", "inputs", "required_checks", "access", "inputs_dir", "ignore"}}
     access = str(raw.get("access", "open"))
