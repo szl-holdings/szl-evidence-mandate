@@ -169,8 +169,8 @@ def next_link(r: Response) -> str | None:
 
 
 def paginate(client: CachedClient, url: str, params: dict[str, Any] | None = None, max_pages: int = 100) -> tuple[list[Any], dict[str, Any]]:
-    """Follow rel=next links until exhausted. Returns (items, meta). Never silently truncates:
-    an unavailable page makes the denominator UNAVAILABLE."""
+    """Follow rel=next links through object listings. Returns (items, meta).
+    Never silently truncates: an unavailable page makes the denominator UNAVAILABLE."""
     items: list[Any] = []
     pages = 0
     nxt: str | None = url
@@ -185,10 +185,35 @@ def paginate(client: CachedClient, url: str, params: dict[str, Any] | None = Non
             state = "UNAVAILABLE"
             detail = f"page {pages}: {r.status} {r.detail}"
             break
-        data = r.json()
-        if isinstance(data, dict) and "items" in data:
-            data = data["items"]
+        try:
+            data = r.json()
+        except (ValueError, RecursionError):
+            state = "UNAVAILABLE"
+            detail = f"page {pages}: invalid JSON response"
+            break
+        # A successful HTTP status does not establish a valid listing. Extending
+        # a dict or string would count keys/characters as observed repositories.
+        incomplete = False
+        if isinstance(data, dict):
+            incomplete = data.get("incomplete_results", False)
+            if type(incomplete) is not bool:
+                state = "UNAVAILABLE"
+                detail = f"page {pages}: incomplete_results must be a boolean"
+                break
+            data = data.get("items")
+        if not isinstance(data, list):
+            state = "UNAVAILABLE"
+            detail = f"page {pages}: expected a JSON list or an items list"
+            break
+        if any(not isinstance(item, dict) for item in data):
+            state = "UNAVAILABLE"
+            detail = f"page {pages}: expected object items"
+            break
         items.extend(data)
+        if incomplete:
+            state = "UNAVAILABLE"
+            detail = f"page {pages}: provider reported incomplete results"
+            break
         nxt = next_link(r)
         if pages >= max_pages and nxt:
             state = "UNAVAILABLE"
