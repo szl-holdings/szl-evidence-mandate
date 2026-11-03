@@ -11,6 +11,7 @@ root are refused. Stdlib only. Residual risk: a path swapped between check and u
 from __future__ import annotations
 
 import os
+import stat
 import tempfile
 import threading
 from pathlib import Path
@@ -97,12 +98,65 @@ def assert_owned_clone(repo: Any, step: str) -> None:
     k = _key(s)
     with _LOCK:
         ours = k in _OWNED_CLONES
-    if not (ours and _under_owned_root(k) and os.path.isdir(os.path.join(k, ".git"))):
+    if not (ours and _under_owned_root(k) and _is_real_dir(k) and _is_real_dir(os.path.join(k, ".git"))):
         raise EffectRefused(f"{step}: {s!r} is not a temp clone created by this process")
 
 
+def _is_real_dir(p: str) -> bool:
+    """True only for a real directory: lstat (no symlink follow), no junction / reparse point."""
+    try:
+        st = os.lstat(p)
+    except OSError:
+        return False
+    if stat.S_ISLNK(st.st_mode) or not stat.S_ISDIR(st.st_mode):
+        return False
+    if getattr(st, "st_file_attributes", 0) & getattr(stat, "FILE_ATTRIBUTE_REPARSE_POINT", 0x400):
+        return False  # Windows junction / mount point / other reparse point
+    isjunction = getattr(os.path, "isjunction", None)  # Python >= 3.12
+    return not (isjunction is not None and isjunction(p))
+
+
+def _scrubbed_git_env() -> dict[str, str]:
+    """Inherited environment minus every GIT_* variable, plus config isolation.
+
+    Removes GIT_DIR, GIT_WORK_TREE, GIT_INDEX_FILE, GIT_COMMON_DIR, GIT_OBJECT_DIRECTORY,
+    GIT_CEILING_DIRECTORIES, GIT_DISCOVERY_ACROSS_FILESYSTEM, GIT_CONFIG_PARAMETERS,
+    GIT_CONFIG_COUNT/KEY_n/VALUE_n, GIT_CONFIG_GLOBAL/SYSTEM, etc.
+    """
+    env = {k: v for k, v in os.environ.items() if not k.upper().startswith("GIT_")}
+    env.update({
+        "GIT_CONFIG_NOSYSTEM": "1",
+        "GIT_CONFIG_GLOBAL": os.devnull,  # honoured by git >= 2.32; UNKNOWN on older git
+        "GIT_TERMINAL_PROMPT": "0",
+        "GIT_OPTIONAL_LOCKS": "0",
+    })
+    return env
+
+
+def _single_line(res: dict[str, Any]) -> str | None:
+    if res.get("exit_code") != 0:
+        return None
+    lines = [ln for ln in str(res.get("output", "")).splitlines() if ln.strip()]
+    return lines[0].strip() if len(lines) == 1 else None
+
+
 def guarded_git_clean(run: Callable[..., dict[str, Any]], git: str, repo: Any, allow_effects: object, timeout: int = 300) -> dict[str, Any]:
-    """`git clean -xdfq` only on a clone this process created; fsmonitor disabled for the call."""
-    require_opt_in("git clean -xdfq", allow_effects)
-    assert_owned_clone(repo, "git clean -xdfq")
-    return run([git, "-c", "core.fsmonitor=false", "-C", _key(repo), "clean", "-xdfq"], timeout=timeout)
+    """`git clean -xdfq` only on a clone this process created.
+
+    Git's repository and work tree are pinned explicitly (--git-dir/--work-tree), every inherited
+    GIT_* variable is scrubbed, the clone and its .git must be real directories (lstat, no links or
+    junctions), and git's own view of the top level and git dir must equal the registered path.
+    """
+    step = "git clean -xdfq"
+    require_opt_in(step, allow_effects)
+    assert_owned_clone(repo, step)
+    k = _key(repo)
+    gitdir = os.path.join(k, ".git")
+    env = _scrubbed_git_env()
+    base = [git, f"--git-dir={gitdir}", f"--work-tree={k}", "-c", "core.fsmonitor=false", "-C", k]
+    top = _single_line(run([*base, "rev-parse", "--show-toplevel"], timeout=30, env=env))
+    gd = _single_line(run([*base, "rev-parse", "--absolute-git-dir"], timeout=30, env=env))
+    if top is None or gd is None or _key(top) != k or _key(gd) != _key(gitdir):
+        raise EffectRefused(f"{step}: git resolved top={top!r} git_dir={gd!r}; expected {k!r}")
+    assert_owned_clone(repo, step)  # re-check immediately before the effect (narrows, does not close, TOCTOU)
+    return run([*base, "clean", "-xdfq"], timeout=timeout, env=env)
