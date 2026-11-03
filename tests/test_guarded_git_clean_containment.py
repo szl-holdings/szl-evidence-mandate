@@ -90,7 +90,7 @@ def test_linked_git_dir_is_refused(repos):
     tmp, victim, clone = repos
     foreign = _repo(tmp / "foreign", [])
     _git(["config", "core.worktree", str(victim)], foreign)
-    shutil.rmtree(clone / ".git")
+    (clone / ".git").rename(clone / ".git-original")  # rename, not delete: git objects are read-only on Windows
     try:
         os.symlink(foreign / ".git", clone / ".git", target_is_directory=True)
     except (OSError, NotImplementedError) as exc:
