@@ -241,7 +241,7 @@ def run_github(org: str, out: Path, clone: bool, deep: bool, dry_run: bool, admi
 
     smoke = classify_all(smoke)
     # Lean corpus recomputation
-    lean = lean_facts(root, gh)
+    lean = lean_facts(root, gh, allow_effects=allow_effects)
     hf_ids = {a["id"].lower() for a in (load(out, "hf") or {}).get("artifacts", [])}
     if not hf_ids:
         hf_ids = anon_hf_ids()
@@ -310,19 +310,25 @@ def anon_hf_ids(org: str = "SZLHOLDINGS") -> set[str]:
     return ids
 
 
-def lean_facts(root: Path, gh: dict[str, Any]) -> dict[str, Any]:
-    """Recompute Lean counts at HEAD and at the revision the org's own lean_numbers.json pins."""
+def lean_facts(root: Path, gh: dict[str, Any], *, allow_effects: bool = False) -> dict[str, Any]:
+    """Recompute Lean counts at HEAD and at the revision the org's own lean_numbers.json pins.
+
+    Effectful (temp dir, git/gh clone, git worktree, runs the org counter script, rmtree), so it
+    is refused unless allow_effects is the literal True; refusal returns NOT_TESTED before any of them.
+    """
+    if allow_effects is not True:
+        return {"state": NOT_TESTED, "reason": f"Lean recomputation clones szl-holdings/lutar-lean and may run the org counter script; pass --allow-effects to permit it (got {allow_effects!r})."}
     import shutil
-    import tempfile
 
     from ..safety import run_argv
+    from .effect_gate import owned_tempdir
 
     repo = root / "lutar-lean"
     pinned_file = root / ".github" / ".github" / "data" / "lean_numbers.json"
     pinned_meta = json.loads(pinned_file.read_text(encoding="utf-8")) if pinned_file.exists() else {}
     org_script = root / ".github" / ".github" / "scripts" / "lean_numbers.py"
     _ = repo
-    tmp = Path(tempfile.mkdtemp(prefix="szl-lean-"))
+    tmp = owned_tempdir("szl-lean-")
     git = shutil.which("git") or "git"
     gh_cli = shutil.which("gh")
     full = tmp / "lutar-lean"
