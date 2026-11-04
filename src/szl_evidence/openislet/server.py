@@ -183,6 +183,7 @@ def serve(host: str = "127.0.0.1", port: int = 8000) -> None:
         try:
             server.serve_forever(poll_interval=0.2)
         except KeyboardInterrupt:
+            # Ctrl-C is a normal local shutdown; the context manager closes the listener.
             pass
 
 
