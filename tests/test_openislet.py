@@ -185,7 +185,7 @@ def test_package_assets_and_headers():
         assert obj.wfile.getvalue()
         assert obj.response_headers["X-Content-Type-Options"] == "nosniff"
         assert "script-src 'self'" in obj.response_headers["Content-Security-Policy"]
-    assert "Apache-2.0" in files("szl_evidence.openislet").joinpath("vendor/NOTICE.txt").read_text()
+    assert "Apache-2.0" in files("szl_evidence.openislet").joinpath("vendor/NOTICE.txt").read_text(encoding="utf-8")
 
 
 @pytest.mark.parametrize("headers,status", [
@@ -238,7 +238,7 @@ def test_receipt_tamper_and_static_no_reconstruction():
     result = replay.run_replay({})
     result["payload"]["mesh_results"][0]["relative_linf_error"] = 0.0
     assert result["receipt_sha256"] != receipt_hash(result)
-    script = files("szl_evidence.openislet").joinpath("static/app.js").read_text()
+    script = files("szl_evidence.openislet").joinpath("static/app.js").read_text(encoding="utf-8")
     assert "new Blob([receiptBytes]" in script
     assert "JSON.stringify(receipt" not in script
     assert ".innerHTML" not in script
