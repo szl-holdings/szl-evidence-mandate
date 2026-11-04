@@ -294,6 +294,20 @@ def build_parser() -> argparse.ArgumentParser:
     common.add_argument("--dry-run", action="store_true", help="plan only; no checks executed and nothing fetched beyond listings")
     sub = p.add_subparsers(dest="cmd", required=True)
 
+    # Optional bounded research workbench; legacy engine/audit contracts unchanged.
+    from .openislet.server import cmd_replay, cmd_workbench
+
+    oi = sub.add_parser("openislet", help="pinned synthetic peroxide solver verification (not clinical)")
+    osub = oi.add_subparsers(dest="openislet_cmd", required=True)
+    workbench = osub.add_parser("workbench", help="serve the local evidence workbench; no remote writes")
+    workbench.add_argument("--host", default="127.0.0.1")
+    workbench.add_argument("--port", type=int, default=8000)
+    workbench.set_defaults(fn=cmd_workbench, output=DEFAULT_OUT)
+    replay = osub.add_parser("replay", help="emit a fresh numerical verification receipt as JSON")
+    replay.add_argument("--amplitude-um", type=float, choices=[1, 25000, 250000], default=25000)
+    replay.add_argument("--kinetics", choices=["linear", "nonlinear"], default="nonlinear")
+    replay.set_defaults(fn=cmd_replay, output=DEFAULT_OUT)
+
     eng = sub.add_parser("engine", help="evidence gate engine")
     es = eng.add_subparsers(dest="ecmd", required=True)
     v = es.add_parser("verify", parents=[common])

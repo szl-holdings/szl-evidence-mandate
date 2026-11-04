@@ -24,6 +24,7 @@ dependencies = [
 [project.optional-dependencies]
 dev = ["pytest>=8", "ruff>=0.5"]
 sign = ["cryptography>=42"]
+openislet = ["numpy>=2.0,<3"]
 
 [project.scripts]
 szl-audit = "szl_evidence.cli:main"
@@ -37,6 +38,9 @@ Changelog = "https://github.com/szl-holdings/szl-evidence-mandate/releases"
 [tool.setuptools.packages.find]
 where = ["src"]
 
+[tool.setuptools.package-data]
+"szl_evidence.openislet" = ["static/*", "vendor/*.txt", "vendor/*.json"]
+
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 addopts = "-q"
@@ -48,6 +52,11 @@ target-version = "py311"
 [tool.ruff.lint]
 select = ["E", "F", "W", "B", "S602", "S604", "S605", "S301", "S506"]
 ignore = ["E501"]
+
+[tool.ruff.lint.per-file-ignores]
+# Preserve the cryptographically pinned upstream function bytes; iteration is
+# returned after the loop, and is intentionally not renamed in the excerpt.
+"src/szl_evidence/openislet/vendor/peroxide.py" = ["B007"]
 
 [tool.szl.release]
 import_names = ["szl_evidence"] # wheel top-level import names; the release gate fails if the built wheel differs

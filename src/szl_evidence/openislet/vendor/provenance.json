@@ -1,0 +1,17 @@
+{
+  "repository": "https://github.com/OpenIslet/openislet",
+  "revision": "b63a2418ca1253440cce12519183c5775b61f84a",
+  "path": "scripts/run_layer4_tissue_and_metabolic_twin.py",
+  "url": "https://github.com/OpenIslet/openislet/blob/b63a2418ca1253440cce12519183c5775b61f84a/scripts/run_layer4_tissue_and_metabolic_twin.py",
+  "source_sha256": "de24ae96dedcf2afb4d960e7963f4419462b2132f6007e7e2321defb3c2026f4",
+  "source_git_blob_sha1": "459e8bb1f244012b67146a41ce384466c1312a0c",
+  "function_sha256": {
+    "_tridiag_thomas_solve": "9a8a02c3e22d8847f7cf3bf190440b20b1ef94be4027f845d87bb36910441c3c",
+    "_solve_peroxide_slab_bvp": "bf198ae2088ad3ad44b5a9bca5b217b6f904a2d008e0d48673d9bfc1a41bfcff"
+  },
+  "excerpt_modifications": "Two function bodies and the diffusivity declaration are verbatim. All other code was omitted and the import preamble reduced.",
+  "attribution": "Copyright (c) 2026 OpenIslet.org Contributors. https://openislet.org",
+  "license": "Apache-2.0",
+  "license_mapping": "Upstream LICENSE assigns scripts/** to Apache-2.0; project-authored docs/data are CC-BY-4.0 with third-party carve-outs.",
+  "affiliation": "Independent SZL software verification; no OpenIslet endorsement or partnership."
+}
