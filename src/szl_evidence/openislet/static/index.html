@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Independent replay of a pinned OpenIslet peroxide solver using synthetic manufactured fields. Research software verification only.">
+  <title>OpenIslet evidence workbench · SZL</title>
+  <link rel="stylesheet" href="/style.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="topbar">
+  <a class="brand" href="/" aria-label="SZL evidence workbench home"><span class="mark" aria-hidden="true">S</span><span>SZL <b>Evidence</b></span></a>
+  <nav aria-label="Primary"><a class="active" href="#main">Workbench</a><a href="#method">Method</a><a href="#provenance">Provenance</a></nav>
+  <span class="environment"><span aria-hidden="true">●</span> Local research tool</span>
+</header>
+<main id="main">
+  <div class="breadcrumb">EVIDENCE MANDATE <span>/</span> SOFTWARE VERIFICATION <span>/</span> OPENISLET</div>
+  <section class="hero" aria-labelledby="title">
+    <div><p class="eyebrow">REPRODUCIBLE BY DESIGN</p><h1 id="title">An exact field.<br>A solver put to the test.</h1>
+      <p class="lead">Replay a pinned OpenIslet peroxide solver against an independent analytical reference. Inspect mesh refinement, challenge it with deliberate faults, and take the evidence with you.</p>
+    </div>
+    <aside class="hero-note"><span class="tag">RESEARCH ONLY</span><h2>Numerics, not clinical conclusions.</h2><p>All inputs here are <strong>synthetic manufactured fields</strong>. A passing replay supports only this fixture's software discretization—not physical correctness, safety, efficacy, or biological validation.</p></aside>
+  </section>
+  <div class="source-strip"><span class="source-icon" aria-hidden="true">↳</span><div><span class="label">UPSTREAM SOURCE</span><a id="source-link" href="https://github.com/OpenIslet/openislet/tree/b63a2418ca1253440cce12519183c5775b61f84a" target="_blank" rel="noopener noreferrer">OpenIslet / openislet ↗</a></div><div><span class="label">PINNED REVISION</span><code>b63a2418ca12</code></div><div><span class="label">SOFTWARE LICENSE</span><span>Apache-2.0</span></div><div class="source-last"><span class="label">EXECUTION</span><span>Local · CPU · no model calls</span></div></div>
+  <div class="workspace">
+    <section class="panel configuration" aria-labelledby="configure-title">
+      <div class="section-heading"><span class="step">01</span><div><p class="eyebrow">DEFINE THE REPLAY</p><h2 id="configure-title">Fixture settings</h2></div></div>
+      <form id="replay-form">
+        <label for="amplitude">Synthetic amplitude <span class="unit">µM</span></label>
+        <select id="amplitude" name="amplitude" disabled><option value="1">1 µM · low amplitude</option><option value="25000" selected>25,000 µM · Km scale</option><option value="250000">250,000 µM · high amplitude</option></select>
+        <p class="hint">Numerical stress cases, not physiological recommendations.</p>
+        <label for="kinetics">Clearance kinetics</label>
+        <select id="kinetics" name="kinetics" disabled><option value="nonlinear">Nonlinear · Michaelis–Menten</option><option value="linear">Linear · first-order</option></select>
+        <div class="fixed-settings"><p class="label">FIXED VERIFICATION CONTRACT</p><dl><div><dt>Mesh intervals</dt><dd>16 → 32 → 64 → 128</dd></div><div><dt>Coefficient profiles</dt><dd>Spatially varying</dd></div><div><dt>Boundary values</dt><dd>0 µM at both ends</dd></div><div><dt>Maximum wall time</dt><dd>15 seconds</dd></div></dl></div>
+        <button id="run-button" class="primary" type="submit" disabled><span id="run-label">Run numerical replay</span><span aria-hidden="true">→</span></button>
+        <p class="privacy">No uploads. No patient data. No provider calls.</p>
+      </form>
+      <div id="connection" class="connection" role="status">Loading the pinned verification contract…</div>
+    </section>
+    <section class="panel results" aria-labelledby="results-title" aria-busy="false" id="results-panel">
+      <div class="results-head"><div class="section-heading"><span class="step">02</span><div><p class="eyebrow">OBSERVE THE EVIDENCE</p><h2 id="results-title">Replay results</h2></div></div><span id="verdict" class="badge neutral">Not executed</span></div>
+      <div id="run-status" role="status" aria-live="polite" tabindex="-1" class="run-status">Choose a fixture and run a fresh replay. No result is assumed.</div>
+      <div class="metrics"><div><span class="label">FINEST RELATIVE ERROR</span><strong id="error-metric">—</strong><small>Required: &lt; 1 × 10⁻⁴</small></div><div><span class="label">OBSERVED ORDER</span><strong id="order-metric">—</strong><small>Expected: approximately 2</small></div><div><span class="label">FAULTS REJECTED</span><strong id="controls-metric">—</strong><small>Two deliberately wrong cases</small></div></div>
+      <div class="table-title"><h3>Mesh refinement</h3><span>Full-precision evaluation · formatted display</span></div>
+      <div class="table-scroll" tabindex="0" role="region" aria-label="Mesh refinement results"><table><caption class="sr-only">Mesh intervals, relative maximum error, error ratio, balance error and solver residual</caption><thead><tr><th scope="col">Intervals</th><th scope="col">Relative L∞ error</th><th scope="col">Error ratio</th><th scope="col">Relative balance error</th><th scope="col">Residual (µM/s)</th></tr></thead><tbody id="mesh-body"><tr><td colspan="5" class="empty-cell">No numerical replay has run.</td></tr></tbody></table></div>
+      <div class="acceptance"><h3>Acceptance checks</h3><ul id="checks"><li class="muted">Checks are evaluated only after execution.</li></ul></div>
+      <div class="faults"><h3>Deliberate fault controls</h3><p class="hint">A valid fixture should pass; an intentionally wrong diffusion or flattened coefficient profile should be rejected.</p><div id="fault-results" class="fault-grid"><p class="muted">Controls have not run.</p></div></div>
+      <div class="export-bar"><div><strong>Your result, with its provenance.</strong><p>Download raw precision, inputs, checks, source hashes and limits.</p></div><button id="download" class="secondary" type="button" disabled>Download receipt ↓</button></div>
+      <p class="hash" id="receipt-hash">Receipt: not generated · signatures are not assumed.</p>
+      <details id="profile"><summary>Inspect finest-grid reference and solver values</summary><div class="table-scroll" tabindex="0" role="region" aria-label="Finest grid profile"><table><thead><tr><th scope="col">Position (cm)</th><th scope="col">Reference (µM)</th><th scope="col">Solver (µM)</th></tr></thead><tbody id="profile-body"><tr><td colspan="3">Run a replay to inspect values.</td></tr></tbody></table></div></details>
+    </section>
+  </div>
+  <section id="method" class="method-section" aria-labelledby="method-title">
+    <div><p class="eyebrow">THE INDEPENDENT REFERENCE</p><h2 id="method-title">Known solution.<br>Observable convergence.</h2><p>The source term is constructed from the continuum equation—not from the solver's finite differences. Halving the spacing should reduce the maximum error by approximately four.</p></div>
+    <div class="equation-card"><p class="label">MANUFACTURED CONCENTRATION FIELD</p><p class="equation">H(x) = A sin(πx / L)</p><p>q(x) = D(π/L)²H + k<sub>cat</sub>(x)H / (1 + H/K<sub>m</sub>) + k<sub>perf</sub>(x)H</p><dl><div><dt>L</dt><dd>0.035 cm</dd></div><div><dt>D</dt><dd>1.40 × 10⁻⁵ cm²/s</dd></div><div><dt>K<sub>m</sub></dt><dd>25,000 µM · nonlinear branch only</dd></div></dl><p class="hint">k<sub>cat</sub> = 0.10 + 0.05x/L s⁻¹; k<sub>perf</sub> = 0.01 + 0.02(x/L)² s⁻¹. Linear mode replaces the saturation denominator with 1. All values are declared fixtures, not measured parameters.</p></div>
+  </section>
+  <section class="panel provenance" id="provenance" aria-labelledby="provenance-title"><div class="section-heading"><span class="step">03</span><div><p class="eyebrow">TRACE EVERY CLAIM</p><h2 id="provenance-title">Source, assumptions & boundaries</h2></div></div>
+    <div class="provenance-grid"><div><h3>Actual upstream code, bounded execution</h3><p>The local solver retains two unmodified functions and a diffusivity constant from the pinned source. Function SHA-256 digests are checked before each replay. Only imports and extraction context changed.</p><p>Copyright © 2026 OpenIslet.org Contributors. Software excerpts: Apache-2.0. This is independent SZL verification; no endorsement or partnership is implied.</p><dl class="source-details"><dt>Full upstream revision</dt><dd><code>b63a2418ca1253440cce12519183c5775b61f84a</code></dd><dt>Source file</dt><dd><code>scripts/run_layer4_tissue_and_metabolic_twin.py</code></dd><dt>Original file SHA-256</dt><dd><code id="source-hash">Loading provenance…</code></dd></dl></div>
+    <div><h3>What this result does not establish</h3><ul class="boundaries"><li>Biological validation: <strong>not established</strong>.</li><li>Formal proof: <strong>not claimed</strong>.</li><li>No conclusion about treatment, cure, safety or effectiveness.</li><li>No test of transient dynamics, discontinuous coefficients, coupled oxygen/pH, or experimental parameter validity.</li><li>Existing upstream tests already cover discrete balance and scalar quadratic manufactured fields. This replay adds a sine refinement check with spatial clearance arrays; it does not establish a new defect or first-ever method.</li><li>An unsigned receipt is content-bound, not proof of a trusted identity or independent review.</li></ul></div></div>
+  </section>
+  <footer><span>SZL · Evidence before assertion.</span><span>Source-only research workbench · No external publication or submission</span></footer>
+</main>
+</body>
+</html>

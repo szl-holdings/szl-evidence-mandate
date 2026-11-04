@@ -1,0 +1,17 @@
+OpenIslet Layer-4 peroxide solver excerpts
+Copyright (c) 2026 OpenIslet.org Contributors.
+https://openislet.org
+https://github.com/OpenIslet/openislet
+
+Source revision: b63a2418ca1253440cce12519183c5775b61f84a
+Source path: scripts/run_layer4_tissue_and_metabolic_twin.py
+License: Apache License, Version 2.0 (see this distribution's LICENSE).
+Upstream LICENSE explicitly assigns scripts/** to Apache-2.0.
+Two functions and the diffusivity constant are retained verbatim, with a reduced
+import preamble. All other solver code is omitted; see provenance.json.
+The independent sine oracle, web interface and receipt wrapper are SZL additions.
+
+No biomedical literature, third-party database records, patient data, or
+project-authored upstream data/docs are bundled. Upstream data/docs use CC-BY-4.0
+with separate third-party carve-outs; that is not a blanket license for papers.
+No affiliation, endorsement, or collaboration with OpenIslet is implied.

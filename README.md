@@ -32,6 +32,117 @@ A Scientific Evidence Gate engine plus evidence-backed, read-only audits of the
 **Maturity:** research prototype (0.1.2 source candidate; the last PyPI release may differ).
 **Licence:** Apache-2.0 (org standard; see `LICENSE`).
 
+## OpenIslet numerical evidence workbench (source candidate)
+
+An optional, local Python backend and plain HTML/CSS/JavaScript frontend replay
+the **actual pinned OpenIslet peroxide solver function excerpts** against an
+independent sine manufactured solution. This is software verification for the
+selected synthetic fixture only, **not** biological validation, a clinical tool,
+a formal proof, a reported defect, a novel treatment, or an OpenIslet partnership.
+The feature is a source candidate; the existing PyPI release does not contain it.
+
+```bash
+python -m venv .venv
+.venv/bin/pip install -e ".[dev,sign,openislet]"
+.venv/bin/szl-audit openislet workbench --host 127.0.0.1 --port 8000
+# Open http://127.0.0.1:8000, select a synthetic amplitude/kinetics, then Run.
+# For an explicitly exposed sandbox preview only, bind --host 0.0.0.0.
+```
+
+No authentication, upload, data ingestion, URL proxy, arbitrary code/path,
+model call, MCP connection, account, or external submission is present. Do not
+use this local research server as an Internet production service. It binds to
+loopback by default. Exposing it shares only the fixed research fixture API;
+it does not grant access to the estate audit API or local files.
+
+**Flow:** `GET /api/openislet/meta` supplies the fixed contract and attribution;
+`POST /api/openislet/replay` accepts only
+`{"amplitude_uM":25000,"kinetics":"nonlinear"}`. Amplitudes are restricted to
+`1`, `25000`, or `250000` µM, kinetics to `linear` or `nonlinear`.
+Unknown keys, strings instead of numbers, booleans, NaN/Infinity, duplicate
+keys, cross-origin browser POSTs, ambiguous framing, and bodies over 1024 bytes
+are refused. There are no patient records, paper extracts or third-party
+database payloads in this feature.
+
+Every replay uses four fixed meshes (16, 32, 64, 128 intervals), plus two
+deliberately faulty finest-grid controls. Work is bounded by those meshes and
+the upstream solver's 80 Newton iterations; one fresh worker handles a replay
+with a 15-second wall limit, and POSIX adds 10 CPU seconds and a 2 GiB address
+space limit. Windows uses the wall/work bounds without POSIX resource limits.
+The single-request server uses a 5-second socket timeout and does not provide
+a production multi-tenant scheduling or denial-of-service guarantee.
+
+The response includes raw-precision errors, ratios and observed orders,
+independent continuum reference, mesh profiles, acceptance checks, fault-control
+results, provenance, runtime versions, and `biological_validation:false`.
+`PASS` means the declared checks held **for that synthetic fixture only**.
+`FAIL` means a declared numerical acceptance check failed; HTTP 503 means no
+completed result was established. The frontend displays loading and errors,
+invalidates results when settings change, and downloads the **exact backend
+response text**, not a JavaScript reconstruction of Python floating-point
+receipt bytes. Display rounding is never used to decide acceptance.
+
+### Reproduce without the browser
+
+```bash
+.venv/bin/szl-audit openislet replay --amplitude-um 25000 --kinetics nonlinear > receipt.json
+# Repeat for amplitudes 1 / 25000 / 250000 and linear / nonlinear (six fixtures).
+.venv/bin/ruff check src tests --no-cache
+.venv/bin/python -m pytest tests/test_openislet.py -q
+.venv/bin/python -m pytest -q
+```
+
+The full six-fixture test evaluates 24 valid mesh cases and 12 deliberate
+fault controls. It does not label the synthetic cases as upstream measured
+success. The upstream code already tests discrete mass balance and quadratic
+manufactured fields with scalar coefficients; this narrow additional test
+uses a sine continuum field, nodewise clearance arrays, and refinement/fault
+controls. No numerical defect is asserted.
+
+The receipt uses the existing `szl_evidence.receipts.receipt_hash` and tool
+metadata, with an explicit `UNSIGNED` state; it never uses a browser signing
+key or auto-signs from ambient secrets. The hash binds canonical Python sorted
+JSON content, **not JCS or a signature**. The new endpoint independently refuses
+non-finite inputs/outputs without changing legacy canonicalization or percentage
+comparison semantics. Verify content binding on the original downloaded file:
+
+```bash
+.venv/bin/python -c "import json; from szl_evidence.receipts import receipt_hash; r=json.load(open('receipt.json')); print('CONTENT MATCH' if r['receipt_sha256']==receipt_hash(r) else 'CONTENT MISMATCH')"
+```
+
+This is not the legacy engine receipt's invariant-validation contract:
+`szl-audit engine verify-receipt` is for engine-run receipts, not this scoped
+audit-style replay receipt. A matching hash establishes internal content
+consistency only; anyone able to replace all artifacts can recompute it.
+It does not independently establish execution, identity, scientific truth,
+authenticity, safety, or fitness for use.
+
+### Attribution and source binding
+
+Copyright © 2026 OpenIslet.org Contributors, <https://openislet.org>.
+Source: `OpenIslet/openislet@b63a2418ca1253440cce12519183c5775b61f84a`,
+`scripts/run_layer4_tissue_and_metabolic_twin.py` (Apache-2.0).
+Two functions and the diffusivity declaration in
+`src/szl_evidence/openislet/vendor/peroxide.py` are verbatim; all other upstream
+code is omitted and the imports are reduced. `vendor/provenance.json` records
+the original full-file SHA-256, Git blob hash, and function source hashes;
+the function digests and independent diffusivity are checked before each run.
+`vendor/NOTICE.txt` records modifications and attribution. The original file
+hash is a provenance anchor, not a claim that the full file is bundled.
+The analytical oracle and interface are SZL additions; its source digest
+is included separately in each receipt.
+
+Upstream's actual root `LICENSE` assigns `scripts/**` to Apache-2.0; its
+documentation/data use CC-BY-4.0 with third-party carve-outs. No upstream
+documentation/data or biomedical excerpts are redistributed here.
+No upstream service or model is impersonated: the UI explicitly identifies
+the local pinned code excerpts and all manufactured inputs.
+
+Source-only changes do not publish to PyPI, Hugging Face, OpenIslet, a proof
+site, or production. CI runs on pushes/PRs; release publishing remains the
+existing explicit `release: published` gate. No version bump, credentials,
+remote writes or deployment workflow were added.
+
 ## What it does
 
 | Component | What it verifies |
