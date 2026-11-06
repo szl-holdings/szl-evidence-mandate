@@ -211,3 +211,5 @@ key; `engine verify-receipt` currently checks content/ledger integrity, **not** 
 `src/szl_evidence/` engine and audits · `fixtures/` 19 generated fixtures (regenerate
 with `szl_evidence.fixturegen.build_all`) · `schemas/` receipt and manifest JSON Schemas ·
 `tests/` · `reports/` generated output · `examples/`.
+
+Estate on Hugging Face: models, datasets and Spaces are published under the [SZLHOLDINGS](https://huggingface.co/SZLHOLDINGS) org.
