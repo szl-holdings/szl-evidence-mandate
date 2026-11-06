@@ -13,6 +13,7 @@ classifiers = [
   "Programming Language :: Python :: 3 :: Only",
   "Programming Language :: Python :: 3.11",
   "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
 ]
 license = { text = "Apache-2.0" }
 dependencies = [
@@ -25,6 +26,9 @@ dependencies = [
 dev = ["pytest>=8", "ruff>=0.5"]
 sign = ["cryptography>=42"]
 openislet = ["numpy>=2.0,<3"]
+# Everything the full test suite imports: pytest plus the sign and openislet extras
+# (same specifiers; tests/test_ci_requirements.py keeps them in step).
+test = ["pytest>=8", "cryptography>=42", "numpy>=2.0,<3"]
 
 [project.scripts]
 szl-audit = "szl_evidence.cli:main"
