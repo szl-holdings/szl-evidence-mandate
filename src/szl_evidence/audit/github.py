@@ -581,11 +581,14 @@ def collect(org: str, cache_dir: Path, clone: bool, clone_root: Path | None = No
         if clone_root is not None:
             assert_owned_root(clone_root, "collect(clone=True)")
     token, token_src = github_token()
+    # Presence flag by comparison: no token bytes flow into the persisted report
+    # (CodeQL py/clear-text-storage-sensitive-data).
+    authenticated = token is not None and token != ""
     headers = {"Accept": "application/vnd.github+json", "X-GitHub-Api-Version": "2022-11-28"}
     if token:
         headers["Authorization"] = f"Bearer {token}"
     client = CachedClient(cache_dir, headers=headers, surface="github", min_interval=0.05)
-    col = GitHubCollector(client, org, bool(token))
+    col = GitHubCollector(client, org, authenticated)
     started = utcnow()
     orgr = col.org_meta()
     org_meta = orgr.json() if orgr.ok else {"state": orgr.status}
@@ -593,7 +596,7 @@ def collect(org: str, cache_dir: Path, clone: bool, clone_root: Path | None = No
     out: dict[str, Any] = {
         "org": org,
         "started_at": started,
-        "auth": {"authenticated": bool(token), "source": token_src},
+        "auth": {"authenticated": authenticated, "source": token_src},
         "org_meta": {k: org_meta.get(k) for k in ("login", "description", "blog", "public_repos", "created_at", "is_verified", "two_factor_requirement_enabled", "members_can_create_public_repositories")} if isinstance(org_meta, dict) else org_meta,
         "listing": meta,
         "repos": [],

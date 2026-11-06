@@ -437,12 +437,13 @@ def space_functional(client: CachedClient, rid: str, info: dict[str, Any]) -> di
 # ------------------------------------------------------------------ orchestration
 def collect(org: str, cache_dir: Any, functional: bool, workers: int = 6, dry_run: bool = False) -> dict[str, Any]:
     token, src = hf_token()
+    authenticated = token is not None and token != ""  # presence only; no token bytes persisted
     headers = {"Authorization": f"Bearer {token}"} if token else {}
     client = CachedClient(cache_dir, headers=headers, surface="huggingface", min_interval=0.05)
     col = HFCollector(client, org)
     anon = CachedClient(cache_dir, surface="huggingface-spaces", min_interval=0.05)
     started = utcnow()
-    out: dict[str, Any] = {"org": org, "started_at": started, "auth": {"authenticated": bool(token), "source": src}, "listing": {}, "artifacts": []}
+    out: dict[str, Any] = {"org": org, "started_at": started, "auth": {"authenticated": authenticated, "source": src}, "listing": {}, "artifacts": []}
     listed: list[tuple[str, dict[str, Any]]] = []
     for kind in ("model", "dataset", "space"):
         items, meta = col.list_kind(kind)
