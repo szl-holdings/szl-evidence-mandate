@@ -1,6 +1,21 @@
 # Changelog
 
-## 0.1.2 — source candidate
+## Unreleased (on `main`, not in a PyPI release)
+
+- Secret-scanning alerts are requested with `hide_secret=true`, and the HTTP cache drops JSON
+  `secret` members before writing `raw/` (a leaked credential was previously cached verbatim).
+- `github --clone` (including `--stream`) without `--allow-effects` is refused before any API
+  collection instead of at the first clone.
+- CI installs from a hash-locked closure (`requirements/ci/test.txt`) and also tests Python 3.13;
+  new `test` extra for the full suite.
+- OpenIslet numerical evidence workbench (`szl-audit openislet workbench|replay`, `openislet`
+  extra): pinned upstream solver excerpts against a synthetic manufactured solution (#23).
+- Audit fixes: guarded `git clean` contained to its registered clone (#22); `lean_facts` gated
+  behind explicit effects (#21); malformed pagination evidence rejected (#20); duplicate manifest
+  inputs that resolve to one path rejected (#19); malformed Crossref responses abstain (#18).
+- The publish workflow adds a CycloneDX SBOM artifact (#17).
+
+## 0.1.2 — 2026-10-30
 
 - Add the optional `sign` dependency extra and test it in CI.
 - Emit schema-conformant `SIGNED` Ed25519 receipts when a usable key is configured;
@@ -9,6 +24,16 @@
   the engine receipt and its scientific result for audit. This is a local signing
   requirement; independent signer trust still requires a trusted public key.
 - Align the receipt tool version with package metadata.
+- Effectful audit steps (clone, install, import, test, `git clean`) fail closed unless
+  `--allow-effects` is passed (#13).
+- Final reports and CLI output are redacted safely, and the secret scanner and `redact()` share
+  one set of credential patterns (#8, #9).
+- Installed-wheel release checks no longer import the source checkout (#16).
+
+## 0.1.1 — 2026-10-01
+
+- Release through the canonical PyPI Trusted Publishing path (`publish-pypi.yml` and the
+  release gate) (#2, #3, #4); Python classifiers and PyPI badges added.
 
 ## 0.1.0 — 2026-09-25
 

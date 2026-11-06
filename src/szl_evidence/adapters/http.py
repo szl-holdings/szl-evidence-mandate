@@ -1,7 +1,8 @@
 """Cached, rate-limit-aware, read-only HTTP client.
 
 Every response is written to ``raw/`` with its retrieval timestamp and body hash.
-Credentials are sent in headers only and never written to the cache or logs.
+Credentials are sent in headers only and never written to the cache or logs. Cached bodies are
+redacted, and JSON ``secret`` members (credential values) are removed before they are written.
 A transport error or rate-limit response is SOURCE_UNAVAILABLE - never evidence of a defect.
 """
 
@@ -22,6 +23,48 @@ from ..models import sha256_bytes, sha256_json, utcnow
 from ..safety import redact
 
 SOURCE_UNAVAILABLE = "SOURCE_UNAVAILABLE"
+
+# JSON members whose value is a credential by definition. GitHub secret-scanning alerts return the
+# leaked value in "secret" unless the request sets hide_secret=true; the cache drops such members
+# itself, so no caller has to remember that flag for a credential to stay out of raw/.
+SECRET_MEMBERS = frozenset({"secret"})
+_SECRET_MEMBER_TEXT = re.compile(r'"secret"\s*:', re.IGNORECASE)
+SECRET_BODY_WITHHELD = "<body withheld: a secret member could not be removed from unparseable JSON>"
+
+
+def _drop_secret_members(data: Any) -> int:
+    """Delete SECRET_MEMBERS keys at any depth of a freshly decoded JSON value, in place."""
+    removed = 0
+    stack = [data]
+    while stack:  # iterative: a deep document must not turn into a RecursionError here
+        node = stack.pop()
+        if isinstance(node, dict):
+            for key in [k for k in node if k.lower() in SECRET_MEMBERS]:
+                del node[key]
+                removed += 1
+            stack.extend(node.values())
+        elif isinstance(node, list):
+            stack.extend(node)
+    return removed
+
+
+def scrub_secret_members(text: str) -> tuple[str, int]:
+    """Return ``text`` without SECRET_MEMBERS, and how many members were removed.
+
+    Bodies without such a member are returned unchanged. A body that names one but cannot be
+    decoded or re-encoded is withheld entirely: a value that cannot be located exactly is never kept.
+    """
+    try:
+        data = json.loads(text)
+    except (ValueError, RecursionError):
+        return (SECRET_BODY_WITHHELD, 1) if _SECRET_MEMBER_TEXT.search(text) else (text, 0)
+    removed = _drop_secret_members(data)
+    if not removed:
+        return text, 0
+    try:
+        return json.dumps(data, ensure_ascii=False), removed
+    except (ValueError, RecursionError):
+        return SECRET_BODY_WITHHELD, removed
 
 
 @dataclass
@@ -145,6 +188,12 @@ class CachedClient:
         d = self.cache_dir / self.surface
         d.mkdir(parents=True, exist_ok=True)
         keep_headers = {k: v for k, v in r.headers.items() if k in {"content-type", "etag", "last-modified", "link", "x-ratelimit-remaining", "x-ratelimit-reset", "x-github-request-id"}}
+        removed = 0
+        if len(r.body) < 2_000_000:
+            text, removed = scrub_secret_members(r.body.decode("utf-8", "replace"))
+            body = redact(text)
+        else:
+            body = f"<{len(r.body)} bytes omitted>"
         rec = {
             "method": method,
             "url": redact(r.url),
@@ -155,8 +204,11 @@ class CachedClient:
             "elapsed_ms": r.elapsed_ms,
             "headers": keep_headers,
             "detail": r.detail,
-            "body": redact(r.body.decode("utf-8", "replace")) if len(r.body) < 2_000_000 else f"<{len(r.body)} bytes omitted>",
+            "body": body,
         }
+        if removed:
+            # body_sha256 still hashes the response as received; the stored body differs by these members.
+            rec["body_secret_members_removed"] = removed
         (d / f"{key}.json").write_text(json.dumps(rec, sort_keys=True, ensure_ascii=False), encoding="utf-8")
 
 
