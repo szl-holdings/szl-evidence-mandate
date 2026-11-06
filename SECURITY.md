@@ -18,7 +18,7 @@ suspected credential exposure.
 | Hash mismatch | registry/output hashes and invocation input hashes verified | `test_hash_mismatch_detected` |
 | Malformed YAML/JSON | `yaml.safe_load` only; malformed input => ERROR/failed, never PASS | `test_malformed_*` |
 | Shell injection | argv lists only; `run_argv` rejects strings; no `shell=True` anywhere (ruff S602/S604/S605) | `test_no_shell_strings_and_injection_inert` |
-| Secret leakage | scanner stores type/location/fingerprint only; output and cache redaction; Authorization headers never cached | `test_29_*`, `test_secrets_redacted_from_output` |
+| Secret leakage | scanner stores type/location/fingerprint only; output and cache redaction; Authorization headers never cached; GitHub secret-scanning alerts are fetched with `hide_secret=true` and JSON `secret` members are dropped before a body is cached | `test_29_*`, `test_secrets_redacted_from_output`, `tests/test_secret_scanning_cache.py` |
 | Writing outside output dir | `ReportWriter` refuses | `test_writer_refuses_outside_output_dir` |
 | Running cloned code with credentials | fresh venv per repo; environment stripped to a PATH/system allow-list; HOME/APPDATA/HF_HOME redirected | `test_isolated_env_carries_no_credentials` |
 
