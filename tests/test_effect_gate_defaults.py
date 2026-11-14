@@ -46,6 +46,17 @@ def test_cli_flag_defaults_off_and_parses():
     assert p.parse_args(["hf", "--functional", "--allow-effects"]).allow_effects is True
 
 
+@pytest.mark.parametrize("stream", [False, True])
+def test_clone_refused_before_org_collection_without_opt_in(monkeypatch, tmp_path, stream):
+    # --stream hands clone=False to github.collect(), so the refusal must not wait for the first clone.
+    from szl_evidence.audit import pipeline
+
+    monkeypatch.setattr(github, "collect", lambda *a, **k: (_ for _ in ()).throw(AssertionError("org collection must not run")))
+    with pytest.raises(EffectRefused):
+        pipeline.run_github("o", tmp_path, clone=True, deep=False, dry_run=False, stream=stream)
+    assert not (tmp_path / "raw").exists() and not (tmp_path / "state").exists()
+
+
 def test_cli_github_refusal_exits_2(monkeypatch, tmp_path, capsys):
     from szl_evidence import cli
     from szl_evidence.audit import pipeline

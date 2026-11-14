@@ -1,0 +1,19 @@
+# Hash-locked closure for .github/workflows/test.yml (ubuntu + windows,
+# Python 3.11-3.13; one universal lock). It repeats, with the same specifiers,
+# [project].dependencies plus the dev, sign and openislet extras of
+# pyproject.toml and the [build-system] backend, so the package itself installs
+# with --no-deps --no-build-isolation -e . and nothing is resolved unhashed.
+# tests/test_ci_requirements.py fails if this file, the lock or the workflow
+# drift apart.
+#
+# Regenerate after editing (or after a pyproject.toml dependency change):
+#   uv pip compile --universal --python-version 3.11 --generate-hashes \
+#     requirements/ci/test.in -o requirements/ci/test.txt
+httpx>=0.27
+pyyaml>=6.0
+rich>=13.0
+pytest>=8
+ruff>=0.5
+cryptography>=42
+numpy>=2.0,<3
+setuptools>=68

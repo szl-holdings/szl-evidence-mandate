@@ -28,3 +28,20 @@ updates:
       pip:
         patterns:
           - "*"
+  # Hash-locked CI closure (requirements/ci/test.txt, compiled from test.in with
+  # `uv pip compile --universal --generate-hashes`). tests/test_ci_requirements.py
+  # fails if a bump leaves the lock outside the pyproject.toml specifiers.
+  - package-ecosystem: "pip"
+    directory: "/requirements/ci"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+      time: "08:00"
+      timezone: "America/New_York"
+    labels:
+      - "dependencies"
+    open-pull-requests-limit: 5
+    groups:
+      pip-ci:
+        patterns:
+          - "*"

@@ -3,10 +3,17 @@ message: If you use this software, please cite it using the metadata from this f
 type: software
 title: szl-holdings/szl-evidence-mandate — Scientific evidence gate (PASS/FAIL/ABSTAIN/ERROR receipts,
   mutation testing, fixtures)
+abstract: >-
+  A Scientific Evidence Gate engine (manifest-declared inputs, a hash-chained invocation ledger,
+  PASS/FAIL/ABSTAIN/ERROR receipts and mutation testing against generated fixtures) plus read-only,
+  evidence-backed audits of the szl-holdings GitHub organisation and the SZLHOLDINGS Hugging Face
+  estate. Receipts are UNSIGNED unless an Ed25519 key is configured. A receipt supports integrity,
+  provenance and replayability; it does not establish scientific truth, accuracy, safety or fitness
+  for use.
 version: 0.1.2
-date-released: '2026-11-06'
+date-released: '2026-10-30'
 license: Apache-2.0
-url: https://a-11-oy.com
+url: https://pypi.org/project/szl-evidence-mandate/
 repository-code: https://github.com/szl-holdings/szl-evidence-mandate
 authors:
 - family-names: Lutar
@@ -22,7 +29,3 @@ keywords:
 - mutation-testing
 - audit
 - governed-ai
-identifiers:
-- type: doi
-  value: 10.5281/zenodo.19944926
-  description: Concept DOI for the canonical Ouroboros Thesis (always resolves to the latest version)

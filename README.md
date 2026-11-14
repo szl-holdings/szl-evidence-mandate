@@ -29,7 +29,8 @@ A Scientific Evidence Gate engine plus evidence-backed, read-only audits of the
 > The system producing an answer must not be the sole authority certifying that its own
 > verification occurred.
 
-**Maturity:** research prototype (0.1.2 source candidate; the last PyPI release may differ).
+**Maturity:** research prototype. Latest release: 0.1.2 on PyPI (2026-10-30). `main` also
+carries unreleased changes, including the OpenIslet workbench (see `CHANGELOG.md`).
 **Licence:** Apache-2.0 (org standard; see `LICENSE`).
 
 ## OpenIslet numerical evidence workbench (source candidate)
@@ -148,33 +149,46 @@ remote writes or deployment workflow were added.
 | Component | What it verifies |
 |---|---|
 | `szl_evidence` engine | Manifest-declared inputs are present, opened and fully examined; every required check ran (hash-chained invocation ledger); claims are registered, replayable and numerically correct; dependency staleness blocks publication; receipts are canonical and content-bound. Exit codes: PASS 0, FAIL 1, ABSTAIN 2, ERROR 3. |
-| Mutation harness | 19 mandated mutations + 4 blind-spot probes; undetected mutations are reported as `BLIND_SPOT`, never hidden. |
-| `audit.github` | Every repo (all pages), shallow clones, file-class presence, licence consistency, secret scan (locations only), risky-code patterns, CI/release/protection state, clean-venv install/import/--help/tests, 12-axis scorecard. |
-| `audit.huggingface` | Every model/dataset/Space, card scorecard, Space runtime + read-only probes, weight-header checks by HTTP range, small-array loads without pickle, dataset slices, conformance-corpus replay against the paired verifier. |
+| Mutation harness | 24 runs: the 19 mandated mutations M01–M19 (M11, a semantically neutral thousands separator, is a control that must not be flagged; M11b adds a real value change) and 4 blind-spot probes P01–P04. Undetected mutations are reported as `BLIND_SPOT`, never hidden; on `fixtures/valid` that is currently P02 and P03. |
+| `audit.github` | Every repo (all pages), shallow clones, file-class presence, licence consistency, secret scan (locations only), risky-code patterns, CI/release/protection state, clean-venv install/import/--help/tests (clones and smoke tests need `--allow-effects`), 12-axis scorecard. |
+| `audit.huggingface` | Every model/dataset/Space, card scorecard, Space runtime + read-only probes, weight-header checks by HTTP range, small-array loads without pickle, dataset slices, conformance-corpus replay against the paired verifier (needs `--allow-effects`; otherwise recorded as `NOT_TESTED`). |
 | `reconcile` / `zoomout` | Cross-surface links, orphans, version drift, schema skew, recomputed inventories vs every stated count; band-aid detection with root cause and structural fix. |
 
 ## Quick start (under ten minutes)
 
 ```bash
 python -m venv .venv
-.venv/bin/pip install -e ".[dev]"          # Windows: .venv\Scripts\pip
-szl-audit engine verify fixtures/valid      # exit 0
+source .venv/bin/activate                     # Windows: .venv\Scripts\activate
+pip install -e ".[test]"                      # pytest plus the sign and openislet extras the suite imports
+szl-audit engine verify fixtures/valid        # exit 0
 szl-audit engine verify fixtures/empty-input  # exit 2 (ABSTAIN: nothing examined)
-szl-audit engine mutate fixtures/valid      # prints BLIND_SPOTS
+szl-audit engine mutate fixtures/valid        # prints BLIND_SPOTS
 python -m pytest -q
 ```
+
+CI runs the same suite on Ubuntu and Windows with Python 3.11–3.13, installing from the
+hash-locked closure in `requirements/ci/test.txt` (regeneration command in `test.in`).
 
 Full audit (read-only; uses `GITHUB_TOKEN`/`gh auth token` and `HF_TOKEN`/HF cache token if present, never printed):
 
 ```bash
 szl-audit engine report --output reports
-szl-audit github --org szl-holdings --clone --stream --deep --output reports   # --stream: one repo on disk at a time
-szl-audit hf --org SZLHOLDINGS --functional --output reports
+szl-audit github --org szl-holdings --clone --stream --deep --allow-effects --output reports   # --stream: one repo on disk at a time
+szl-audit hf --org SZLHOLDINGS --functional --allow-effects --output reports
 szl-audit reconcile --output reports
 szl-audit zoomout --output reports      # also renders reports/00..11
 ```
 
-Every command writes a receipt under `reports/receipts/` and supports `--dry-run`.
+`--allow-effects` permits the effectful steps (clone, venv and pip/npm install, imports, test
+runs, `git clean`) inside temporary directories the process creates. Without it, `github --clone`
+is refused with exit 2 before any API call, and `hf --functional` records the conformance replay
+as `NOT_TESTED`. These steps execute the audited repositories' code with process-level isolation
+only (see `SECURITY.md`), so run them on a disposable machine.
+
+Every `engine` and audit command writes a run receipt under `reports/receipts/` (or under the
+`--output` directory; for `engine package`, `--output` is the package directory and the receipt
+stays in `reports/receipts/`) and supports `--dry-run`. The `openislet` commands do not:
+`openislet replay` prints its receipt to stdout.
 
 ### Optional signed engine receipts
 
@@ -210,6 +224,16 @@ key; `engine verify-receipt` currently checks content/ledger integrity, **not** 
 
 `src/szl_evidence/` engine and audits · `fixtures/` 19 generated fixtures (regenerate
 with `szl_evidence.fixturegen.build_all`) · `schemas/` receipt and manifest JSON Schemas ·
-`tests/` · `reports/` generated output · `examples/`.
+`tests/` · `requirements/ci/` hash-locked CI dependencies · `reports/` generated output (local,
+gitignored) · `examples/`.
 
-Estate on Hugging Face: models, datasets and Spaces are published under the [SZLHOLDINGS](https://huggingface.co/SZLHOLDINGS) org.
+`reports/public/` is the committed public snapshot of the audit run of 2026-09-26, bound by
+`reports/public/receipts/report-hashes.json`. Its counts, findings and links describe the estate
+on that date, and several Hugging Face ids it names no longer exist. It is a dated record, not a
+current status page.
+
+## Links
+
+- Package: [szl-evidence-mandate on PyPI](https://pypi.org/project/szl-evidence-mandate/)
+- Source and issues: [github.com/szl-holdings/szl-evidence-mandate](https://github.com/szl-holdings/szl-evidence-mandate) ([CHANGELOG](CHANGELOG.md), [SECURITY](SECURITY.md), [CONTRIBUTING](CONTRIBUTING.md))
+- Estate on Hugging Face: models, datasets and Spaces are published under the [SZLHOLDINGS](https://huggingface.co/SZLHOLDINGS) org. This repository audits them read-only and is not the source of any Hugging Face repository.

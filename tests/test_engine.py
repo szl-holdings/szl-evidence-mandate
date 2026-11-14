@@ -8,7 +8,6 @@ import json
 import os
 import subprocess
 import sys
-from pathlib import Path
 
 import httpx
 import pytest
@@ -338,10 +337,11 @@ def test_committed_fixtures_match_expected(committed):
             assert e in toks, (name, e, sorted(toks))
 
 
-def test_cli_exit_codes_valid_empty_narrated(committed):
+def test_cli_exit_codes_valid_empty_narrated(committed, tmp_path):
     codes = []
     for name in ("valid", "empty-input", "narrated-verification"):
-        p = subprocess.run([sys.executable, "-m", "szl_evidence.cli", "engine", "verify", str(committed / name), "--quiet", "--output", str(Path(os.environ.get("TMP", ".")) / "szl-cli-test")], capture_output=True, timeout=300, check=False)
+        # Receipts go to the per-test tmp_path, never into the checkout ($TMP is unset on Linux).
+        p = subprocess.run([sys.executable, "-m", "szl_evidence.cli", "engine", "verify", str(committed / name), "--quiet", "--output", str(tmp_path / "szl-cli-test")], capture_output=True, timeout=300, check=False)
         codes.append(p.returncode)
     assert codes == [0, 2, 2]
 

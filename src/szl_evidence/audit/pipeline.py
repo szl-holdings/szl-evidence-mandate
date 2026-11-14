@@ -15,6 +15,7 @@ from ..models import NOT_TESTED, UNAVAILABLE, sha256_json, utcnow
 from ..receipts import simple_receipt, write_receipt
 from . import claims_extract, conformance, findings, functional, github, huggingface, reconcile, zoomout
 from .common import FindingSink, hf_token
+from .effect_gate import require_opt_in
 
 LINK_DOMAINS = re.compile(r"https?://(?:www\.)?(huggingface\.co|github\.com/szl-holdings|a-11-oy\.com|a11oy\.net|doi\.org|zenodo\.org)[^\s)\]>\"'`]*", re.I)
 
@@ -172,6 +173,10 @@ def stream_repos(gh: dict[str, Any], root: Path, deep: bool, smoke_cache: dict[s
 
 
 def run_github(org: str, out: Path, clone: bool, deep: bool, dry_run: bool, admit_smoke: Path | None = None, stream: bool = False, allow_effects: bool = False) -> dict[str, Any]:
+    if clone and not dry_run:
+        # Fail closed before the org-wide API collection: --stream passes clone=False to
+        # github.collect(), so without this the refusal came only at the first clone.
+        require_opt_in("run_github(clone=True)", allow_effects)
     started = utcnow()
     raw = out / "raw"
     gh = github.collect(org, raw, clone=clone and not dry_run and not stream, dry_run=dry_run, allow_effects=allow_effects)

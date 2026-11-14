@@ -14,7 +14,7 @@ import yaml
 
 from .dependencies import DependencyGraph
 from .fixturegen import VARIANTS, build_fixture
-from .models import sha256_file, utcnow  # noqa: F401
+from .models import sha256_file, utcnow
 from .mutations import run_mutations
 from .verifier import verify
 
