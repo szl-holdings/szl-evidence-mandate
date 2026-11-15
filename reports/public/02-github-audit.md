@@ -1602,7 +1602,7 @@ Test attribution: REPO_DEFECT (cause identified in the repository), REPO_DEFECT_
   - **docs**: PASS — quick-start section and install command present
   - **honest_scoping**: FAIL — no explicit statement of what is not proven
   - **evidence_boundary**: PARTIAL — boundary categories named: ['integrity', 'performance']
-  - **cross_links**: FAIL — 31 links checked; broken=['https://doi.org/10.5281/zenodo.19944926}', 'https://huggingface.co/spaces/SZLHOLDINGS/README/resolve/main/assets/estate-banner-v2.svg', 'https://huggingface.co/spaces/SZLHOLDINGS/holographic']
+  - **cross_links**: FAIL — 31 links checked; broken=['https://doi.org/10.5281/zenodo.24239896}', 'https://huggingface.co/spaces/SZLHOLDINGS/README/resolve/main/assets/estate-banner-v2.svg', 'https://huggingface.co/spaces/SZLHOLDINGS/holographic']
   - **maintenance**: PASS — last push 0d ago; oldest open issue 23d; abandoned branches (>90d) 0
 
 ### szl-kernels-live
@@ -1794,7 +1794,7 @@ Test attribution: REPO_DEFECT (cause identified in the repository), REPO_DEFECT_
   - **docs**: FAIL — README (4533 chars) has no quick start or install command
   - **honest_scoping**: FAIL — no explicit statement of what is not proven
   - **evidence_boundary**: FAIL — boundary categories named: none
-  - **cross_links**: FAIL — 6 links checked; broken=['https://doi.org/10.5281/zenodo.19944926}']
+  - **cross_links**: FAIL — 6 links checked; broken=['https://doi.org/10.5281/zenodo.24239896}']
   - **maintenance**: PASS — last push 0d ago; oldest open issue none open; abandoned branches (>90d) 1
 
 ### szl-pin

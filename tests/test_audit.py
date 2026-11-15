@@ -86,7 +86,7 @@ def test_29_secret_scanner_detects_planted_token_never_prints_value(tmp_path):
 
 # 30
 def test_30_claim_extractor_finds_planted_claims():
-    readme = "# X\n\nWe publish **21 public Spaces, 46 models, 35 datasets.** Observed 2026-09-10T03:20:41Z.\n\nDoctrine v11 (LOCKED): 749 declarations / 14 axioms / 163 sorries; trust ceiling 0.97.\n\n```\n99 models in code block\n```\nDOI 10.5281/zenodo.19944926\n"
+    readme = "# X\n\nWe publish **21 public Spaces, 46 models, 35 datasets.** Observed 2026-09-10T03:20:41Z.\n\nDoctrine v11 (LOCKED): 749 declarations / 14 axioms / 163 sorries; trust ceiling 0.97.\n\n```\n99 models in code block\n```\nDOI 10.5281/zenodo.24239896\n"
     cl = claims_extract.extract(readme, "fixture/README.md")
     types = [(c.claim_type, c.value, c.unit) for c in cl]
     for t in [("inventory_count", "21", "spaces"), ("inventory_count", "46", "models"), ("inventory_count", "35", "datasets"), ("lean_count", "749", "declarations"), ("lean_count", "14", "axioms"), ("lean_count", "163", "sorries"), ("doctrine_version", "11", "")]:
