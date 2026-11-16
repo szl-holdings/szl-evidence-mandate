@@ -2,6 +2,13 @@
 
 ## Unreleased (on `main`, not in a PyPI release)
 
+- Dependency publication checks include broken references and persisted invalidated,
+  superseded, unresolved, or stale nodes and their descendants, even when recorded
+  fingerprints match. Propagation preserves terminal validity findings; revalidation
+  requires usable parents and keeps missing secondary dependencies blocked without
+  crashing. Repaired unresolved nodes recover only through explicit revalidation.
+  Superseded leaves cannot produce an engine PASS: the check covers the whole supplied
+  graph, including archived nodes, rather than inferring an active subset.
 - Secret-scanning alerts are requested with `hide_secret=true`, and the HTTP cache drops JSON
   `secret` members before writing `raw/` (a leaked credential was previously cached verbatim).
 - `github --clone` (including `--stream`) without `--allow-effects` is refused before any API
