@@ -430,6 +430,8 @@ def chk_dependencies(ctx: Context) -> dict[str, CheckResult]:
         return {"": CheckResult(S.ABSTAIN, R.INSUFFICIENT_EVIDENCE, [ev | {"unresolved": unresolved}], [], "unresolved nodes present; publication blocked", len(g.nodes))}
     if ev["stale"]:
         return {"": CheckResult(S.ABSTAIN, R.INSUFFICIENT_EVIDENCE, [ev], [], "stale downstream nodes pending revalidation; publication blocked", len(g.nodes))}
+    if ev["publication_blocked"]:
+        return {"": CheckResult(S.ABSTAIN, R.INSUFFICIENT_EVIDENCE, [ev], [], "dependency nodes unavailable for publication", len(g.nodes))}
     return {"": CheckResult(S.PASS, R.VERIFIED, [ev], rows_examined=len(g.nodes))}
 
 

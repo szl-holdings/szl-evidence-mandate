@@ -13,12 +13,14 @@ from __future__ import annotations
 from collections import deque
 from dataclasses import dataclass, field
 from pathlib import Path
-from typing import Any
+from typing import Any, Iterable
 
 from .models import Validity, sha256_file
 from .safety import contained
 
 KINDS = ["SOURCE_SNAPSHOT", "DESIGN", "ADMITTED_EVIDENCE", "ANALYSIS_RUN", "RANKING", "FIGURE", "CONCLUSION"]
+_TERMINAL_STATES = {Validity.SUPERSEDED, Validity.INVALIDATED}
+_BLOCKED_STATES = _TERMINAL_STATES | {Validity.UNRESOLVED, Validity.STALE_PENDING_REVALIDATION}
 
 
 @dataclass
@@ -115,10 +117,30 @@ class DependencyGraph:
         return order
 
     # ------------------------------------------------------------------ validity
+    def _mark_stale(self, node_ids: Iterable[str]) -> None:
+        """Propagate revalidation without erasing stronger validity findings."""
+        for nid in node_ids:
+            if self.nodes[nid].state not in _TERMINAL_STATES | {Validity.UNRESOLVED}:
+                self.nodes[nid].state = Validity.STALE_PENDING_REVALIDATION
+
     def evaluate(self) -> dict[str, Any]:
-        """Mark directly-stale nodes (fingerprint drift) and propagate to descendants."""
+        """Block publication on broken references, unusable ancestry, or drift.
+
+        Persisted validity states matter even when fingerprints still match.
+        ``stale`` lists nodes pending revalidation; ``publication_blocked`` also
+        includes unresolved, invalidated, and superseded nodes. This evaluates
+        the whole supplied graph: an archived superseded node remains blocked
+        after its consumers move to a replacement. No publication subset is
+        inferred. Evaluation never clears a prior validity finding.
+        """
+        order = self.topo_order()
+        broken = self.broken_refs()
+        for finding in broken:
+            node = self.nodes[finding["node"]]
+            if node.state not in _TERMINAL_STATES:
+                node.state = Validity.UNRESOLVED
         direct: dict[str, list[dict[str, str]]] = {}
-        for nid in self.topo_order():
+        for nid in order:
             n = self.nodes[nid]
             for p in n.depends_on:
                 parent = self.nodes.get(p)
@@ -129,17 +151,19 @@ class DependencyGraph:
                     direct.setdefault(nid, []).append({"parent": p, "recorded": "NONE", "current": parent.fingerprint()})
                 elif recorded != parent.fingerprint():
                     direct.setdefault(nid, []).append({"parent": p, "recorded": recorded, "current": parent.fingerprint()})
-        stale: set[str] = set()
-        for nid in direct:
-            stale.add(nid)
-            stale.update(self.descendants(nid))
-        for nid in stale:
-            if self.nodes[nid].state not in (Validity.SUPERSEDED, Validity.INVALIDATED):
-                self.nodes[nid].state = Validity.STALE_PENDING_REVALIDATION
+        blocked = set(direct) | {nid for nid, node in self.nodes.items() if node.state in _BLOCKED_STATES}
+        # A topological pass carries every blocker to all descendants, including
+        # blockers loaded from a prior run rather than discovered as new drift.
+        for nid in order:
+            if nid in blocked:
+                blocked.update(self.children(nid))
+        self._mark_stale(blocked)
+        stale = {nid for nid in blocked if self.nodes[nid].state == Validity.STALE_PENDING_REVALIDATION}
         return {
             "direct_drift": {k: direct[k] for k in sorted(direct)},
+            "broken_refs": broken,
             "stale": sorted(stale),
-            "publication_blocked": sorted(stale),
+            "publication_blocked": sorted(blocked),
             "states": {k: self.nodes[k].state.value for k in sorted(self.nodes)},
             "note": "Staleness is not falsity: stale nodes are pending revalidation, not declared false.",
         }
@@ -150,9 +174,7 @@ class DependencyGraph:
             raise DependencyError("supersede needs two existing nodes")
         self.nodes[node_id].state = Validity.SUPERSEDED
         stale = self.descendants(node_id)
-        for d in stale:
-            if self.nodes[d].state not in (Validity.INVALIDATED,):
-                self.nodes[d].state = Validity.STALE_PENDING_REVALIDATION
+        self._mark_stale(stale)
         return {"superseded": node_id, "by": by, "descendants_marked_stale": stale}
 
     def invalidate(self, node_id: str, reason: str) -> dict[str, Any]:
@@ -161,15 +183,15 @@ class DependencyGraph:
             raise DependencyError(f"unknown node: {node_id}")
         self.nodes[node_id].state = Validity.INVALIDATED
         stale = self.descendants(node_id)
-        for d in stale:
-            self.nodes[d].state = Validity.STALE_PENDING_REVALIDATION
+        self._mark_stale(stale)
         return {"invalidated": node_id, "reason": reason, "descendants_marked_stale": stale, "note": "descendants are pending revalidation, not declared false"}
 
     def mark_unresolved(self) -> list[str]:
         """Nodes whose parents are missing cannot be evaluated: UNRESOLVED."""
         out = sorted({b["node"] for b in self.broken_refs() if "missing_parent" in b})
         for n in out:
-            self.nodes[n].state = Validity.UNRESOLVED
+            if self.nodes[n].state not in _TERMINAL_STATES:
+                self.nodes[n].state = Validity.UNRESOLVED
         return out
 
     def impact(self, node_id: str) -> dict[str, Any]:
@@ -177,8 +199,7 @@ class DependencyGraph:
         if node_id not in self.nodes:
             raise DependencyError(f"unknown node: {node_id}")
         desc = self.descendants(node_id)
-        for d in desc:
-            self.nodes[d].state = Validity.STALE_PENDING_REVALIDATION
+        self._mark_stale(desc)
         return {
             "changed": node_id,
             "descendants_marked_stale": desc,
@@ -189,10 +210,22 @@ class DependencyGraph:
         }
 
     def revalidate(self, node_id: str, new_output_sha256: str) -> dict[str, Any]:
-        """Record a revalidation run. Unchanged output clears the path for children; changed does not."""
+        """Record a run after structural repair and with usable ancestry.
+
+        Explicit revalidation can recover a repaired UNRESOLVED node; merely
+        restoring a reference never clears it. Unchanged output clears the path
+        for children; changed output leaves them pending their own revalidation.
+        """
+        evaluation = self.evaluate()
         n = self.nodes[node_id]
-        if n.state != Validity.STALE_PENDING_REVALIDATION:
+        if n.state not in (Validity.STALE_PENDING_REVALIDATION, Validity.UNRESOLVED):
             raise DependencyError(f"{node_id} is not pending revalidation (state={n.state.value})")
+        structural = [finding for finding in evaluation["broken_refs"] if finding["node"] == node_id]
+        if structural:
+            raise DependencyError(f"{node_id} has unresolved structural errors: {structural}")
+        blocked_parents = sorted(set(n.depends_on) & set(evaluation["publication_blocked"]))
+        if blocked_parents:
+            raise DependencyError(f"{node_id} parents not ready for revalidation: {blocked_parents}")
         for p in n.depends_on:
             n.validated_against[p] = self.nodes[p].fingerprint()
         changed = new_output_sha256 != n.output_sha256
@@ -205,7 +238,8 @@ class DependencyGraph:
             for c in [x for x in self.topo_order() if x in desc]:
                 cn = self.nodes[c]
                 parents_ok = all(
-                    self.nodes[p].state in (Validity.CURRENT, Validity.REVALIDATED_UNCHANGED)
+                    p in self.nodes
+                    and self.nodes[p].state in (Validity.CURRENT, Validity.REVALIDATED_UNCHANGED)
                     and cn.validated_against.get(p) == self.nodes[p].fingerprint()
                     for p in cn.depends_on
                 )
