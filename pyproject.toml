@@ -23,7 +23,7 @@ dependencies = [
 ]
 
 [project.optional-dependencies]
-dev = ["pytest>=8", "ruff>=0.5"]
+dev = ["pytest>=8", "ruff>=0.17.5"]
 sign = ["cryptography>=42"]
 openislet = ["numpy>=2.0,<3"]
 # Everything the full test suite imports: pytest plus the sign and openislet extras
